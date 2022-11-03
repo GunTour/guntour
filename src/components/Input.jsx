@@ -12,7 +12,7 @@ export const Input = (props) => {
   )
 }
 
-export const Email = (props) => {
+export const InputEmail = (props) => {
   return (
     <input
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
@@ -24,7 +24,7 @@ export const Email = (props) => {
   )
 }
 
-export const Password = (props) => {
+export const InputPassword = (props) => {
   return (
     <input
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
@@ -36,7 +36,7 @@ export const Password = (props) => {
   )
 }
 
-export const FullNameLogin = (props) => {
+export const InputFullNameLogin = (props) => {
   return (
     <input
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
@@ -48,7 +48,7 @@ export const FullNameLogin = (props) => {
   )
 }
 
-export const FullNameRangers = (props) => {
+export const InputFullNameRangers = (props) => {
   return (
     <input
       className="h-[60px] w-[996px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
@@ -60,7 +60,7 @@ export const FullNameRangers = (props) => {
   )
 }
 
-export const PhoneNumber = (props) => {
+export const InputPhoneNumber = (props) => {
   return (
     <input
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
@@ -72,7 +72,7 @@ export const PhoneNumber = (props) => {
   )
 }
 
-export const PlaceDateBirth = (props) => {
+export const InputPlaceDateBirth = (props) => {
   return (
     <input
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
@@ -84,7 +84,7 @@ export const PlaceDateBirth = (props) => {
   )
 }
 
-export const Gender = (props) => {
+export const InputGender = (props) => {
   return (
     <input
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
@@ -96,7 +96,7 @@ export const Gender = (props) => {
   )
 }
 
-export const Address = (props) => {
+export const InputAddress = (props) => {
   return (
     <input
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
