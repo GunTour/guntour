@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const ButtonSign = () => {
   return (
@@ -7,8 +7,8 @@ export const ButtonSign = () => {
         <span>Sign In</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonRegister = () => {
   return (
@@ -17,8 +17,8 @@ export const ButtonRegister = () => {
         <span>Register Account</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonReturn = () => {
   return (
@@ -27,8 +27,8 @@ export const ButtonReturn = () => {
         <div className="text-sm font-normal">RETURN TO HOME</div>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonBooking = () => {
   return (
@@ -37,8 +37,8 @@ export const ButtonBooking = () => {
         <span>Booking Now</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonLogin = () => {
   return (
@@ -47,8 +47,8 @@ export const ButtonLogin = () => {
         <span>Login</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonRegisterAnonym = () => {
   return (
@@ -57,28 +57,28 @@ export const ButtonRegisterAnonym = () => {
         <span>Register</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonBookNow = () => {
   return (
     <div>
-      <button className="login font-medium text-center justify-center h-10 w-48 px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
+      <button className="login font-medium text-center justify-center h-12 w-[265px] px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
         <span>Book Now</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
-export const ButtonJoin= () => {
+export const ButtonJoin = () => {
   return (
     <div>
       <button className="login font-medium text-center justify-center h-10 w-60 px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
         <span>Join Community</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonBookNowDetails = () => {
   return (
@@ -87,8 +87,8 @@ export const ButtonBookNowDetails = () => {
         <span>Booking Now</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonBooked = () => {
   return (
@@ -97,8 +97,8 @@ export const ButtonBooked = () => {
         <span>Booked Now</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonConfirmBooking = () => {
   return (
@@ -107,8 +107,8 @@ export const ButtonConfirmBooking = () => {
         <span>Confirm Booking</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonSubmitData = () => {
   return (
@@ -117,18 +117,18 @@ export const ButtonSubmitData = () => {
         <span>Submit Data</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonCancel = () => {
   return (
     <div>
-      <button className="login font-medium text-center justify-center h-10 w-6/12 px-6 py-1 rounded-lg text-[#999999] border border-[#999999] transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
+      <button className="login font-light text-center justify-center h-12 w-64 px-6 py-1 rounded-lg text-[#999999] border border-[#999999] transform active:scale-75 transition-transform flex items-center hover:bg-[#FFE0E0] ">
         <span>Cancel</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonChooseFile = () => {
   return (
@@ -137,18 +137,18 @@ export const ButtonChooseFile = () => {
         <span>Choose File</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonPay = () => {
   return (
     <div>
-      <button className="login font-medium text-center justify-center h-10 w-56 px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
+      <button className="login font-medium text-center justify-center h-12 w-64 px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
         <span>Pay Now</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonOnprogress = () => {
   return (
@@ -157,8 +157,8 @@ export const ButtonOnprogress = () => {
         <span>On Progress</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonCanceled = () => {
   return (
@@ -167,8 +167,8 @@ export const ButtonCanceled = () => {
         <span>Canceled</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonSuccess = () => {
   return (
@@ -177,8 +177,8 @@ export const ButtonSuccess = () => {
         <span>Success</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonCancelHistory = () => {
   return (
@@ -187,8 +187,8 @@ export const ButtonCancelHistory = () => {
         <span>Cancel</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonUpdate = () => {
   return (
@@ -197,8 +197,8 @@ export const ButtonUpdate = () => {
         <span>Update</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonAcc = () => {
   return (
@@ -207,8 +207,8 @@ export const ButtonAcc = () => {
         <span>Acc</span>
       </button>
     </div>
-  )
-}
+  );
+};
 export const ButtonReject = () => {
   return (
     <div>
@@ -216,8 +216,8 @@ export const ButtonReject = () => {
         <span>Reject</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonEdit = () => {
   return (
@@ -226,8 +226,8 @@ export const ButtonEdit = () => {
         <span>Edit</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
 export const ButtonDelete = () => {
   return (
@@ -236,5 +236,5 @@ export const ButtonDelete = () => {
         <span>Delete</span>
       </button>
     </div>
-  )
-}
+  );
+};
