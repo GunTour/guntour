@@ -89,20 +89,13 @@ const NavbarLogin = () => {
               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-lg w-52"
             >
               <li>
-                <p className="justify-between active:bg-slate-200 text-base font-normal">
-                  My Booking
-                </p>
+                <p className="justify-between active:bg-slate-200">My Booking </p>
               </li>
               <li>
-                <p className="active:bg-slate-200 text-base font-normal">
-                  Become Ranger
-                </p>
+                <p className="active:bg-slate-200">Become A Rangers</p>
               </li>
-              <div className="divider m-0" />
               <li>
-                <p className="active:bg-slate-200 text-base font-normal">
-                  Logout
-                </p>
+                <p className="active:bg-slate-200">Logout</p>
               </li>
             </ul>
           </div>
