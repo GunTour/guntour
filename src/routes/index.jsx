@@ -19,7 +19,7 @@ import NotFound from "pages/NotFound";
 import Admin from "pages/admin/Index";
 
 axios.defaults.baseURL =
-  "https://app.swaggerhub.com/apis-docs/khalidrianda/GunTour/1.0.0/";
+  "https://virtserver.swaggerhub.com/khalidrianda/GunTour/1.0.0/";
 
 const Index = () => {
   const [cookie, removeCookie] = useCookies();

@@ -1,13 +1,71 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { WithRouter } from "utils/Navigation";
 import { Helmet } from "react-helmet";
 import { InputEmail, InputPassword } from "components/Input";
 import { ButtonSign } from "components/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useCookies } from "react-cookie";
+import { handleAuth } from "utils/redux/reducers/reducer";
+import { apiRequest } from "utils/apiRequest";
 
+import Swal from "sweetalert2";
 import imgLogin from "assets/img-login.svg";
 
 const Login = () => {
+  const [cookies, setCookie] = useCookies(["token"]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (email && password) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [email, password]);
+
+  const handleLogin = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+
+    if (email.length === 0 || password.length === 0) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Data cannot be empty !",
+        showConfirmButton: true,
+      });
+      return;
+    }
+
+    const body = {
+      email: email,
+      password: password,
+    };
+    apiRequest("login", "post", body)
+      .then((res) => {
+        const { data } = res.data;
+        setCookie("token", res.data.token, { path: "/login" });
+        dispatch(handleAuth(true));
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You're logged in !",
+          showConfirmButton: true,
+        });
+        navigate("/home");
+      })
+      .catch((err) => {
+        alert(err);
+      })
+      .finally(() => setLoading(false));
+  };
+
   return (
     <>
       <Helmet>
@@ -29,17 +87,34 @@ const Login = () => {
             </p>
             <div>
               <p className="text-lg text-secondary py-3">Your Email</p>
-              <InputEmail value="" placeholder="Email address" />
+              <InputEmail
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Email address"
+              />
             </div>
 
             <div>
               <p className="text-lg text-secondary py-3">Password</p>
-              <InputPassword value="" placeholder="Password" />
+              <InputPassword
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Password"
+              />
             </div>
             <p className="text-light text-lg text-primary text-right cursor-pointer py-3">
               Reset Password
             </p>
-            <ButtonSign className="bg-primary font-medium text-base text-center text-white" />
+            <ButtonSign
+              onClick={(e) => handleLogin(e)}
+              className="bg-primary font-medium text-base text-center text-white"
+            />
             <p className="text-light text-base text-center text-[#B4B4B4] pt-6">
               Already have an account?
               <Link
