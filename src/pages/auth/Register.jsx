@@ -6,6 +6,7 @@ import { ButtonRegister } from "components/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { apiRequest } from "utils/apiRequest";
 
+import Swal from "sweetalert2";
 import imgRegister from "assets/img-register.svg";
 
 const Register = () => {
@@ -27,6 +28,27 @@ const Register = () => {
   const handleRegister = async (e) => {
     setLoading(true);
     e.preventDefault();
+
+    if (fullname.length === 0 || email.length === 0 || password.length === 0) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Data cannot be empty !",
+        showConfirmButton: true,
+      });
+      return;
+    }
+
+    if (fullname.length < 3) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Please enter full name !",
+        showConfirmButton: true,
+      });
+      return;
+    }
+
     const body = {
       fullname: fullname,
       email: email,
@@ -38,7 +60,12 @@ const Register = () => {
         if (data) {
           navigate("/login");
         }
-        alert(message);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Register successful ! Please Login !",
+          showConfirmButton: true,
+        });
       })
       .catch((err) => {
         const { message } = err.response.data;
