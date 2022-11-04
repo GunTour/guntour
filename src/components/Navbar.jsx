@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "assets/logo.svg";
-import { ButtonLogin } from "./Button";
+import { ButtonLogin, ButtonRegisterAnonym } from "components/Button";
 
 const Navbar = () => {
   return (
