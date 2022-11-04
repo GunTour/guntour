@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="w-full text-center lg:text-left bg-secondary text-base-content">
       <div className="md:text-left py-5">
-        <div className="grid grid-1 md:grid-cols-1 lg:grid-cols-3 gap-8 justify-items-center">
+        <div className="grid grid-1 md:grid-cols-1 lg:grid-cols-3 gap-14 justify-items-center">
           <div>
             <Link to="" className="flex items-center mb-6">
               <img src={logo} alt="logo" className="mr-3 h-6 sm:h-9" />
