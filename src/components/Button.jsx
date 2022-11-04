@@ -3,7 +3,7 @@ import React from "react";
 export const ButtonSign = () => {
   return (
     <div>
-      <button className="login font-medium text-center justify-center h-12 w-80 px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
+      <button className="login font-medium text-center justify-center h-[60px] w-[468px] px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
         <span>Sign In</span>
       </button>
     </div>
@@ -83,8 +83,8 @@ export const ButtonJoin = () => {
 export const ButtonBookNowDetails = () => {
   return (
     <div>
-      <button className="login font-medium text-center justify-center h-10 w-40 px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
-        <span>Booking Now</span>
+      <button className="login font-medium text-base text-center justify-center h-11 w-44 px-6 py-1 rounded-lg text-white bg-primary transform active:scale-50 transition-transform flex items-center hover:bg-primary hover:text-white ">
+        <span>Book Now</span>
       </button>
     </div>
   );
