@@ -92,7 +92,7 @@ const HomePage = () => {
               </div>
             </div>
           <div>
-            <p className="py-6">Want more fun camping, join our 
+            <p className="py-6 text-lg">Want more fun camping, join our 
             <div>community to get friends to camp</div> together feel the sensation</p>
           </div>
           <div><ButtonJoin/></div>

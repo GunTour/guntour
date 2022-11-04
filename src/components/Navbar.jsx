@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "assets/logo.svg";
+import { ButtonLogin } from "./Button";
 
 const Navbar = () => {
   return (
@@ -14,14 +15,14 @@ const Navbar = () => {
 
         <div className="flex items-center md:order-2">
           <Link to="">
-            <p className="font-medium text-base text-primary bg-line hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 rounded-lg px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 focus:outline-none">
-              Login
+            <p className="px-4 py-2">
+              <ButtonLogin/>
             </p>
           </Link>
 
           <Link to="">
-            <p className="font-medium text-base text-white bg-primary hover:bg-line hover:text-primary focus:ring-4 focus:ring-blue-300 rounded-lg px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 focus:outline-none">
-              Register
+            <p className=" px-4 py-2">
+              <ButtonRegisterAnonym/>
             </p>
           </Link>
         </div>
