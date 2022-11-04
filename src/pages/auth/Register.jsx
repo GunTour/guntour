@@ -1,13 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { WithRouter } from "utils/Navigation";
 import { Helmet } from "react-helmet";
 import { Input, InputEmail, InputPassword } from "components/Input";
 import { ButtonRegister } from "components/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { apiRequest } from "utils/apiRequest";
 
 import imgRegister from "assets/img-register.svg";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [fullname, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (fullname && email && password) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [fullname, email, password]);
+
+  const handleRegister = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+    const body = {
+      fullname: fullname,
+      email: email,
+      password: password,
+    };
+    apiRequest("user", "post", body)
+      .then((res) => {
+        const { message, data } = res;
+        if (data) {
+          navigate("/login");
+        }
+        alert(message);
+      })
+      .catch((err) => {
+        const { message } = err.response.data;
+        alert(message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <>
       <Helmet>
@@ -37,20 +78,44 @@ const Register = () => {
             </p>
             <div>
               <p className="text-lg text-secondary pb-3">Full Name</p>
-              <Input value="" placeholder="Full Name" />
+              <Input
+                onChange={(e) => setFullName(e.target.value)}
+                value={fullname}
+                id="fullname"
+                name="fullname"
+                type="text"
+                placeholder="Full Name"
+              />
             </div>
 
             <div>
               <p className="text-lg text-secondary py-3">Your Email</p>
-              <InputEmail value="" placeholder="Email address" />
+              <InputEmail
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Email address"
+              />
             </div>
 
             <div>
               <p className="text-lg text-secondary py-3">Password</p>
-              <InputPassword value="" placeholder="Password" />
+              <InputPassword
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Password"
+              />
             </div>
             <br />
-            <ButtonRegister className="bg-primary font-medium text-base text-center text-white" />
+            <ButtonRegister
+              onClick={(e) => handleRegister(e)}
+              className="bg-primary font-medium text-base text-center text-white"
+            />
             <p className="text-light text-base text-center text-[#B4B4B4] pt-6">
               Already have an account?
               <Link
