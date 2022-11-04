@@ -83,7 +83,7 @@ export const ButtonJoin = () => {
 export const ButtonBookNowDetails = () => {
   return (
     <div>
-      <button className="login font-medium text-base text-center justify-center h-11 w-44 px-6 py-1 rounded-lg text-white bg-primary transform active:scale-50 transition-transform flex items-center hover:bg-primary hover:text-white ">
+      <button className="login font-medium text-base text-center justify-center h-11 w-44 px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
         <span>Book Now</span>
       </button>
     </div>
@@ -93,7 +93,7 @@ export const ButtonBookNowDetails = () => {
 export const ButtonBooked = () => {
   return (
     <div>
-      <button className="login font-medium text-center justify-center h-8 w-6/12 px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
+      <button className="login font-medium text-xl text-center justify-center h-14 w-full px-6 py-1 rounded-md text-white bg-primary transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white ">
         <span>Booked Now</span>
       </button>
     </div>

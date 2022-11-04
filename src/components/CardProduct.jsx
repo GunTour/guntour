@@ -31,8 +31,8 @@ const CardProduct = () => {
 
 const CardBooking = () => {
   return (
-    <section className="mx-20 bg-white rounded-xl">
-      <div className="flex my-5">
+    <section className="w-full bg-white rounded-lg">
+      <div className="flex">
         <div>
           <img className="h-40 w-44 ml-6" src={items} alt="items" />
         </div>
