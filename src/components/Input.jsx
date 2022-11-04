@@ -1,16 +1,75 @@
-import React from 'react'
+import React from "react";
+
+export const InputDate = (props) => {
+  return (
+    <input
+      className="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg"
+      onChange={props.onChange}
+      id={props.id}
+      placeholder="dd/mm/yy"
+      type="date"
+    />
+  );
+};
+
+export const InputSelectEntrance = (props) => {
+  return (
+    <select
+      onChange={props.onChange}
+      id="category"
+      class="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
+    >
+      <option value="" className="font-normal text-base text-secondary">Select the entrance</option>
+      <option value="cibodas" className="font-normal text-base text-secondary">Entrance Cibodas</option>
+      <option value="gunung-putri" className="font-normal text-base text-secondary">Entrance Gunung Putri</option>
+      <option value="salabintana" className="font-normal text-base text-secondary">Entrance Salabintana</option>
+    </select>
+  );
+};
+
+export const InputSelectPerson = (props) => {
+  return (
+    <select
+      onChange={props.onChange}
+      id="category"
+      class="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-normal text-base"
+    >
+      <option value="1" className="font-normal text-base text-secondary">1</option>
+      <option value="2" className="font-normal text-base text-secondary">2</option>
+      <option value="3" className="font-normal text-base text-secondary">3</option>
+      <option value="4" className="font-normal text-base text-secondary">4</option>
+      <option value="5" className="font-normal text-base text-secondary">5</option>
+      <option value="6" className="font-normal text-base text-secondary">6</option>
+    </select>
+  );
+};
+
+export const InputSelectRanger = (props) => {
+  return (
+    <select
+      onChange={props.onChange}
+      id="category"
+      class="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
+    >
+      <option value="" className="font-normal text-base text-secondary">Add Ranger</option>
+      <option value="" className="font-normal text-base text-secondary">Fajar Nugraha</option>
+      <option value={props.value} className="font-normal text-base text-secondary">{props.RangerName}</option>
+
+    </select>
+  );
+};
 
 export const Input = (props) => {
   return (
     <input
-      className="w-[468px] h-[60px] py-2 px-3 border-2 border-[#577D7B] rounded-md"
+      className="w-[468px] h-14 py-2 px-3 border-2 border-[#577D7B] rounded-md"
       onChange={props.onChange}
       id={props.id}
       placeholder={props.placeholder}
       type={props.type}
     />
-  )
-}
+  );
+};
 
 export const InputEmail = (props) => {
   return (
@@ -18,11 +77,11 @@ export const InputEmail = (props) => {
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
-      placeholder= "Email address"
+      placeholder="Email address"
       type={props.type}
     />
-  )
-}
+  );
+};
 
 export const InputPassword = (props) => {
   return (
@@ -30,11 +89,11 @@ export const InputPassword = (props) => {
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
-      placeholder= "Password"
+      placeholder="Password"
       type={props.type}
     />
-  )
-}
+  );
+};
 
 export const InputFullNameLogin = (props) => {
   return (
@@ -42,11 +101,11 @@ export const InputFullNameLogin = (props) => {
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
-      placeholder= "Full Name"
+      placeholder="Full Name"
       type={props.type}
     />
-  )
-}
+  );
+};
 
 export const InputFullNameRangers = (props) => {
   return (
@@ -54,11 +113,11 @@ export const InputFullNameRangers = (props) => {
       className="h-[60px] w-[996px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
-      placeholder= "Full Name"
+      placeholder="Full Name"
       type={props.type}
     />
-  )
-}
+  );
+};
 
 export const InputPhoneNumber = (props) => {
   return (
@@ -66,11 +125,11 @@ export const InputPhoneNumber = (props) => {
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
-      placeholder= "+62 85797556122"
+      placeholder="+62 85797556122"
       type={props.type}
     />
-  )
-}
+  );
+};
 
 export const InputPlaceDateBirth = (props) => {
   return (
@@ -78,11 +137,11 @@ export const InputPlaceDateBirth = (props) => {
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
-      placeholder= "Sukabumi, 12 Oktober 2000"
+      placeholder="Sukabumi, 12 Oktober 2000"
       type="date"
     />
-  )
-}
+  );
+};
 
 export const InputGender = (props) => {
   return (
@@ -90,11 +149,11 @@ export const InputGender = (props) => {
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
-      placeholder= "Laki-laki"
+      placeholder="Laki-laki"
       type={props.type}
     />
-  )
-}
+  );
+};
 
 export const InputAddress = (props) => {
   return (
@@ -102,8 +161,8 @@ export const InputAddress = (props) => {
       className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
-      placeholder= "Jl. Legok Hangser"
+      placeholder="Jl. Legok Hangser"
       type={props.type}
     />
-  )
-}
+  );
+};
