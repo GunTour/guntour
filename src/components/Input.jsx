@@ -107,14 +107,15 @@ export const InputFullNameLogin = (props) => {
   );
 };
 
+// Ranger Input
 export const InputFullNameRangers = (props) => {
   return (
     <input
-      className="h-[60px] w-[996px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="Full Name"
-      type={props.type}
+      type="text"
     />
   );
 };
@@ -122,11 +123,11 @@ export const InputFullNameRangers = (props) => {
 export const InputPhoneNumber = (props) => {
   return (
     <input
-      className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="+62 85797556122"
-      type={props.type}
+      type="text"
     />
   );
 };
@@ -134,11 +135,11 @@ export const InputPhoneNumber = (props) => {
 export const InputPlaceDateBirth = (props) => {
   return (
     <input
-      className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="Sukabumi, 12 Oktober 2000"
-      type="date"
+      type="text"
     />
   );
 };
@@ -146,11 +147,11 @@ export const InputPlaceDateBirth = (props) => {
 export const InputGender = (props) => {
   return (
     <input
-      className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="Laki-laki"
-      type={props.type}
+      type="text"
     />
   );
 };
@@ -158,11 +159,11 @@ export const InputGender = (props) => {
 export const InputAddress = (props) => {
   return (
     <input
-      className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="Jl. Legok Hangser"
-      type={props.type}
+      type="text"
     />
   );
 };
