@@ -140,56 +140,63 @@ const NavbarLogin = () => {
 };
 
 const NavbarAdmin = () => {
-  return(
+  return (
     <div>
       <div className="navbar bg-base-100">
         <div className="flex-1">
           <a className="btn btn-ghost normal-case text-xl">Dashboard</a>
         </div>
-      <div className="flex-none gap-2">
-    <div className="w-2/6 md:flex flex-none mt-form-control input hidden border-1 bg-gray border-gray border-lg items-center">
-        <input
-          type="text"
-          placeholder="Search"
-          className="w-full outline-none"
-        />
-        <button className="py-3.5 border-y-2 border-l-2 border-none bg-main rounded-l-lg ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+        <div className="flex-none gap-2">
+          <div className="w-2/6 md:flex flex-none mt-form-control input hidden border-1 bg-gray border-gray border-lg items-center">
+            <input
+              type="text"
+              placeholder="Search"
+              className="w-full outline-none"
             />
-          </svg>
-        </button>
-      </div>
+            <button className="py-3.5 border-y-2 border-l-2 border-none bg-main rounded-l-lg ">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                />
+              </svg>
+            </button>
+          </div>
 
-    <div className="dropdown dropdown-end">
-      <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img src="https://placeimg.com/80/80/people" />
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src="https://placeimg.com/80/80/people" />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </a>
+              </li>
+              <li>
+                <a>Settings</a>
+              </li>
+              <li>
+                <a>Logout</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </label>
-      <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+      </div>
     </div>
   );
 };

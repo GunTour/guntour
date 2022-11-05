@@ -19,10 +19,24 @@ export const InputSelectEntrance = (props) => {
       id="category"
       class="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
     >
-      <option value="" className="font-normal text-base text-secondary">Select the entrance</option>
-      <option value="cibodas" className="font-normal text-base text-secondary">Entrance Cibodas</option>
-      <option value="gunung-putri" className="font-normal text-base text-secondary">Entrance Gunung Putri</option>
-      <option value="salabintana" className="font-normal text-base text-secondary">Entrance Salabintana</option>
+      <option value="" className="font-normal text-base text-secondary">
+        Select the entrance
+      </option>
+      <option value="cibodas" className="font-normal text-base text-secondary">
+        Entrance Cibodas
+      </option>
+      <option
+        value="gunung-putri"
+        className="font-normal text-base text-secondary"
+      >
+        Entrance Gunung Putri
+      </option>
+      <option
+        value="salabintana"
+        className="font-normal text-base text-secondary"
+      >
+        Entrance Salabintana
+      </option>
     </select>
   );
 };
@@ -34,12 +48,24 @@ export const InputSelectPerson = (props) => {
       id="category"
       class="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-normal text-base"
     >
-      <option value="1" className="font-normal text-base text-secondary">1</option>
-      <option value="2" className="font-normal text-base text-secondary">2</option>
-      <option value="3" className="font-normal text-base text-secondary">3</option>
-      <option value="4" className="font-normal text-base text-secondary">4</option>
-      <option value="5" className="font-normal text-base text-secondary">5</option>
-      <option value="6" className="font-normal text-base text-secondary">6</option>
+      <option value="1" className="font-normal text-base text-secondary">
+        1
+      </option>
+      <option value="2" className="font-normal text-base text-secondary">
+        2
+      </option>
+      <option value="3" className="font-normal text-base text-secondary">
+        3
+      </option>
+      <option value="4" className="font-normal text-base text-secondary">
+        4
+      </option>
+      <option value="5" className="font-normal text-base text-secondary">
+        5
+      </option>
+      <option value="6" className="font-normal text-base text-secondary">
+        6
+      </option>
     </select>
   );
 };
@@ -51,10 +77,18 @@ export const InputSelectRanger = (props) => {
       id="category"
       class="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
     >
-      <option value="" className="font-normal text-base text-secondary">Add Ranger</option>
-      <option value="" className="font-normal text-base text-secondary">Fajar Nugraha</option>
-      <option value={props.value} className="font-normal text-base text-secondary">{props.RangerName}</option>
-
+      <option value="" className="font-normal text-base text-secondary">
+        Add Ranger
+      </option>
+      <option value="" className="font-normal text-base text-secondary">
+        Fajar Nugraha
+      </option>
+      <option
+        value={props.value}
+        className="font-normal text-base text-secondary"
+      >
+        {props.RangerName}
+      </option>
     </select>
   );
 };
