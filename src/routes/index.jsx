@@ -16,6 +16,7 @@ import Booking from "pages/Booking";
 import ConfirmBooking from "pages/ConfirmBooking";
 import OrderHistory from "pages/OrderHistory";
 import BecomeRanger from "pages/BecomeRanger";
+import GuidePage from "pages/GuidePage";
 import NotFound from "pages/NotFound";
 import Admin from "pages/admin/Index";
 
@@ -68,6 +69,7 @@ const Index = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomeAnonym />} />
+          <Route path="/login" element={<Login />} />
           <Route
             path="/login"
             element={checkToken ? <Navigate to="/home" /> : <Login />}
@@ -82,6 +84,7 @@ const Index = () => {
           <Route path="/confirm" element={<ConfirmBooking />} />
           <Route path="/history" element={<OrderHistory />} />
           <Route path="/ranger" element={<BecomeRanger />} />
+          <Route path="/guide" element={<GuidePage />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

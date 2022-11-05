@@ -1,7 +1,13 @@
 import React from "react";
 import items from "assets/items-tenda.svg";
 import booking from "assets/booking.svg";
-import { ButtonBookNow, ButtonPay, ButtonCancel } from "components/Button";
+import {
+  ButtonBookNow,
+  ButtonPay,
+  ButtonCancel,
+  ButtonDownloadFile,
+} from "components/Button";
+import { Link } from "react-router-dom";
 
 import { AiFillMinusCircle } from "react-icons/ai";
 import { AiFillPlusCircle } from "react-icons/ai";
@@ -134,10 +140,82 @@ const CardOrderSuccess = () => {
   );
 };
 
+const CardClimber = () => {
+  return (
+    <div className="card w-[293px] h-32 py-7 bg-white">
+      <p className="font-mediumn text-secondary text-lg text-center">
+        Climber Declaration Letter
+      </p>
+      <div className="card-actions justify-center pt-2">
+        <Link to="/files/surat-pernyataan-pendaki.pdf" target="_blank" download>
+          <ButtonDownloadFile />
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const CardParent = () => {
+  return (
+    <div className="card w-[293px] h-32 py-7 bg-white">
+      <p className="font-mediumn text-secondary text-lg text-center">
+        Parent's Statement Letter
+      </p>
+      <div className="card-actions justify-center pt-2">
+        <Link
+          to="/files/surat-pernyataan-orangtua.pdf"
+          target="_blank"
+          download
+        >
+          <ButtonDownloadFile />
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const CardHealth = () => {
+  return (
+    <div className="card w-[293px] h-32 py-7 bg-white">
+      <p className="font-mediumn text-secondary text-lg text-center">
+        Health Declaration Letter
+      </p>
+      <div className="card-actions justify-center pt-2">
+        <Link
+          to="/files/sop-pemeriksaan-kesehatan.pdf"
+          target="_blank"
+          download
+        >
+          <ButtonDownloadFile />
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const CardGarbage = () => {
+  return (
+    <div className="card w-[293px] h-32 py-7 bg-white">
+      <p className="font-mediumn text-secondary text-lg text-center">
+        Garbage Form
+      </p>
+      <div className="card-actions justify-center pt-2">
+        <Link to="/files/form-sampah.pdf" target="_blank" download>
+          <ButtonDownloadFile />
+        </Link>
+      </div>
+    </div>
+  );
+};
+
 export {
   CardProduct,
   CardBooking,
   CardOrderProgress,
   CardOrderCancel,
   CardOrderSuccess,
+  CardClimber,
+  CardParent,
+  CardHealth,
+  CardGarbage,
 };

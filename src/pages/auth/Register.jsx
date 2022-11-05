@@ -141,12 +141,14 @@ const Register = () => {
             <br />
             <ButtonRegister
               onClick={(e) => handleRegister(e)}
+              id="register"
               className="bg-primary font-medium text-base text-center text-white"
             />
             <p className="text-light text-base text-center text-[#B4B4B4] pt-6">
               Already have an account?
               <Link
                 to="/login"
+                id="login"
                 className="text-light text-base text-primary text-center"
               >
                 &nbsp; Login Here
