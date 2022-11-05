@@ -7,22 +7,22 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-gray-200 px-2 md:px-4 py-7">
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-        <Link to="" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img src={logo} alt="logo" className="mr-3 h-6 sm:h-9" />
           <p className="text-secondary font-bold text-2xl">Gun</p>
           <span className="text-primary font-bold text-2xl">Tour</span>
         </Link>
 
         <div className="flex items-center md:order-2">
-          <Link to="">
+          <Link to="/login">
             <p className="px-4 py-2">
-              <ButtonLogin/>
+              <ButtonLogin />
             </p>
           </Link>
 
-          <Link to="">
+          <Link to="/register">
             <p className=" px-4 py-2">
-              <ButtonRegisterAnonym/>
+              <ButtonRegisterAnonym />
             </p>
           </Link>
         </div>
@@ -33,7 +33,7 @@ const Navbar = () => {
         >
           <ul className="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
             <li>
-              <Link to="">
+              <Link to="/">
                 <p className="font-semibold text-xl block py-2 pr-4 pl-3 text-secondary border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0">
                   Home
                 </p>
@@ -41,7 +41,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link to="">
+              <Link to="/guide">
                 <p className="font-semibold text-xl block py-2 pr-4 pl-3 text-secondary border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0">
                   Guide
                 </p>
@@ -49,7 +49,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link to="">
+              <Link to="/about">
                 <p className="font-semibold text-xl block py-2 pr-4 pl-3 text-secondary border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0">
                   About
                 </p>
@@ -66,7 +66,7 @@ const NavbarLogin = () => {
   return (
     <nav className="bg-white border-gray-200 px-2 md:px-4 py-7">
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-        <Link to="" className="flex items-center">
+        <Link to="/home" className="flex items-center">
           <img src={logo} alt="logo" className="mr-3 h-6 sm:h-9" />
           <p className="text-secondary font-bold text-2xl">Gun</p>
           <span className="text-primary font-bold text-2xl">Tour</span>
@@ -90,7 +90,9 @@ const NavbarLogin = () => {
               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-lg w-52"
             >
               <li>
-                <p className="justify-between active:bg-slate-200">My Booking </p>
+                <p className="justify-between active:bg-slate-200">
+                  My Booking{" "}
+                </p>
               </li>
               <li>
                 <p className="active:bg-slate-200">Become A Rangers</p>
@@ -108,7 +110,7 @@ const NavbarLogin = () => {
         >
           <ul className="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
             <li>
-              <Link to="/home">
+              <Link to="/">
                 <p className="font-semibold text-xl block py-2 pr-4 pl-3 text-secondary border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0">
                   Home
                 </p>
@@ -124,7 +126,7 @@ const NavbarLogin = () => {
             </li>
 
             <li>
-              <Link to="/home">
+              <Link to="/about">
                 <p className="font-semibold text-xl block py-2 pr-4 pl-3 text-secondary border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0">
                   About
                 </p>
