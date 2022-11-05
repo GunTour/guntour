@@ -1,15 +1,15 @@
-import React from 'react'
-import Footer from 'components/Footer'
-import { NavbarLogin } from 'components/Navbar'
+import React from "react";
+import Footer from "components/Footer";
+import { NavbarLogin } from "components/Navbar";
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <div>
-      <NavbarLogin/>
+      <NavbarLogin />
       <div className="w-full h-full">{children}</div>
-      <Footer/>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default Layout;

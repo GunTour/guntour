@@ -33,9 +33,9 @@ export const ButtonReturn = () => {
     <div>
       <button
         id="return"
-        className="login text-center text-base font-normal justify-center h-10 w-60 px-6 py-1 rounded-full text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
+        className="text-center text-base font-normal justify-center h-[46px] w-[230px] px-6 py-1 rounded-full text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
       >
-        <div className="text-sm font-normal">RETURN TO HOME</div>
+        <span className="text-xs font-semibold">RETURN TO HOME</span>
       </button>
     </div>
   );
@@ -80,10 +80,11 @@ export const ButtonRegisterAnonym = () => {
   );
 };
 
-export const ButtonBookNow = () => {
+export const ButtonBookNow = (props) => {
   return (
     <div>
       <button
+        onClick={props.onClick}
         id="book-now"
         className="login font-medium text-center justify-center h-12 w-[265px] px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
       >
@@ -96,12 +97,14 @@ export const ButtonBookNow = () => {
 export const ButtonJoin = () => {
   return (
     <div>
-      <button
-        id="join"
-        className="login font-medium text-center justify-center h-10 w-60 px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
-      >
-        <span>Join Community</span>
-      </button>
+      <a href="https://t.me/+U8gsU0ll3cE5MTc1" target="_blank" rel="noreferrer">
+        <button
+          id="join"
+          className="login font-medium text-center justify-center h-10 w-60 px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
+        >
+          <span>Join Community</span>
+        </button>
+      </a>
     </div>
   );
 };

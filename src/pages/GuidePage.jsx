@@ -16,12 +16,12 @@ const GuidePage = () => {
     <>
       <LayoutAnonym>
         <section className="carousel w-full">
-          <div className="carousel-item relative w-full">
+          <figure className="carousel-item relative w-full">
             <img src={imgguide} className="w-full" alt="img1" />
             <p className="absolute bottom-16 w-full items-center px-5 py-4 text-center text-white font-bold text-[32px]">
               GUIDE<span className="text-primary"> BEFORE</span> CLIMBING
             </p>
-          </div>
+          </figure>
         </section>
 
         <section>
@@ -36,12 +36,13 @@ const GuidePage = () => {
             <ol className="list-decimal list-inside font-light text-lg">
               <li>
                 In good health at the time of climbing (no history of dangerous
-                diseases such as asthma, high blood pressure, heart disease, or
-                other diseases under the supervision of a doctor)
+                diseases such as asthma, high blood pressure, heart disease,{" "}
+                <br /> or other diseases under the supervision of a doctor)
               </li>
               <li>
                 Enter the hiking trail between 06.00 and 18.00 WIB and climb on
                 a predetermined path or official route, namely the Cibodas Path,
+                <br />
                 Gunung Putri, and Selabintana.
               </li>
               <li>
