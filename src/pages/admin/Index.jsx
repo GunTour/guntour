@@ -1,10 +1,13 @@
 import React from 'react'
 import { WithRouter } from "utils/Navigation";
+import { NavbarAdmin } from 'components/Navbar';
 
-const Index = () => {
+const AdminProduct = () => {
   return (
-    <div>Index</div>
+    <div>
+      <NavbarAdmin/>
+    </div>
   )
 }
 
-export default WithRouter(Index);
+export default WithRouter(AdminProduct);
