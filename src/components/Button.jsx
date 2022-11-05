@@ -161,10 +161,8 @@ export const ButtonCancelBooking = () => {
 export const ButtonSubmitData = () => {
   return (
     <div>
-      <button
+      <button className="login font-medium text-lg text-center justify-center h-14 w-full rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white ">
         id="submit"
-        className="login font-medium text-center justify-center h-10 w-6/12 px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
-      >
         <span>Submit Data</span>
       </button>
     </div>
@@ -174,24 +172,9 @@ export const ButtonSubmitData = () => {
 export const ButtonCancel = () => {
   return (
     <div>
-      <button
+      <button className="login font-normal text-center justify-center h-14 w-full rounded-lg text-slate-400 border border-slatetext-slate-400 transform active:scale-95 transition-transform flex items-center">
         id="cancel"
-        className="login font-light text-center justify-center h-12 w-64 px-6 py-1 rounded-lg text-[#999999] border border-[#999999] transform active:scale-75 transition-transform flex items-center hover:bg-[#FFE0E0] "
-      >
         <span>Cancel</span>
-      </button>
-    </div>
-  );
-};
-
-export const ButtonChooseFile = () => {
-  return (
-    <div>
-      <button
-        id="choose-file"
-        className="login font-normal text-center justify-center h-12 w-46 px-6 py-1 rounded-lg text-white bg-[#999999] border border-[#999999] transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
-      >
-        <span>Choose File</span>
       </button>
     </div>
   );
