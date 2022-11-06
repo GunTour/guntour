@@ -325,3 +325,16 @@ export const ButtonDownloadFile = () => {
     </div>
   );
 };
+
+export const ButtonAddProduct = () => {
+  return (
+    <div>
+      <button
+        id="product"
+        className="login font-medium text-center justify-center h-10 w-40 px-6 py-1 rounded-full text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
+      >
+        <span>Add Product</span>
+      </button>
+    </div>
+  );
+};
