@@ -1,7 +1,7 @@
 import React from "react";
 
 import { InputCustom, Input } from "components/Input";
-import { ButtonCustom, ButtonSubmitData, ButtonAddProductAdmin } from "components/Button";
+import { ButtonCustom, ButtonSubmitData, ButtonAddProductAdmin, ButtonAddProduct } from "components/Button";
 
 import { AiFillEdit } from "react-icons/ai";
 
@@ -73,7 +73,7 @@ const ModalAdminProduct = () => {
   return (
     <div>
       <label htmlFor="my-modal" className="btn">
-        <AiFillEdit/>
+        <ButtonAddProduct/>
       </label>
 
       <div className="">
@@ -124,4 +124,59 @@ const ModalAdminProduct = () => {
   );
 };
 
-export { ModalEditRanger, ModalAdminProduct };
+const ModalEditAdminProduct = () => {
+  return (
+    <div>
+      <label htmlFor="my-modal2" className="btn">
+        <AiFillEdit/>
+      </label>
+
+      <div className="">
+        <input
+          type="checkbox"
+          id="my-modal"
+          className="modal-toggle w-[600px] h-[802px]"
+        />
+        <div className="modal ">
+          <div className="modal-box w-[600px] h-[802px]">
+            <div className="font-semibold text-xl text-black text-center">
+              Edit Product
+            </div>
+            <div className="divider text-[#F0F0F0]" />
+
+            <h3 className="font-normal text-[#373737] text-lg">
+              Photo Product
+            </h3>
+            <ButtonSubmitData />
+
+            <p className="mt-4 font-normal text-[#373737] text-lg">
+              Product Name
+            </p>
+            <Input />
+
+            <p className=" mt-4 font-normal text-[#351f1f] text-lg">
+              Rent Price
+            </p>
+            <Input />
+
+            <p className="mt-4 font-normal text-[#373737] text-lg">
+              Description
+            </p>
+            <Input />
+
+            <div className="m-none divider text-[#F0F0F0]" />
+            <ButtonAddProductAdmin />
+            <label
+              htmlFor="my-modal"
+              className="btn mt-4 font-medium text-base text-center justify-center h-[44px] w-[458px] px-4 py-1 rounded-md text-[#999999] bg-white border-2 border-[#999999] transform active:scale-75 transition-transform flex items-center"
+            >
+              Close
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export { ModalEditRanger, ModalAdminProduct, ModalEditAdminProduct };

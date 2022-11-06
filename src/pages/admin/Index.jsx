@@ -3,13 +3,12 @@ import { WithRouter } from "utils/Navigation";
 
 import { NavbarAdmin, Sidebar } from "components/Navbar";
 
-import { MdExpandMore } from "react-icons/md";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { ButtonAddProduct } from "components/Button";
 import Tent from "assets/camping-tent.svg";
 import Mat from "assets/mat.svg";
 import Hammock from "assets/hammock.svg";
-import { ModalAdminProduct } from "components/ModalAdmin";
+import { ModalEditAdminProduct } from "components/ModalAdmin";
 
 const AdminProduct = () => {
   return (
@@ -22,9 +21,9 @@ const AdminProduct = () => {
           <NavbarAdmin />
           <div className="mt-10">
             <div className="col-span-2">
-              <div className="font-semibold text-xl pl-10">
+            <label htmlFor="my-modal" className="font-semibold text-xl pl-10">
                 <ButtonAddProduct />
-              </div>
+              </label>
               <div className="overflow-x-auto mt-2">
                 <table className="table w-[1000px] ml-10">
                   <thead>
@@ -55,7 +54,7 @@ const AdminProduct = () => {
                       <td>See Details</td>
                       <td>
                         <div className="flex items-center space-x-4 text-sm">
-                          <ModalAdminProduct />
+                          <ModalEditAdminProduct/>
                           <button
                             className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
                             aria-label="Edit"
@@ -84,12 +83,7 @@ const AdminProduct = () => {
                       <td>See Details</td>
                       <td>
                         <div className="flex items-center space-x-4 text-sm">
-                          <button
-                            className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                            aria-label="Edit"
-                          >
-                            <AiFillEdit className="fill-secondary text-3xl mr-4" />
-                          </button>
+                          <ModalEditAdminProduct/>
                           <button
                             className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
                             aria-label="Edit"
