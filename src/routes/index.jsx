@@ -20,8 +20,10 @@ import GuidePage from "pages/GuidePage";
 import NotFound from "pages/NotFound";
 import Admin from "pages/admin/Index";
 import AdminRanger from "pages/admin/AdminRanger";
+import UsersPage from "pages/admin/UsersPage";
 
-axios.defaults.baseURL = "https://virtserver.swaggerhub.com/khalidrianda/GunTour/1.0.0/";
+axios.defaults.baseURL =
+  "https://virtserver.swaggerhub.com/khalidrianda/GunTour/1.0.0/";
 
 const Index = () => {
   const [cookie, removeCookie] = useCookies();
@@ -86,7 +88,8 @@ const Index = () => {
           <Route path="/ranger" element={<BecomeRanger />} />
           <Route path="/guide" element={<GuidePage />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/adminranger" element={<AdminRanger/>} />
+          <Route path="/adminranger" element={<AdminRanger />} />
+          <Route path="/users" element={<UsersPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
