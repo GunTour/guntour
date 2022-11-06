@@ -4,7 +4,8 @@ import { WithRouter } from "utils/Navigation";
 import { Sidebar, NavbarAdmin } from "components/Navbar";
 
 import { MdExpandMore, MdOutlineDownloadDone } from "react-icons/md";
-import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import {  AiFillDelete } from "react-icons/ai";
+import { ModalEditRanger } from "components/ModalAdmin";
 
 const AdminRanger = () => {
   return (
@@ -60,7 +61,7 @@ const AdminRanger = () => {
                   <td>Duty</td>
                   <td>
                     <button className="text-2xl text-gray-600 ml-4">
-                      <AiFillEdit />
+                      <ModalEditRanger/>
                     </button>
                   </td>
                 </tr>
