@@ -69,7 +69,7 @@ const Navbar = () => {
 const NavbarLogin = () => {
   return (
     <nav className="bg-white border-gray-200 px-2 md:px-4 py-7">
-      <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+      <div className="flex flex-wrap justify-between items-center mx-20">
         <Link to="/home" className="flex items-center">
           <img src={logo} alt="logo" className="mr-3 h-6 sm:h-9" />
           <p className="text-secondary font-bold text-2xl">Gun</p>
@@ -99,7 +99,7 @@ const NavbarLogin = () => {
                 </p>
               </li>
               <li>
-                <p className="active:bg-slate-200">Become A Rangers</p>
+                <p className="active:bg-slate-200">Become Ranger</p>
               </li>
               <li>
                 <p className="active:bg-slate-200">Logout</p>
@@ -114,7 +114,7 @@ const NavbarLogin = () => {
         >
           <ul className="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
             <li>
-              <Link to="/">
+              <Link to="/home">
                 <p className="font-semibold text-xl block py-2 pr-4 pl-3 text-secondary border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0">
                   Home
                 </p>
@@ -148,9 +148,11 @@ const NavbarAdmin = () => {
     <div>
       <div className="navbar ml-10 shadow-sm bg-[#E0E0E0] h-[80px] w-[1100px]">
         <div className="flex-1">
+
           <a className="btn btn-ghost normal-case font-semibold text-2xl">
             Dashboard
           </a>
+
         </div>
         <div className="flex-none gap-2">
           <div className="w-3/6 h-10 md:flex flex-none mt-form-control mr-16 input hidden bg-[#e5e4e4] border items-center">

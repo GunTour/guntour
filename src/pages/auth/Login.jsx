@@ -49,7 +49,7 @@ const Login = () => {
     };
     apiRequest("login", "post", body)
       .then((res) => {
-        const { data } = res.data;
+        // const { data } = res.data;
         setCookie("token", res.data.token, { path: "/login" });
         dispatch(handleAuth(true));
         Swal.fire({
