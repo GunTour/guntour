@@ -1,8 +1,7 @@
 import React from "react";
 import { Sidebar, NavbarAdmin } from "components/Navbar";
 import { MdExpandMore } from "react-icons/md";
-import { InputForModal } from "components/Input";
-import { ButtonEditInfo, ButtonClose } from "components/Button";
+import { ModalAdminUser } from "components/ModalAdmin";
 
 const UsersPage = () => {
   return (
@@ -16,38 +15,7 @@ const UsersPage = () => {
         <div className="divider text-[#F0F0F0]" />
 
         <div className="text-right flex items-center justify-end mt-3 font-medium text-base mr-11">
-          <label
-            htmlFor="my-modal-3"
-            className="cursor-pointer font-medium text-lg text-center justify-center h-12 w-[183px] rounded-lg px-6 py-1 text-white bg-[#E5640E] transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-black"
-          >
-            Edit Data
-          </label>
-        </div>
-
-        <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-        <div className="modal">
-          <div className="modal-box relative">
-            <label
-              htmlFor="my-modal-3"
-              className="cursor-pointer btn-sm  absolute right-2 top-2 bg-white border-white"
-            >
-              ✕
-            </label>
-            <h3 className="font-semibold text-xl text-secondary text-center">
-              Edit Climbers Data
-            </h3>
-            <div className="divider text-[#E2E7E9]" />
-            <p className="font-normal text-lg text[#373737]">Is Climbers</p>
-            <InputForModal />
-            <p className="font-normal text-lg text[#373737]">Male Climbers</p>
-            <InputForModal />
-            <p className="font-normal text-lg text[#373737]">Female Climbers</p>
-            <InputForModal />
-            <div className="divider text-[#E2E7E9]" />
-            <ButtonEditInfo />
-            <br />
-            <ButtonClose />
-          </div>
+          <ModalAdminUser />
         </div>
 
         <article className="container mx-auto py-5">
