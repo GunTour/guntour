@@ -10,7 +10,7 @@ import { handleAuth } from "utils/redux/reducers/reducer";
 import { apiRequest } from "utils/apiRequest";
 
 import Swal from "sweetalert2";
-import imgLogin from "assets/img-login.svg";
+import imgLogin from "assets/img-login.jpg";
 
 const Login = () => {
   const [cookies, setCookie] = useCookies(["token"]);
@@ -73,9 +73,9 @@ const Login = () => {
         <meta name="description" content="App Description" />
       </Helmet>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+      <div className="bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
         <div className="hidden md:hidden lg:flex justify-center place-items-center w-full h-screen">
-          <img src={imgLogin} alt="imgLogin" className="w-[795] h-[1189]" />
+          <img src={imgLogin} alt="imgLogin" className="w-full h-[1189]" />
         </div>
         <div className="flex flex-wrap justify-center place-items-center w-full h-screen p-2">
           <div>
@@ -97,7 +97,7 @@ const Login = () => {
               />
             </div>
 
-            <div>
+            <div className="mb-14">
               <p className="text-lg text-secondary py-3">Password</p>
               <InputPassword
                 onChange={(e) => setPassword(e.target.value)}
@@ -108,12 +108,6 @@ const Login = () => {
                 placeholder="Password"
               />
             </div>
-            <p
-              id="reset-password"
-              className="text-light text-lg text-primary text-right cursor-pointer py-3"
-            >
-              Reset Password
-            </p>
             <ButtonSign
               onClick={(e) => handleLogin(e)}
               id="sign"

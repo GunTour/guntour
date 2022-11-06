@@ -8,8 +8,8 @@ import {
   CardGarbage,
 } from "components/CardProduct";
 
-import imgguide from "assets/img-guide.svg";
-import imgmap from "assets/img-map.svg";
+import imgguide from "assets/header-guide.jpg";
+import imgmap from "assets/img-map.jpg";
 
 const GuidePage = () => {
   return (
@@ -18,21 +18,18 @@ const GuidePage = () => {
         <section className="carousel w-full">
           <figure className="carousel-item relative w-full">
             <img src={imgguide} className="w-full" alt="img1" />
-            <p className="absolute bottom-16 w-full items-center px-5 py-4 text-center text-white font-bold text-[32px]">
-              GUIDE<span className="text-primary"> BEFORE</span> CLIMBING
-            </p>
           </figure>
         </section>
 
-        <section>
-          <p className="text-secondary font-bold text-[32px] pl-10 py-5">
+        <section className="mx-20">
+          <p className="text-secondary font-bold text-[32px] py-5">
             MUST DO <span className="text-primary">FOR</span> CLIMBERS
           </p>
-          <p className="font-medium text-lg text-secondary pl-10">
+          <p className="font-medium text-lg text-secondary">
             Climbers or groups of climbers while in the climbing area must meet
             the provisions or do the following:
           </p>
-          <article className="pl-10 pt-5">
+          <article className="pt-5">
             <ol className="list-decimal list-inside font-light text-lg">
               <li>
                 In good health at the time of climbing (no history of dangerous
@@ -49,7 +46,7 @@ const GuidePage = () => {
                 Bring/use climbing equipment that meets safety and comfort
                 requirements, namely:
               </li>
-              <ul className="list-disc list-inside font-light text-lg pl-6">
+              <ul className="list-disc list-inside font-light text-lg">
                 <li>Waterproof tent</li>
                 <li>Backpack/carrier</li>
                 <li>Mattresses/beds</li>
@@ -77,11 +74,11 @@ const GuidePage = () => {
           </article>
         </section>
 
-        <section>
-          <p className="text-secondary font-bold text-3xl pl-10 py-5">
+        <section className="mx-20 mt-20">
+          <p className="text-secondary font-bold text-3xl py-5">
             IMPORTANT <span className="text-primary">FILE FOR</span> CLIMBERS
           </p>
-          <p className="text-secondary font-light textbase pl-10 pb-5">
+          <p className="text-secondary font-light textbase pb-5">
             The file below must be downloaded and printed, and must be attached
             at the entrance post according to what has been selected
           </p>
@@ -110,11 +107,11 @@ const GuidePage = () => {
           </div>
         </div>
 
-        <section>
-          <p className="text-secondary font-bold text-3xl pl-10 py-5">
+        <section className="mx-20 mt-14">
+          <p className="text-secondary font-bold text-3xl py-5">
             MOUNT <span className="text-primary">GEDE PANGRANGO</span> MAP
           </p>
-          <figure>
+          <figure className="mb-40 mt-6">
             <img
               src={imgmap}
               alt="imgmap"

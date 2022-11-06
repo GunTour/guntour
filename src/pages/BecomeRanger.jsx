@@ -3,7 +3,7 @@ import { WithRouter } from "utils/Navigation";
 import { Helmet } from "react-helmet";
 
 import Layout from "components/Layout";
-import Background from "assets/header-ranger.svg";
+import Background from "assets/header-ranger.jpg";
 import {
   InputFullNameRangers,
   InputPhoneNumber,

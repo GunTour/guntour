@@ -8,7 +8,7 @@ import {
   CardOrderProgress,
   CardOrderSuccess,
 } from "components/CardProduct";
-import Background from "assets/header-history.svg";
+import Background from "assets/header-history.jpg";
 
 const OrderHistory = () => {
   return (
