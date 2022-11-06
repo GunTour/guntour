@@ -1,5 +1,13 @@
 import React from "react";
 
+export const ButtonCustom = (props) => {
+  return (
+    <div className={props.className} onClick={props.onClick}>
+      {props.label}
+    </div>
+  );
+};
+
 export const ButtonSign = (props) => {
   return (
     <div>

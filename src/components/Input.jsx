@@ -1,5 +1,17 @@
 import React from "react";
 
+export const InputCustom = (props) => {
+  return (
+    <input
+      className={props.className}
+      onChange={props.onChange}
+      id={props.id}
+      placeholder={props.placeholder}
+      type={props.placeholder}
+    />
+  );
+};
+
 export const InputDate = (props) => {
   return (
     <input
