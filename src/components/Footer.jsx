@@ -54,7 +54,7 @@ const Footer = () => {
               className="w-72 h-40 rounded-lg"
               id="gmap_canvas"
               src="https://maps.google.com/maps?q=Gunung%20Gede%20Pangrango&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              frameborder="0"
+              frameBorder="0"
               scrolling="no"
               title="map"
             ></iframe>

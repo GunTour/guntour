@@ -42,11 +42,10 @@ const DetailPage = () => {
                   sekitar 600 gram, kapasitas tenda sekitar 5-6 orang.
                   <br />
                   <br /># Warning
-                  <br/> 
-                  Mohon saat mengembalikan tenda dalam bersih
-                  dan baik-baik saja, semua fitur tenda harus kembali secara
-                  keseluruhan. Jika tidak maka akan dikenakan biaya denda ganti
-                  rugi.
+                  <br />
+                  Mohon saat mengembalikan tenda dalam bersih dan baik-baik
+                  saja, semua fitur tenda harus kembali secara keseluruhan. Jika
+                  tidak maka akan dikenakan biaya denda ganti rugi.
                 </p>
               </div>
             </div>
