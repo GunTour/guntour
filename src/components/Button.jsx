@@ -292,9 +292,9 @@ export const ButtonEdit = () => {
     <div>
       <button
         id="edit"
-        className="login font-medium text-center justify-center h-8 w-16 px-6 py-1 text-black bg-[#E5640E] transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
+        className="login font-medium text-lg text-center justify-center h-12 w-[183px] rounded-lg px-6 py-1 text-white bg-[#E5640E] transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-black "
       >
-        <span>Edit</span>
+        <span>Edit Data</span>
       </button>
     </div>
   );
