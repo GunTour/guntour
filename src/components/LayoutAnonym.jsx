@@ -13,3 +13,4 @@ const LayoutAnonym = ({ children }) => {
 };
 
 export default LayoutAnonym;
+
