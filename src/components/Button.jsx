@@ -8,6 +8,19 @@ export const ButtonCustom = (props) => {
   );
 };
 
+export const ButtonAddProductAdmin = () => {
+  return (
+    <div>
+      <button
+        id="canceled"
+        className="login font-medium text-base text-center justify-center h-[44px] w-[458px] px-4 py-1 rounded-md text-white bg-[#E5640E] transform active:scale-75 transition-transform flex items-center"
+      >
+        <span>Add Product</span>
+      </button>
+    </div>
+  );
+};
+
 export const ButtonSign = (props) => {
   return (
     <div>

@@ -9,6 +9,7 @@ import { ButtonAddProduct } from "components/Button";
 import Tent from "assets/camping-tent.svg";
 import Mat from "assets/mat.svg";
 import Hammock from "assets/hammock.svg";
+import { ModalAdminProduct } from "components/ModalAdmin";
 
 const AdminProduct = () => {
   return (
@@ -54,12 +55,7 @@ const AdminProduct = () => {
                       <td>See Details</td>
                       <td>
                         <div className="flex items-center space-x-4 text-sm">
-                          <button
-                            className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                            aria-label="Edit"
-                          >
-                            <AiFillEdit className="fill-secondary text-3xl mr-4" />
-                          </button>
+                          <ModalAdminProduct />
                           <button
                             className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
                             aria-label="Edit"
@@ -73,7 +69,7 @@ const AdminProduct = () => {
                     <tr>
                       <th>2</th>
                       <td>
-                      <div className="grid grid-cols-1 lg:grid-cols-2">
+                        <div className="grid grid-cols-1 lg:grid-cols-2">
                           <div className="flex justify-center">
                             <img
                               src={Mat}
@@ -107,7 +103,7 @@ const AdminProduct = () => {
                     <tr>
                       <th>3</th>
                       <td>
-                      <div className="grid grid-cols-1 lg:grid-cols-2">
+                        <div className="grid grid-cols-1 lg:grid-cols-2">
                           <div className="flex justify-center">
                             <img
                               src={Hammock}
