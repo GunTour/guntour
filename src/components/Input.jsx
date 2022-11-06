@@ -19,10 +19,24 @@ export const InputSelectEntrance = (props) => {
       id="category"
       class="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
     >
-      <option value="" className="font-normal text-base text-secondary">Select the entrance</option>
-      <option value="cibodas" className="font-normal text-base text-secondary">Entrance Cibodas</option>
-      <option value="gunung-putri" className="font-normal text-base text-secondary">Entrance Gunung Putri</option>
-      <option value="salabintana" className="font-normal text-base text-secondary">Entrance Salabintana</option>
+      <option value="" className="font-normal text-base text-secondary">
+        Select the entrance
+      </option>
+      <option value="cibodas" className="font-normal text-base text-secondary">
+        Entrance Cibodas
+      </option>
+      <option
+        value="gunung-putri"
+        className="font-normal text-base text-secondary"
+      >
+        Entrance Gunung Putri
+      </option>
+      <option
+        value="salabintana"
+        className="font-normal text-base text-secondary"
+      >
+        Entrance Salabintana
+      </option>
     </select>
   );
 };
@@ -34,12 +48,24 @@ export const InputSelectPerson = (props) => {
       id="category"
       class="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-normal text-base"
     >
-      <option value="1" className="font-normal text-base text-secondary">1</option>
-      <option value="2" className="font-normal text-base text-secondary">2</option>
-      <option value="3" className="font-normal text-base text-secondary">3</option>
-      <option value="4" className="font-normal text-base text-secondary">4</option>
-      <option value="5" className="font-normal text-base text-secondary">5</option>
-      <option value="6" className="font-normal text-base text-secondary">6</option>
+      <option value="1" className="font-normal text-base text-secondary">
+        1
+      </option>
+      <option value="2" className="font-normal text-base text-secondary">
+        2
+      </option>
+      <option value="3" className="font-normal text-base text-secondary">
+        3
+      </option>
+      <option value="4" className="font-normal text-base text-secondary">
+        4
+      </option>
+      <option value="5" className="font-normal text-base text-secondary">
+        5
+      </option>
+      <option value="6" className="font-normal text-base text-secondary">
+        6
+      </option>
     </select>
   );
 };
@@ -51,10 +77,18 @@ export const InputSelectRanger = (props) => {
       id="category"
       class="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
     >
-      <option value="" className="font-normal text-base text-secondary">Add Ranger</option>
-      <option value="" className="font-normal text-base text-secondary">Fajar Nugraha</option>
-      <option value={props.value} className="font-normal text-base text-secondary">{props.RangerName}</option>
-
+      <option value="" className="font-normal text-base text-secondary">
+        Add Ranger
+      </option>
+      <option value="" className="font-normal text-base text-secondary">
+        Fajar Nugraha
+      </option>
+      <option
+        value={props.value}
+        className="font-normal text-base text-secondary"
+      >
+        {props.RangerName}
+      </option>
     </select>
   );
 };
@@ -107,14 +141,15 @@ export const InputFullNameLogin = (props) => {
   );
 };
 
+// Ranger Input
 export const InputFullNameRangers = (props) => {
   return (
     <input
-      className="h-[60px] w-[996px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="Full Name"
-      type={props.type}
+      type="text"
     />
   );
 };
@@ -122,11 +157,11 @@ export const InputFullNameRangers = (props) => {
 export const InputPhoneNumber = (props) => {
   return (
     <input
-      className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="+62 85797556122"
-      type={props.type}
+      type="text"
     />
   );
 };
@@ -134,11 +169,11 @@ export const InputPhoneNumber = (props) => {
 export const InputPlaceDateBirth = (props) => {
   return (
     <input
-      className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="Sukabumi, 12 Oktober 2000"
-      type="date"
+      type="text"
     />
   );
 };
@@ -146,11 +181,11 @@ export const InputPlaceDateBirth = (props) => {
 export const InputGender = (props) => {
   return (
     <input
-      className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="Laki-laki"
-      type={props.type}
+      type="text"
     />
   );
 };
@@ -158,11 +193,11 @@ export const InputGender = (props) => {
 export const InputAddress = (props) => {
   return (
     <input
-      className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="Jl. Legok Hangser"
-      type={props.type}
+      type="text"
     />
   );
 };

@@ -108,17 +108,22 @@ const Login = () => {
                 placeholder="Password"
               />
             </div>
-            <p className="text-light text-lg text-primary text-right cursor-pointer py-3">
+            <p
+              id="reset-password"
+              className="text-light text-lg text-primary text-right cursor-pointer py-3"
+            >
               Reset Password
             </p>
             <ButtonSign
               onClick={(e) => handleLogin(e)}
+              id="sign"
               className="bg-primary font-medium text-base text-center text-white"
             />
             <p className="text-light text-base text-center text-[#B4B4B4] pt-6">
               Already have an account?
               <Link
                 to="/register"
+                id="register"
                 className="text-light text-base text-primary text-center"
               >
                 &nbsp; Register Here
