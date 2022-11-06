@@ -267,4 +267,5 @@ const Sidebar = () => {
     </div>
   );
 };
-export default { Navbar, NavbarLogin, NavbarAdmin, Sidebar };
+
+export { Navbar, NavbarLogin, NavbarAdmin, Sidebar };
