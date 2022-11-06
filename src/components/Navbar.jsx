@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "assets/logo.svg";
-import logo2 from "assets/logo2.svg";
-import { BsGrid1X2Fill, BsPeopleFill } from "react-icons/bs";
-import { HiUser } from "react-icons/hi";
-import { BiLogOut } from "react-icons/bi";
+
 import { ButtonLogin, ButtonRegisterAnonym } from "components/Button";
+import { BsPeopleFill } from "react-icons/bs";
+import { MdDashboard } from "react-icons/md";
+
+import { FaUser } from "react-icons/fa";
+import { RiLogoutBoxLine } from "react-icons/ri";
+import logo from "assets/logo.svg";
+import logo2 from "assets/logo-guntour.svg";
 
 const Navbar = () => {
   return (
@@ -158,7 +161,6 @@ const NavbarAdmin = () => {
               type="text"
               placeholder="Search"
               className="w-full outline-none text-[#cccccc] bg-[#e5e4e4]"
-
             />
             <button className="py-3.5 border-y-2 border-l-2 border-none bg-main rounded-l-lg ">
               <svg
@@ -168,7 +170,6 @@ const NavbarAdmin = () => {
                 strokeWidth="1.5"
                 stroke="currentColor"
                 className="w-6 h-6 text-[#cccccc]"
-
               >
                 <path
                   strokeLinecap="round"
@@ -184,7 +185,6 @@ const NavbarAdmin = () => {
               tabIndex={0}
               className="btn btn-ghost btn-circle avatar py-1"
             >
-
               <div className="w-10 rounded-full">
                 <img src="https://placeimg.com/80/80/people" />
               </div>
@@ -217,51 +217,53 @@ const NavbarAdmin = () => {
 
 const Sidebar = () => {
   return (
-    <div>
-      <div className="drawer drawer-side w-80 bg-secondary">
+    <div className="drawer drawer-mobile">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+
+      <div className="drawer-content flex flex-col items-center justify-center">
+        <label
+          htmlFor="my-drawer-2"
+          className="btn btn-primary drawer-button lg:hidden"
+        >
+          See Content
+        </label>
+      </div>
+
+      <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+
         <ul className="menu p-4 w-80 bg-secondary text-base-content">
-          <div className="mb-20 mt-10">
-            <Link to="" className="flex items-center">
-              <img src={logo2} alt="logo" className="mr-3 h-6 sm:h-9" />
-              <p className="text-white font-bold text-2xl">Gun</p>
-              <span className="text-primary font-bold text-2xl">Tour</span>
+          <div className="ml-2 mt-9 mb-16">
+            <img src={logo2} alt="Logo" />
+          </div>
+          {/* Menu */}
+          <p className="ml-4 text-white font-light text-base mb-3">Menu</p>
+
+          {/* List Page */}
+          <li className="text-white active:bg-green-900 mb-2">
+            <Link to="/admin">
+              <MdDashboard className="fill-white text-2xl " />
+              <p className="font-normal text-lg">Product</p>
             </Link>
-          </div>
-          <div className="text-white font-medium">Menu</div>
-          <li>
-            <a className="text-white font-medium">
-              <p className="text-white flex items-center justify-center font-medium text-sm md:justify-start mb-6">
-                <BsGrid1X2Fill className="fill-white text-2xl mr-4" />
-                Products
-              </p>
-            </a>
           </li>
-
-          <li>
-            <a className="text-white font-medium">
-              <p className="text-white flex items-center justify-center font-medium text-sm md:justify-start mb-6">
-                <BsPeopleFill className="fill-white text-2xl mr-4" />
-                Rangers
-              </p>
-            </a>
+          <li className="text-white active:bg-green-900 mb-2">
+            <Link to="/adminranger">
+              <BsPeopleFill className="fill-white text-2xl" />
+              <p className="font-normal text-lg">Rangers</p>
+            </Link>
           </li>
-
-          <li>
-            <a className="text-white font-medium">
-              <p className="text-white flex items-center justify-center font-medium text-sm md:justify-start mb-6">
-                <HiUser className="fill-white text-2xl mr-4" />
-                Users
-              </p>
-            </a>
+          <li className="text-white active:bg-green-900">
+            <Link to="/users">
+              <FaUser className="fill-white text-xl" />
+              <p className="font-normal text-lg ml-1">Users</p>
+            </Link>
           </li>
-
-          <div className="text-white font-medium mt-80">
-            <p className="text-white flex items-center justify-center font-medium text-sm md:justify-start mb-6">
-              <BiLogOut className="fill-white text-2xl mr-4" />
-              Logout
-            </p>
-          </div>
+          <li className="text-white mt-72">
+            <button className="active:bg-slate-800">
+              <RiLogoutBoxLine className="fill-white text-2xl" />
+              <p>Logout</p>
+            </button>
+          </li>
         </ul>
       </div>
     </div>
