@@ -98,7 +98,7 @@ export const ButtonJoin = () => {
     <div>
       <button
         id="join"
-        className="login font-medium text-center justify-center h-10 w-60 px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
+        className="login font-medium text-base text-center justify-center py-3 px-8 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
       >
         <span>Join Community</span>
       </button>
@@ -161,8 +161,10 @@ export const ButtonCancelBooking = () => {
 export const ButtonSubmitData = () => {
   return (
     <div>
-      <button className="login font-medium text-lg text-center justify-center h-14 w-full rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white ">
+      <button
         id="submit"
+        className="login font-medium text-lg text-center justify-center h-14 w-full rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
+      >
         <span>Submit Data</span>
       </button>
     </div>
@@ -172,8 +174,10 @@ export const ButtonSubmitData = () => {
 export const ButtonCancel = () => {
   return (
     <div>
-      <button className="login font-normal text-center justify-center h-14 w-full rounded-lg text-slate-400 border border-slatetext-slate-400 transform active:scale-95 transition-transform flex items-center">
+      <button
         id="cancel"
+        className="login font-normal text-center justify-center h-14 w-full rounded-lg text-slate-400 border border-slatetext-slate-400 transform active:scale-95 transition-transform flex items-center"
+      >
         <span>Cancel</span>
       </button>
     </div>

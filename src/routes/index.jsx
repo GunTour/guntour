@@ -20,8 +20,7 @@ import GuidePage from "pages/GuidePage";
 import NotFound from "pages/NotFound";
 import Admin from "pages/admin/Index";
 
-axios.defaults.baseURL =
-  "https://virtserver.swaggerhub.com/khalidrianda/GunTour/1.0.0/";
+axios.defaults.baseURL = "https://virtserver.swaggerhub.com/khalidrianda/GunTour/1.0.0/";
 
 const Index = () => {
   const [cookie, removeCookie] = useCookies();
@@ -68,7 +67,7 @@ const Index = () => {
     <TokenContext.Provider value={jwtToken}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomeAnonym />} />
+          <Route exact path="/" element={<HomeAnonym />} />
           <Route path="/login" element={<Login />} />
           <Route
             path="/login"
@@ -78,7 +77,7 @@ const Index = () => {
             path="/register"
             element={checkToken ? <Navigate to="/home" /> : <Register />}
           />
-          <Route path="/home" element={checkToken ? <HomePage /> : <Login />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/detail/:id" element={<DetailPage />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/confirm" element={<ConfirmBooking />} />
