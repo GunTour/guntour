@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import items from "assets/items-tenda.svg";
 import booking from "assets/booking.svg";
 import {
@@ -8,11 +8,30 @@ import {
   ButtonDownloadFile,
 } from "components/Button";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { AiFillMinusCircle } from "react-icons/ai";
 import { AiFillPlusCircle } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const CardProduct = () => {
+  const isLoggedin = useSelector((state) => state.data.isLoggedin);
+  const [loading, setLoading] = useState(false);
+
+  const validateBookNow = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+
+    if (!isLoggedin) {
+      Swal.fire({
+        position: "center",
+        icon: "info",
+        title: "You have to login first!",
+        showConfirmButton: true,
+      });
+    }
+  };
+
   return (
     <section className="card w-72 bg-white">
       <figure className="px-3 pt-3">
@@ -28,7 +47,7 @@ const CardProduct = () => {
           <span className="text-secondary font-medium text-xl">/day</span>
         </p>
         <div className="card-actions justify-center w-full">
-          <ButtonBookNow />
+          <ButtonBookNow onClick={(e) => validateBookNow(e)} />
         </div>
       </div>
     </section>
