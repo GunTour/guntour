@@ -19,6 +19,7 @@ import BecomeRanger from "pages/BecomeRanger";
 import GuidePage from "pages/GuidePage";
 import NotFound from "pages/NotFound";
 import Admin from "pages/admin/Index";
+import AdminRanger from "pages/admin/AdminRanger";
 
 axios.defaults.baseURL = "https://virtserver.swaggerhub.com/khalidrianda/GunTour/1.0.0/";
 
@@ -85,6 +86,7 @@ const Index = () => {
           <Route path="/ranger" element={<BecomeRanger />} />
           <Route path="/guide" element={<GuidePage />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/adminranger" element={<AdminRanger/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
