@@ -49,12 +49,6 @@ const AdminRanger = () => {
                           >
                             <AiFillEdit className="fill-secondary text-3xl mr-4" />
                           </button>
-                          <button
-                            className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                            aria-label="Edit"
-                          >
-                            <AiFillDelete className="fill-[#CC0000] text-3xl mr-4" />
-                          </button>
                         </div>
                       </td>
                     </tr>
@@ -72,12 +66,6 @@ const AdminRanger = () => {
                           >
                             <AiFillEdit className="fill-secondary text-3xl mr-4" />
                           </button>
-                          <button
-                            className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                            aria-label="Edit"
-                          >
-                            <AiFillDelete className="fill-[#CC0000] text-3xl mr-4" />
-                          </button>
                         </div>
                       </td>
                     </tr>
@@ -94,12 +82,6 @@ const AdminRanger = () => {
                             aria-label="Edit"
                           >
                             <AiFillEdit className="fill-secondary text-3xl mr-4" />
-                          </button>
-                          <button
-                            className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                            aria-label="Edit"
-                          >
-                            <AiFillDelete className="fill-[#CC0000] text-3xl mr-4" />
                           </button>
                         </div>
                       </td>
