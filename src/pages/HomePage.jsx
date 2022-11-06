@@ -8,7 +8,7 @@ import { ButtonJoin } from "components/Button";
 import { BsPeopleFill } from "react-icons/bs";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 
-import Community from "assets/img-community.svg";
+import Community from "assets/img-community.png";
 
 const HomePage = () => {
   return (
@@ -118,7 +118,7 @@ const HomePage = () => {
             </a>
           </div>
           <div>
-            <img src={Community} alt="Gambar Community" />
+            <img className="w-[456px] h-[310]" src={Community} alt="Gambar Community" />
           </div>
         </div>
       </section>

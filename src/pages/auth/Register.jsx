@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { apiRequest } from "utils/apiRequest";
 
 import Swal from "sweetalert2";
-import imgRegister from "assets/img-register.svg";
+import imgRegister from "assets/img-register.jpg";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -83,12 +83,12 @@ const Register = () => {
         <meta name="description" content="App Description" />
       </Helmet>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+      <div className="bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
         <div className="hidden md:hidden lg:flex justify-center place-items-center w-full h-screen">
           <img
             src={imgRegister}
             alt="imgRegister"
-            className="w-[795] h-[1189]"
+            className="w-full h-[1189]"
           />
         </div>
         <div className="flex flex-wrap justify-center place-items-center w-full h-screen p-2">

@@ -1,149 +1,128 @@
-import LayoutAnonym from "components/LayoutAnonym";
 import React from "react";
 import { WithRouter } from "utils/Navigation";
-import { CardProduct } from "components/CardProduct";
+
 import Hero from "components/Hero";
+import Layout from "components/LayoutAnonym";
+import { CardProduct } from "components/CardProduct";
 import { ButtonJoin } from "components/Button";
-import items from "assets/items-bg.svg";
 import { BsPeopleFill } from "react-icons/bs";
+import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
+
+import Community from "assets/img-community.png";
 
 const Index = () => {
   return (
-    <LayoutAnonym>
-      <div>
-        <Hero />
-      </div>
-      <div className="font-bold mt-20 mb-20 text-2xl ml-32">
-        FIND <span className="text-primary">POPULAR</span> RENTAL PRODUCTS
-      </div>
-      <div className="grid grid-cols-4 gap-4 ml-16">
-        <div>
+    <Layout>
+      {/* Carousel */}
+      <Hero />
+
+      {/* Header */}
+      <header>
+        <h5 className="font-bold text-[32px] ml-20 my-12 text-secondary">
+          FIND <span className="text-primary">POPULAR</span> RENTAL PRODUCTS
+        </h5>
+      </header>
+
+      {/* Card Product */}
+      <section className="mb-7 w-ful flex mx-3 md:mx-16 lg:mx-20 xl:mx-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-9">
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
           <CardProduct />
         </div>
-        <div>
-          <CardProduct />
-        </div>
-        <div>
-          <CardProduct />
-        </div>
-        <div>
-          <CardProduct />
-        </div>
-        <div>
-          <CardProduct />
-        </div>
-        <div>
-          <CardProduct />
-        </div>
-        <div>
-          <CardProduct />
-        </div>
-        <div>
-          <CardProduct />
-        </div>
-      </div>
-      <div className="text-right mr-20 mt-10 mb-10">
-        <button className="btn btn-outline ml-96">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
-            />
-          </svg>
+      </section>
+
+      {/* Pagination */}
+      <div className="flex justify-end mr-20 md:mx-28 lg:mx-28 2xl:mx-28 mb-14 gap-8">
+        <button className="w-14 h-14 rounded bg-none border-2 border-primary place-content-center grid content-center">
+          <HiArrowLeft className="text-primary text-2xl" />
         </button>
-        <button className="btn btn-outline ml-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-            />
-          </svg>
+        <button className="w-14 h-14 rounded bg-none border-2 border-primary place-content-center grid content-center">
+          <HiArrowRight className="text-primary text-2xl" />
         </button>
       </div>
 
-      <div className="bg-[#112120] h-96">
-        <div className="py-32 ml-60">
+      {/* Section Is Climbers */}
+      <section className="bg-secondary ">
+        <div className="py-28 mx-20">
           <div className="flex">
-            <div className="flex-auto w-32">
-              <div className="font-bold text-3xl text-white">
-                THE MOST <span className="text-primary">BEAUTIFUL</span>
-                <div>CLIMBING ON MOUNTAIN</div>
+            {/* Text */}
+            <div>
+              <div className="font-bold text-3xl text-white mb-3">
+                <h5>
+                  THE MOST{" "}
+                  <span className="text-primary">
+                    BEAUTIFUL <br />{" "}
+                  </span>
+                  CLIMBING ON MOUNTAIN
+                </h5>
               </div>
-              <div className="text-sm text-white">
-                The following is real-time climber data and
-                <div>a comparison of visitors to Mount Gede.</div>
+              <div className="text-sm text-white font-light">
+                The following is real-time climber data and <br />a comparison
+                of visitors to Mount Gede
               </div>
             </div>
 
-            <div className="flex-auto w-64">
-              <div className="grid grid-cols-4 gap-4 py-10">
-                <div className="">
-                  <p className="text-white flex items-center justify-center font-medium text-sm md:justify-start mb-6">
-                    <BsPeopleFill className="fill-primary text-3xl mr-4" />
-                    230 IS CLIMBERS
-                  </p>
+            {/* Climbers */}
+            <div className="flex items-center ml-28">
+              <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start">
+                <div className="bg-[#FEF3EB] p-4 rounded-lg">
+                  <BsPeopleFill className="text-primary text-4xl" />
                 </div>
-                <div className="btn-outline">
-                  <p className="text-white flex items-center justify-center font-medium text-sm md:justify-start mb-6">
-                    <BsPeopleFill className="fill-primary text-3xl mr-4" />
-                    140 MALE CLIMBERS
-                  </p>
+                <p className="font-bold text-xl ml-3">
+                  230 <br /> IS CLIMBERS
+                </p>
+              </div>
+              <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start ml-10">
+                <div className="bg-[#FEF3EB] p-4 rounded-lg">
+                  <BsPeopleFill className="text-primary text-4xl" />
                 </div>
-                <div className="btn-outline">
-                  <p className="text-white flex items-center justify-center font-medium text-sm md:justify-start mb-6">
-                    <BsPeopleFill className="fill-primary text-3xl mr-4" />
-                    90 FEMALE CLIMBERS
-                  </p>
+                <p className="font-bold text-xl ml-3">
+                  140 <br /> MALE CLIMBER
+                </p>
+              </div>
+              <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start ml-10">
+                <div className="bg-[#FEF3EB] p-4 rounded-lg">
+                  <BsPeopleFill className="text-primary text-4xl" />
                 </div>
+                <p className="font-bold text-xl ml-3">
+                  90 <br /> FEMALE CLIMBER
+                </p>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="hero h-96">
-        <div className="hero-content lg:flex-row-reverse">
-          <figure className="">
-            <img src={items} alt="items" className="rounded-xl w-72 h-48" />
-          </figure>
-          <div className="mr-96">
-            <div className="text-3xl font-bold">
-              <div>COMMUNITY SERVICE </div>
-              <div>
-                <span className="text-primary">IS CALLING</span>, NO NEED
-                <div>FOR STALLING</div>
-              </div>
-            </div>
-            <div>
-              <p className="py-6 text-lg">
-                Want more fun camping, join our
-                <div>community to get friends to camp</div> together feel the
-                sensation
-              </p>
-            </div>
-            <div>
+      {/* Join Community */}
+      <section className="mx-20 mt-24 mb-36">
+        <div className="flex justify-between">
+          <div>
+            <h5 className="font-bold text-[32px] mb-4">
+              COMMUNITY SERVICE <br />{" "}
+              <span className="text-primary">IS CALLING</span>, NO NEED <br />{" "}
+              FOR STALLING
+            </h5>
+            <p className="font-medium text-base mb-7 text-[#3D5C5A]">
+              Want more fun camping, join our <br /> community to get friends to
+              camp <br />
+              together feel the sensation
+            </p>
+            <a href="https://t.me/+U8gsU0ll3cE5MTc1">
               <ButtonJoin />
-            </div>
+            </a>
+          </div>
+          <div>
+            <img className="w-[456px] h-[310]" src={Community} alt="Gambar Community" />
           </div>
         </div>
-      </div>
-    </LayoutAnonym>
+      </section>
+    </Layout>
   );
 };
 

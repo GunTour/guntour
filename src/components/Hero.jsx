@@ -1,8 +1,9 @@
 import React from "react";
-import img1 from "assets/img-hero.svg";
-import img2 from "assets/img-hero2.svg";
-import img3 from "assets/img-hero3.svg";
-import img4 from "assets/img-hero4.svg";
+
+import img1 from "assets/img-hero-4.jpg";
+import img2 from "assets/img-hero-2.jpg";
+import img3 from "assets/img-hero-3.jpg";
+import img4 from "assets/img-hero-1.jpg";
 
 const Hero = () => {
   return (
