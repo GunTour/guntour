@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "assets/logo.svg";
@@ -146,19 +147,16 @@ const NavbarLogin = () => {
 const NavbarAdmin = () => {
   return (
     <div>
-      <div className="navbar ml-10 shadow-sm bg-[#E0E0E0] h-[80px] w-[1100px]">
+      <div className="navbar h-[80px] w-[1000px]">
         <div className="flex-1">
-          <a className="btn btn-ghost normal-case font-semibold text-2xl">
-            Dashboard
-          </a>
+          <a className="normal-case font-semibold text-2xl">Dashboard</a>
         </div>
         <div className="flex-none gap-2">
-          <div className="w-3/6 h-10 md:flex flex-none mt-form-control mr-16 input hidden bg-[#e5e4e4] border items-center">
+          <div className="w-3/6 h-10 md:flex flex-none mt-form-control mr-16 input hidden bg-[#F2F2F2] border items-center">
             <input
               type="text"
               placeholder="Search"
-              className="w-full outline-none text-[#cccccc] bg-[#e5e4e4]"
-
+              className="w-full outline-none text-[#cccccc] bg-[#F2F2F2]"
             />
             <button className="py-3.5 border-y-2 border-l-2 border-none bg-main rounded-l-lg ">
               <svg
@@ -168,7 +166,6 @@ const NavbarAdmin = () => {
                 strokeWidth="1.5"
                 stroke="currentColor"
                 className="w-6 h-6 text-[#cccccc]"
-
               >
                 <path
                   strokeLinecap="round"
@@ -179,35 +176,14 @@ const NavbarAdmin = () => {
             </button>
           </div>
 
-          <div className="dropdown dropdown-end w-40 pr-10 grid grid-flow-col auto-cols-max">
-            <label
-              tabIndex={0}
-              className="btn btn-ghost btn-circle avatar py-1"
-            >
-
+          <div className="w-40 pr-10 grid grid-flow-col auto-cols-max">
+            <label tabIndex={0} className="btn-circle avatar py-1">
               <div className="w-10 rounded-full">
-                <img src="https://placeimg.com/80/80/people" />
+                <img src="https://placeimg.com/80/80/people" alt="" />
               </div>
             </label>
 
-            <div className="font-semibold text-sm py-4">Hai, John Doe</div>
-            <ul
-              tabIndex={0}
-              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
+            <p className="font-semibold text-sm py-4">Hai, John Doe</p>
           </div>
         </div>
       </div>
