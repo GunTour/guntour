@@ -1,7 +1,12 @@
 import React from "react";
 
-import { InputCustom, Input } from "components/Input";
-import { ButtonCustom, ButtonSubmitData, ButtonAddProductAdmin, ButtonAddProduct } from "components/Button";
+import { InputCustom, Input, InputForModal } from "components/Input";
+import {
+  ButtonCustom,
+  ButtonSubmitData,
+  ButtonAddProductAdmin,
+  ButtonAddProduct,
+} from "components/Button";
 
 import { AiFillEdit } from "react-icons/ai";
 
@@ -73,7 +78,7 @@ const ModalAdminProduct = () => {
   return (
     <div>
       <label htmlFor="my-modal" className="btn">
-        <ButtonAddProduct/>
+        <ButtonAddProduct />
       </label>
 
       <div className="">
@@ -128,7 +133,7 @@ const ModalEditAdminProduct = () => {
   return (
     <div>
       <label htmlFor="my-modal2" className="btn">
-        <AiFillEdit/>
+        <AiFillEdit />
       </label>
 
       <div className="">
@@ -179,4 +184,56 @@ const ModalEditAdminProduct = () => {
   );
 };
 
-export { ModalEditRanger, ModalAdminProduct, ModalEditAdminProduct };
+const ModalAdminUSer = () => {
+  return (
+    <div>
+      <label
+        htmlFor="my-modal-3"
+        className="cursor-pointer font-medium text-lg text-center justify-center h-12 w-[183px] rounded-lg px-6 py-1 text-white bg-[#E5640E] transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-black"
+      >
+        Edit Data
+      </label>
+
+      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box relative">
+          <h3 className="font-semibold text-xl text-secondary text-center">
+            Edit Climbers Data
+          </h3>
+          <div className="divider text-[#E2E7E9]" />
+          <p className="font-normal text-lg text[#373737] text-left">
+            Is Climbers
+          </p>
+          <InputForModal />
+          <p className="font-normal text-lg text[#373737] text-left">
+            Male Climbers
+          </p>
+          <InputForModal />
+          <p className="font-normal text-lg text[#373737] text-left">
+            Female Climbers
+          </p>
+          <InputForModal />
+          <div className="divider text-[#E2E7E9]" />
+          <ButtonCustom
+            className="cursor-pointer font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white"
+            label="Save"
+          />
+          <br />
+          <label htmlFor="my-modal-3">
+            <ButtonCustom
+              className="cursor-pointer font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-[#999999] bg-white transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white"
+              label="Close"
+            />
+          </label>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export {
+  ModalEditRanger,
+  ModalAdminProduct,
+  ModalEditAdminProduct,
+  ModalAdminUSer,
+};

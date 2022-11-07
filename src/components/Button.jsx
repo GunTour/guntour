@@ -352,35 +352,9 @@ export const ButtonAddProduct = () => {
     <div>
       <button
         id="product"
-        className="login font-medium text-center justify-center h-10 w-40 px-6 py-1 rounded-full text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
+        className="login font-medium text-center justify-center h-10 w-40 px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
       >
         <span>Add Product</span>
-      </button>
-    </div>
-  );
-};
-
-export const ButtonEditInfo = () => {
-  return (
-    <div>
-      <button
-        id="product"
-        className="login font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
-      >
-        <span>Save</span>
-      </button>
-    </div>
-  );
-};
-
-export const ButtonClose = () => {
-  return (
-    <div>
-      <button
-        id="product"
-        className="login font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-[#999999] bg-white transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
-      >
-        <span>Close</span>
       </button>
     </div>
   );
