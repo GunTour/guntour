@@ -1,11 +1,8 @@
 import React from "react";
 
-import { InputCustom, Input, InputForModal } from "components/Input";
+import { InputCustom, InputForModal } from "components/Input";
 import {
   ButtonCustom,
-  ButtonSubmitData,
-  ButtonAddProductAdmin,
-  ButtonAddProduct,
 } from "components/Button";
 
 import { AiFillEdit } from "react-icons/ai";
@@ -77,52 +74,59 @@ const ModalEditRanger = () => {
 const ModalAdminProduct = () => {
   return (
     <div>
-      <label htmlFor="my-modal3" className="">
-        <ButtonAddProduct />
+      <label
+        htmlFor="my-modal-3"
+        className="cursor-pointer font-medium text-lg text-center justify-center h-12 w-[183px] rounded-lg px-6 py-1 text-white bg-[#E5640E] transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-black"
+      >
+        Add Product
       </label>
 
-      <div className="">
-        <input
-          type="checkbox"
-          id="my-modal"
-          className="modal-toggle w-[600px] h-[802px]"
-        />
-        <div className="modal ">
-          <div className="modal-box w-[600px] h-[802px]">
-            <div className="font-semibold text-xl text-black text-center">
-              Add New Product
-            </div>
-            <div className="divider text-[#F0F0F0]" />
-
-            <h3 className="font-normal text-[#373737] text-lg">
+      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box relative">
+          <h3 className="font-semibold text-xl text-secondary text-center">
+            Add Product
+          </h3>
+          <div className="divider text-[#E2E7E9]" />
+          <h3 className="font-normal text-[#373737] text-lg text-left">
               Photo Product
             </h3>
-            <ButtonSubmitData />
-
-            <p className="mt-4 font-normal text-[#373737] text-lg">
-              Product Name
-            </p>
-            <Input />
-
-            <p className=" mt-4 font-normal text-[#351f1f] text-lg">
-              Rent Price
-            </p>
-            <Input />
-
-            <p className="mt-4 font-normal text-[#373737] text-lg">
-              Description
-            </p>
-            <Input />
-
-            <div className="m-none divider text-[#F0F0F0]" />
-            <ButtonAddProductAdmin />
-            <label
-              htmlFor="my-modal"
-              className="btn mt-4 font-medium text-base text-center justify-center h-[44px] w-[458px] px-4 py-1 rounded-md text-[#999999] bg-white border-2 border-[#999999] transform active:scale-75 transition-transform flex items-center"
-            >
-              Close
-            </label>
-          </div>
+            <div>
+      <button
+        id="select"
+        className="login font-normal text-lg text-center justify-center h-[48px] w-[135px] px-6 py-1 rounded-md text-white bg-[#d9d9d9d9] transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
+      >
+        <span className="font-normal text-lg">Select File</span>
+      </button>
+    </div>
+          <p className="font-normal text-lg text[#373737] text-left">
+            Product Name
+          </p>
+          <InputForModal />
+          <p className="font-normal text-lg text[#373737] text-left">
+            Rent Price
+          </p>
+          <InputForModal />
+          <p className="font-normal text-lg text[#373737] text-left">
+            Description
+          </p>
+          <input
+      className="h-[160px] w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      placeholder="120"
+      type="text"
+    />
+          <div className="divider text-[#E2E7E9]" />
+          <ButtonCustom
+            className="cursor-pointer font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white"
+            label="Save"
+          />
+          <br />
+          <label htmlFor="my-modal-3">
+            <ButtonCustom
+              className="cursor-pointer font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-[#999999] bg-white transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white"
+              label="Close"
+            />
+          </label>
         </div>
       </div>
     </div>
@@ -132,51 +136,59 @@ const ModalAdminProduct = () => {
 const ModalEditAdminProduct = () => {
   return (
     <div>
-      <label htmlFor="my-modal2" className="fill-secondary text-3xl mr-4">
+      {/* The button to open modal */}
+      <label htmlFor="my-modal-9" className="cursor-pointer">
         <AiFillEdit />
       </label>
-
-      <div className="">
-        <input
-          type="checkbox"
-          id="my-modal"
-          className="modal-toggle w-[600px] h-[802px]"
-        />
-        <div className="modal ">
-          <div className="modal-box w-[600px] h-[802px]">
-            <div className="font-semibold text-xl text-black text-center">
-              Edit Product
-            </div>
-            <div className="divider text-[#F0F0F0]" />
-
-            <h3 className="font-normal text-[#373737] text-lg">
+      <input type="checkbox" id="my-modal-9" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box relative">
+          <h3 className="font-semibold text-xl text-secondary text-center">
+            Edit Product
+          </h3>
+          <div className="divider text-[#E2E7E9]" />
+          <h3 className="font-normal text-[#373737] text-lg text-left">
               Photo Product
             </h3>
-            <ButtonSubmitData />
+            <div>
+      <button
+        id="select"
+        className="login font-normal text-lg text-center justify-center h-[48px] w-[135px] px-6 py-1 rounded-md text-white bg-[#d9d9d9d9] transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
+      >
+        <span className="font-normal text-lg">Select File</span>
+      </button>
+    </div>
+          <p className="font-normal text-lg text[#373737] text-left">
+            Product Name
+          </p>
+          <InputForModal />
+          <p className="font-normal text-lg text[#373737] text-left">
+            Rent Price
+          </p>
+          <InputForModal />
+          <p className="font-normal text-lg text[#373737] text-left">
+            Description
+          </p>
+          <input
+      className="h-[160px] w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      placeholder="120"
+      type="text"
+    />
+          <hr className="mt-9" />
+          <div>
+            <ButtonCustom
+              className="bg-primary mt-6 rounded-lg h-11 w-full flex items-center justify-center font-normal text-sm text-white cursor-pointer"
+              label="Save"
+            />
 
-            <p className="mt-4 font-normal text-[#373737] text-lg">
-              Product Name
-            </p>
-            <Input />
-
-            <p className=" mt-4 font-normal text-[#351f1f] text-lg">
-              Rent Price
-            </p>
-            <Input />
-
-            <p className="mt-4 font-normal text-[#373737] text-lg">
-              Description
-            </p>
-            <Input />
-
-            <div className="m-none divider text-[#F0F0F0]" />
-            <ButtonAddProductAdmin />
-            <label
-              htmlFor="my-modal"
-              className="btn mt-4 font-medium text-base text-center justify-center h-[44px] w-[458px] px-4 py-1 rounded-md text-[#999999] bg-white border-2 border-[#999999] transform active:scale-75 transition-transform flex items-center"
-            >
-              Close
-            </label>
+            <div className="modal-action">
+              <label htmlFor="my-modal-9">
+                <ButtonCustom
+                  className="border h-11 w-[464px] rounded-lg  flex items-center justify-center font-normal text-sm text-[#999999] cursor-pointer"
+                  label="Close"
+                />
+              </label>
+            </div>
           </div>
         </div>
       </div>
