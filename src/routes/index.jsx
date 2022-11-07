@@ -79,7 +79,10 @@ const Index = () => {
             path="/register"
             element={checkToken ? <Navigate to="/home" /> : <Register />}
           />
-          <Route path="/home" element={checkToken ? <HomePage /> : <Login />} />
+          <Route
+            path="/home"
+            element={checkToken ? <HomePage /> : <HomePage />}
+          />
           {/* <Route path="/home" element={<HomePage />} /> */}
           <Route
             path="/detail/:id"
@@ -103,7 +106,7 @@ const Index = () => {
           />
           <Route
             path="/guide"
-            element={checkToken ? <GuidePage /> : <Login />}
+            element={checkToken ? <GuidePage /> : <HomePage />}
           />
           <Route path="/admin" element={<Admin />} />
           <Route path="/adminranger" element={<AdminRanger />} />

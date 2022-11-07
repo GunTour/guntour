@@ -80,7 +80,7 @@ const NavbarLogin = () => {
     removeCookie("token");
     navigate("/");
   };
-  
+
   return (
     <nav className="bg-white border-gray-200 px-2 md:px-4 py-7">
       <div className="flex flex-wrap justify-between items-center mx-20">
@@ -116,7 +116,12 @@ const NavbarLogin = () => {
                 <p className="active:bg-slate-200">Become Ranger</p>
               </li>
               <li>
-                <a onClick={() => handleLogout()} className="active:bg-slate-200">Logout</a >
+                <button
+                  onClick={() => handleLogout()}
+                  className="active:bg-slate-200"
+                >
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
