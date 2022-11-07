@@ -58,8 +58,14 @@ const Login = () => {
           title: "You're logged in !",
           showConfirmButton: true,
         });
-        navigate("/home");
+
+        if (res.data.role === "admin") {
+          navigate("/admin");
+        } else if (res.data.role === "pendaki") {
+          navigate("/home");
+        }
       })
+      
       .catch(() => {
         Swal.fire({
           icon: "error",
