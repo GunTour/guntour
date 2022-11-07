@@ -47,9 +47,10 @@ const Login = () => {
       email: email,
       password: password,
     };
+
     apiRequest("login", "post", body)
       .then((res) => {
-        setCookie("token", res.data.token, { path: "/login" });
+        setCookie("token", res.data.token, { path: "/" });
         dispatch(handleAuth(true));
         Swal.fire({
           position: "center",
