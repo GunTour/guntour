@@ -29,7 +29,7 @@ const Register = () => {
     setLoading(true);
     e.preventDefault();
 
-    if (fullname.length === 0 || email.length === 0 || password.length === 0) {
+    if (fullname.length == 0 || email.length == 0 || password.length == 0) {
       Swal.fire({
         position: "center",
         icon: "error",
@@ -54,7 +54,7 @@ const Register = () => {
       email: email,
       password: password,
     };
-    apiRequest("user", "post", body)
+    apiRequest("users", "post", body)
       .then((res) => {
         const { message, data } = res;
         if (data) {
