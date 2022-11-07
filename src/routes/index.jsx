@@ -21,6 +21,7 @@ import NotFound from "pages/NotFound";
 import Admin from "pages/admin/Index";
 import AdminRanger from "pages/admin/AdminRanger";
 import UsersPage from "pages/admin/UsersPage";
+import About from "pages/About";
 
 axios.defaults.baseURL = "https://mdanys.online/";
 
@@ -111,6 +112,7 @@ const Index = () => {
           <Route path="/admin" element={<Admin />} />
           <Route path="/adminranger" element={<AdminRanger />} />
           <Route path="/users" element={<UsersPage />} />
+          <Route path="/about" element={<About/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
