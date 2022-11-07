@@ -34,8 +34,13 @@ const CardProduct = (props) => {
 
   return (
     <section className="card w-72 bg-white">
-      <figure onClick={props.detaiPage} className="px-3 pt-3">
-        <img src={props.img} alt="items" className="rounded-xl w-72 h-48" />
+      <figure className="px-3 pt-3">
+        <img
+          onClick={props.onDetail}
+          src={props.img}
+          alt="items"
+          className="rounded-xl w-72 h-48"
+        />
       </figure>
       <div className="card-body px-3 py-[14px] items-left">
         <h2 className="card-title font-semibold text-2xl text-secondary">
@@ -43,7 +48,9 @@ const CardProduct = (props) => {
         </h2>
         <p className="font-medium text-xl">
           <span className="text-primary font-semibold text-2xl">Rp </span>
-          <span className="text-secondary font-semibold text-2xl">{props.price}</span>
+          <span className="text-secondary font-semibold text-2xl">
+            {props.price}
+          </span>
           <span className="text-secondary font-medium text-xl">/day</span>
         </p>
         <div className="card-actions justify-center w-full">
