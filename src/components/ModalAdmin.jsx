@@ -1,9 +1,7 @@
 import React from "react";
 
 import { InputCustom, InputForModal } from "components/Input";
-import {
-  ButtonCustom,
-} from "components/Button";
+import { ButtonCustom } from "components/Button";
 
 import { AiFillEdit } from "react-icons/ai";
 
@@ -76,54 +74,66 @@ const ModalAdminProduct = () => {
     <div>
       <label
         htmlFor="my-modal-3"
-        className="cursor-pointer font-medium text-lg text-center justify-center h-12 w-[183px] rounded-lg px-6 py-1 text-white bg-[#E5640E] transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-black"
+        className="cursor-pointer font-normal text-base text-center justify-center h-12 w-[180px] rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
       >
         Add Product
       </label>
 
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+
       <div className="modal">
-        <div className="modal-box relative">
+        <div className="modal-box rounded-lg relative">
           <h3 className="font-semibold text-xl text-secondary text-center">
-            Add Product
+            Data Product
           </h3>
-          <div className="divider text-[#E2E7E9]" />
-          <h3 className="font-normal text-[#373737] text-lg text-left">
+          <div className="divider m-0" />
+
+          {/* Add Photo Product */}
+          <div className="mt-6 mb-5">
+            <h3 className="font-normal text-secondary text-lg text-left mb-3">
               Photo Product
             </h3>
-            <div>
-      <button
-        id="select"
-        className="login font-normal text-lg text-center justify-center h-[48px] w-[135px] px-6 py-1 rounded-md text-white bg-[#d9d9d9d9] transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
-      >
-        <span className="font-normal text-lg">Select File</span>
-      </button>
-    </div>
-          <p className="font-normal text-lg text[#373737] text-left">
-            Product Name
-          </p>
-          <InputForModal />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Rent Price
-          </p>
-          <InputForModal />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Description
-          </p>
-          <input
-      className="h-[160px] w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
-      placeholder="120"
-      type="text"
-    />
-          <div className="divider text-[#E2E7E9]" />
+            <div className="text-left">
+              <input type="file" className="file-input w-full max-w-xs" />
+            </div>
+          </div>
+
+          {/* Input Product Name*/}
+          <div className="mb-5">
+            <p className="font-normal text-lg text-secondary text-left mb-3">
+              Product Name
+            </p>
+            <InputForModal placeholder="Enter your product name" />
+          </div>
+
+          {/* Input Rent Price*/}
+          <div className="mb-5">
+            <p className="font-normal text-lg text-secondary text-left mb-3">
+              Rent Price
+            </p>
+            <InputForModal placeholder="100K" />
+          </div>
+
+          {/* Input Description*/}
+          <div className="mb-5">
+            <p className="font-normal text-lg text-secondary text-left mb-3">
+              Description
+            </p>
+            <textarea
+              className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
+              placeholder="Enter your product description"
+            ></textarea>
+          </div>
+
+          <div className="divider m-0" />
           <ButtonCustom
-            className="cursor-pointer font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white"
-            label="Save"
+            className="cursor-pointer font-medium text-center justify-center h-11 w-full mt-5 mb-3 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
+            label="Edit Data"
           />
-          <br />
+
           <label htmlFor="my-modal-3">
             <ButtonCustom
-              className="cursor-pointer font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-[#999999] bg-white transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white"
+              className="cursor-pointer font-medium text-center justify-center h-11 w-full rounded-lg text-slate-400 border bg-white transform active:scale-95 transition-transform flex items-center"
               label="Close"
             />
           </label>
@@ -136,60 +146,68 @@ const ModalAdminProduct = () => {
 const ModalEditAdminProduct = () => {
   return (
     <div>
-      {/* The button to open modal */}
-      <label htmlFor="my-modal-9" className="cursor-pointer">
+      <label htmlFor="my-modal-3" className="text-2xl text-gray-600">
         <AiFillEdit />
       </label>
-      <input type="checkbox" id="my-modal-9" className="modal-toggle" />
+
+      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+
       <div className="modal">
-        <div className="modal-box relative">
+        <div className="modal-box rounded-lg relative">
           <h3 className="font-semibold text-xl text-secondary text-center">
             Edit Product
           </h3>
-          <div className="divider text-[#E2E7E9]" />
-          <h3 className="font-normal text-[#373737] text-lg text-left">
+          <div className="divider m-0" />
+
+          {/* Add Photo Product */}
+          <div className="mt-6 mb-5">
+            <h3 className="font-normal text-secondary text-lg text-left mb-3">
               Photo Product
             </h3>
-            <div>
-      <button
-        id="select"
-        className="login font-normal text-lg text-center justify-center h-[48px] w-[135px] px-6 py-1 rounded-md text-white bg-[#d9d9d9d9] transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
-      >
-        <span className="font-normal text-lg">Select File</span>
-      </button>
-    </div>
-          <p className="font-normal text-lg text[#373737] text-left">
-            Product Name
-          </p>
-          <InputForModal />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Rent Price
-          </p>
-          <InputForModal />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Description
-          </p>
-          <input
-      className="h-[160px] w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
-      placeholder="120"
-      type="text"
-    />
-          <hr className="mt-9" />
-          <div>
-            <ButtonCustom
-              className="bg-primary mt-6 rounded-lg h-11 w-full flex items-center justify-center font-normal text-sm text-white cursor-pointer"
-              label="Save"
-            />
-
-            <div className="modal-action">
-              <label htmlFor="my-modal-9">
-                <ButtonCustom
-                  className="border h-11 w-[464px] rounded-lg  flex items-center justify-center font-normal text-sm text-[#999999] cursor-pointer"
-                  label="Close"
-                />
-              </label>
+            <div className="text-left">
+              <input type="file" className="file-input w-full max-w-xs" />
             </div>
           </div>
+
+          {/* Input Product Name*/}
+          <div className="mb-5">
+            <p className="font-normal text-lg text-secondary text-left mb-3">
+              Product Name
+            </p>
+            <InputForModal placeholder="Enter your product name" />
+          </div>
+
+          {/* Input Rent Price*/}
+          <div className="mb-5">
+            <p className="font-normal text-lg text-secondary text-left mb-3">
+              Rent Price
+            </p>
+            <InputForModal placeholder="100K" />
+          </div>
+
+          {/* Input Description*/}
+          <div className="mb-5">
+            <p className="font-normal text-lg text-secondary text-left mb-3">
+              Description
+            </p>
+            <textarea
+              className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
+              placeholder="Enter your product description"
+            ></textarea>
+          </div>
+
+          <div className="divider m-0" />
+          <ButtonCustom
+            className="cursor-pointer font-medium text-center justify-center h-11 w-full mt-5 mb-3 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
+            label="Edit Product"
+          />
+
+          <label htmlFor="my-modal-3">
+            <ButtonCustom
+              className="cursor-pointer font-medium text-center justify-center h-11 w-full rounded-lg text-slate-400 border bg-white transform active:scale-95 transition-transform flex items-center"
+              label="Close"
+            />
+          </label>
         </div>
       </div>
     </div>

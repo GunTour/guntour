@@ -217,10 +217,10 @@ export const InputAddress = (props) => {
 export const InputForModal = (props) => {
   return (
     <input
-      className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-14 w-full pl-4 border border-[#B3B3B3] rounded-lg text-base font-normal"
       onChange={props.onChange}
       id={props.id}
-      placeholder="120"
+      placeholder={props.placeholder}
       type="text"
     />
   );

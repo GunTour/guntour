@@ -5,7 +5,10 @@ import { NavbarAdmin, Sidebar } from "components/Navbar";
 
 import { AiFillDelete } from "react-icons/ai";
 import Tent from "assets/camping-tent.svg";
-import { ModalAdminProduct, ModalEditAdminProduct } from "components/ModalAdmin";
+import {
+  ModalAdminProduct,
+  ModalEditAdminProduct,
+} from "components/ModalAdmin";
 
 const AdminProduct = () => {
   return (
@@ -14,14 +17,14 @@ const AdminProduct = () => {
         <Sidebar />
       </aside>
 
-      <div className="md:grid-col-span-2">
+      <div className="md:grid-col-span-3">
         <NavbarAdmin />
-        <div className="divider text-[#F0F0F0]" />
+        <div className="divider m-0 mr-14" />
 
         <div className="mt-10">
           <div className="col-span-2">
             <div className="text-right flex items-center justify-end mt-3 font-medium text-base mr-11">
-              <ModalAdminProduct/>
+              <ModalAdminProduct />
             </div>
 
             <div className="overflow-x-auto py-6 mr-11">
@@ -29,10 +32,18 @@ const AdminProduct = () => {
                 <thead>
                   <tr>
                     <th></th>
-                    <th>NAME</th>
-                    <th>PRICE</th>
-                    <th>DESCRIPTION</th>
-                    <th>ACTION</th>
+                    <th className="font-semibold text-base text-secondary">
+                      NAME
+                    </th>
+                    <th className="font-semibold text-base text-secondary">
+                      PRICE
+                    </th>
+                    <th className="font-semibold text-base text-secondary">
+                      DESCRIPTION
+                    </th>
+                    <th className="font-semibold text-base text-secondary">
+                      ACTION
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -44,9 +55,9 @@ const AdminProduct = () => {
                           <img
                             src={Tent}
                             alt=""
-                            className="max-w-xl h-[56px] w-[56px] rounded-lg mr-10"
+                            className="max-w-xl h-14 w-14 rounded-lg"
                           />
-                          <p className="mt-4"> Camping Tent </p>
+                          <p className="ml-5 mt-4">Camping Tent</p>
                         </div>
                       </div>
                     </td>
@@ -54,14 +65,11 @@ const AdminProduct = () => {
                     <td>See Details</td>
                     <td>
                       <div className="flex items-center text-sm">
-                      <button className="text-2xl text-gray-600 ml-4">
-                        <ModalEditAdminProduct/>
-                      </button>
-                        <button
-                          className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                          aria-label="Edit"
-                        >
-                          <AiFillDelete className="fill-[#CC0000] text-3xl mr-4" />
+                        <button className="text-2xl text-gray-600">
+                          <ModalEditAdminProduct />
+                        </button>
+                        <button>
+                          <AiFillDelete className="fill-red-600 text-3xl mr-14 ml-4" />
                         </button>
                       </div>
                     </td>
