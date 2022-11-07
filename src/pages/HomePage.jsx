@@ -1,5 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { WithRouter } from "utils/Navigation";
+import { apiRequest } from "utils/apiRequest";
+import { useDispatch } from "react-redux";
+import { handleAuth } from "utils/redux/reducers/reducer";
+import { useCookies } from "react-cookie";
 
 import Hero from "components/Hero";
 import Layout from "components/Layout";
@@ -10,7 +15,37 @@ import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 
 import Community from "assets/img-community.png";
 
-const HomePage = () => {
+const HomePage = (props) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [cookies, removeCookies] = useCookies();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    apiRequest("product", "get", {})
+      .then((res) => {
+        const results = res.data;
+        setData(results);
+      })
+      .catch((err) => {
+        const { data } = err.response;
+        if ([401, 403].includes(data.code)) {
+          removeCookies("token");
+          dispatch(handleAuth(false));
+          navigate("/login");
+        }
+        alert(data.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <Layout>
       {/* Carousel */}
@@ -26,14 +61,17 @@ const HomePage = () => {
       {/* Card Product */}
       <section className="mb-7 w-ful flex mx-3 md:mx-16 lg:mx-20 xl:mx-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-9">
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
+          <>
+            {data.map((data) => (
+              <CardProduct
+                key={data.id_product}
+                img={data.product_picture}
+                name={data.product_name}
+                price={data.rent_price}
+                // detailPage={() => navigate(`/product/${data.id_product}`)}
+              />
+            ))}
+          </>
         </div>
       </section>
 
@@ -118,7 +156,11 @@ const HomePage = () => {
             </a>
           </div>
           <div>
-            <img className="w-[456px] h-[310]" src={Community} alt="Gambar Community" />
+            <img
+              className="w-[456px] h-[310]"
+              src={Community}
+              alt="Gambar Community"
+            />
           </div>
         </div>
       </section>
