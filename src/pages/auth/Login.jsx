@@ -49,7 +49,6 @@ const Login = () => {
     };
     apiRequest("login", "post", body)
       .then((res) => {
-        // const { data } = res.data;
         setCookie("token", res.data.token, { path: "/login" });
         dispatch(handleAuth(true));
         Swal.fire({
@@ -78,20 +77,23 @@ const Login = () => {
         <meta name="description" content="App Description" />
       </Helmet>
 
-      <div className="bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-        <div className="hidden md:hidden lg:flex justify-center place-items-center w-full h-screen">
-          <img src={imgLogin} alt="imgLogin" className="w-full h-[1189]" />
-        </div>
-        <div className="flex flex-wrap justify-center place-items-center w-full h-screen p-2">
-          <div>
-            <h1 className="font-semibold text-secondary text-[40px] mt-10">
+      <main className="mx-auto">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-1">
+          <aside className="flex justify-center">
+            <img src={imgLogin} alt="imgLogin" className="w-full h-full" />
+          </aside>
+          <article className="md:grid-col-span-2 bg-white px-20 py-60">
+            <h1 className="font-semibold text-secondary text-[40px]">
               Start your new <br /> experience with us.
             </h1>
-            <p className="font-medium text-secondary text-xl lg:text-xl pt-4">
-              Sign in to your account
-            </p>
-            <div>
-              <p className="text-lg text-secondary py-3">Your Email</p>
+
+            <section className="grid md:grid-rows-7 gap-4">
+              <p className="font-medium text-secondary text-xl lg:text-xl">
+                Sign in to your account
+              </p>
+
+              <p className="text-lg text-secondary">Your Email</p>
+
               <InputEmail
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
@@ -100,10 +102,9 @@ const Login = () => {
                 type="email"
                 placeholder="Email address"
               />
-            </div>
 
-            <div className="mb-14">
-              <p className="text-lg text-secondary py-3">Password</p>
+              <p className="text-lg text-secondary">Password</p>
+
               <InputPassword
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
@@ -112,25 +113,27 @@ const Login = () => {
                 type="password"
                 placeholder="Password"
               />
-            </div>
-            <ButtonSign
-              onClick={(e) => handleLogin(e)}
-              id="sign"
-              className="bg-primary font-medium text-base text-center text-white"
-            />
-            <p className="text-light text-base text-center text-[#B4B4B4] pt-6">
-              Already have an account?
-              <Link
-                to="/register"
-                id="register"
-                className="text-light text-base text-primary text-center"
-              >
-                &nbsp; Register Here
-              </Link>
-            </p>
-          </div>
-        </div>
-      </div>
+
+              <ButtonSign
+                onClick={(e) => handleLogin(e)}
+                id="sign"
+                className="bg-primary font-medium text-base text-center text-white"
+              />
+
+              <p className="text-light text-base text-center text-[#B4B4B4]">
+                Already have an account?
+                <Link
+                  to="/register"
+                  id="register"
+                  className="text-light text-base text-primary text-center"
+                >
+                  &nbsp; Register Here
+                </Link>
+              </p>
+            </section>
+          </article>
+        </section>
+      </main>
     </>
   );
 };
