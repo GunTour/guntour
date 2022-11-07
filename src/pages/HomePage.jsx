@@ -68,7 +68,7 @@ const HomePage = (props) => {
                 img={data.product_picture}
                 name={data.product_name}
                 price={data.rent_price}
-                // detailPage={() => navigate(`/product/${data.id_product}`)}
+                onDetail={() => props.navigate(`/detail/${data.id_product}`)}
               />
             ))}
           </>
