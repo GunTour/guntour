@@ -3,12 +3,11 @@ import { WithRouter } from "utils/Navigation";
 
 import { NavbarAdmin, Sidebar } from "components/Navbar";
 
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { ButtonAddProduct } from "components/Button";
+import { AiFillDelete } from "react-icons/ai";
 import Tent from "assets/camping-tent.svg";
 import Mat from "assets/mat.svg";
 import Hammock from "assets/hammock.svg";
-import { ModalEditAdminProduct } from "components/ModalAdmin";
+import { ModalAdminProduct, ModalEditAdminProduct } from "components/ModalAdmin";
 
 const AdminProduct = () => {
   return (
@@ -23,12 +22,12 @@ const AdminProduct = () => {
 
         <div className="mt-10">
           <div className="col-span-2">
-            <label
-              htmlFor="my-modal"
+            <div
+              htmlFor="my-modal3"
               className="text-right flex items-center justify-end mt-3 font-medium text-base mr-11"
             >
-              <ButtonAddProduct />
-            </label>
+              <ModalAdminProduct/>
+            </div>
 
             <div className="overflow-x-auto py-6 mr-11">
               <table className="table w-full">
@@ -46,21 +45,26 @@ const AdminProduct = () => {
                     <th>1</th>
                     <td>
                       <div className="grid grid-cols-1 lg:grid-cols-2">
-                        <div className="flex justify-center">
+                        <div className="flex">
                           <img
                             src={Tent}
                             alt=""
-                            className="max-w-xl h-[56px] w-[56px] rounded-lg mt-20 mb-44 mr-20"
+                            className="max-w-xl h-[56px] w-[56px] rounded-lg mr-10"
                           />
-                          <p> Camping Tent </p>
+                          <p className="mt-4"> Camping Tent </p>
                         </div>
                       </div>
                     </td>
                     <td>100K/day</td>
                     <td>See Details</td>
                     <td>
-                      <div className="flex items-center space-x-4 text-sm">
-                        <ModalEditAdminProduct />
+                      <div className="flex items-center text-sm">
+                        <button
+                          className="flex items pt-10 justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-[#494949] focus:outline-none focus:shadow-outline-gray"
+                          aria-label="Edit"
+                        >
+                          <ModalEditAdminProduct className="fill-secondary text-3xl mr-4" />
+                        </button>
                         <button
                           className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
                           aria-label="Edit"
@@ -75,21 +79,26 @@ const AdminProduct = () => {
                     <th>2</th>
                     <td>
                       <div className="grid grid-cols-1 lg:grid-cols-2">
-                        <div className="flex justify-center">
+                        <div className="flex">
                           <img
                             src={Mat}
                             alt=""
-                            className="max-w-xl h-[56px] w-[56px] rounded-lg mt-20 mb-44 mr-20"
+                            className="max-w-xl h-[56px] w-[56px] rounded-lg mr-10"
                           />
+                          <p className="mt-4"> Mat </p>
                         </div>
-                        Mat
                       </div>
                     </td>
                     <td>49K/day</td>
                     <td>See Details</td>
                     <td>
-                      <div className="flex items-center space-x-4 text-sm">
-                        <ModalEditAdminProduct />
+                      <div className="flex items-center space-x-4 text-sm mt-10">
+                        <button
+                          className="flex items pt-10 justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-[#494949] focus:outline-none focus:shadow-outline-gray"
+                          aria-label="Edit"
+                        >
+                          <ModalEditAdminProduct className="fill-secondary text-3xl mr-4" />
+                        </button>
                         <button
                           className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
                           aria-label="Edit"
@@ -104,14 +113,14 @@ const AdminProduct = () => {
                     <th>3</th>
                     <td>
                       <div className="grid grid-cols-1 lg:grid-cols-2">
-                        <div className="flex justify-center">
+                        <div className="flex">
                           <img
                             src={Hammock}
                             alt=""
-                            className="max-w-xl h-[56px] w-[56px] rounded-lg mt-20 mb-44 mr-20"
+                            className="max-w-xl h-[56px] w-[56px] rounded-lg mr-10"
                           />
+                          <p className="mt-4"> Hammock </p>
                         </div>
-                        Hammock
                       </div>
                     </td>
                     <td>69K/day</td>
@@ -119,10 +128,10 @@ const AdminProduct = () => {
                     <td>
                       <div className="flex items-center space-x-4 text-sm">
                         <button
-                          className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                          className="flex items pt-10 justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-[#494949] focus:outline-none focus:shadow-outline-gray"
                           aria-label="Edit"
                         >
-                          <AiFillEdit className="fill-secondary text-3xl mr-4" />
+                          <ModalEditAdminProduct className="fill-secondary text-3xl mr-4" />
                         </button>
                         <button
                           className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"

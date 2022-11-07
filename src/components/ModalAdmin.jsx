@@ -77,7 +77,7 @@ const ModalEditRanger = () => {
 const ModalAdminProduct = () => {
   return (
     <div>
-      <label htmlFor="my-modal" className="btn">
+      <label htmlFor="my-modal3" className="">
         <ButtonAddProduct />
       </label>
 
@@ -132,7 +132,7 @@ const ModalAdminProduct = () => {
 const ModalEditAdminProduct = () => {
   return (
     <div>
-      <label htmlFor="my-modal2" className="btn">
+      <label htmlFor="my-modal2" className="fill-secondary text-3xl mr-4">
         <AiFillEdit />
       </label>
 
