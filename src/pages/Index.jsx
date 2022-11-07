@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { WithRouter } from "utils/Navigation";
+import { apiRequest } from "utils/apiRequest";
+import { useDispatch } from "react-redux";
+import { handleAuth } from "utils/redux/reducers/reducer";
+import { useCookies } from "react-cookie";
+import { Helmet } from "react-helmet";
 
 import Hero from "components/Hero";
 import Layout from "components/LayoutAnonym";
-import { Helmet } from "react-helmet";
 import { CardProduct } from "components/CardProduct";
 import { ButtonJoin } from "components/Button";
 import { BsPeopleFill } from "react-icons/bs";
@@ -12,10 +17,40 @@ import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import Community from "assets/img-community.png";
 
 const Index = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [cookies, removeCookies] = useCookies();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    apiRequest("product", "get", {})
+      .then((res) => {
+        const results = res.data;
+        setData(results);
+      })
+      .catch((err) => {
+        const { data } = err.response;
+        if ([401, 403].includes(data.code)) {
+          removeCookies("token");
+          dispatch(handleAuth(false));
+          navigate("/login");
+        }
+        alert(data.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <>
       <Helmet>
-        <title>Login | GunTour</title>
+        <title>Home | GunTour</title>
         <meta name="description" content="App Description" />
       </Helmet>
 
@@ -26,42 +61,28 @@ const Index = () => {
 
         <div>
           <header>
-            <h5 className="font-bold text-[32px] text-start text-secondary py-7 mx-10">
+            <h5 className="font-bold text-[32px] text-start text-secondary py-7 mx-20">
               FIND <span className="text-primary">POPULAR</span> RENTAL PRODUCTS
             </h5>
           </header>
         </div>
 
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="flex justify-center">
-              <CardProduct />
-            </div>
-            <div className="flex justify-center">
-              <CardProduct />
-            </div>
-            <div className="flex justify-center">
-              <CardProduct />
-            </div>
-            <div className="flex justify-center">
-              <CardProduct />
-            </div>
-            <div className="flex justify-center">
-              <CardProduct />
-            </div>
-            <div className="flex justify-center">
-              <CardProduct />
-            </div>
-            <div className="flex justify-center">
-              <CardProduct />
-            </div>
-            <div className="flex justify-center">
-              <CardProduct />
-            </div>
+        <div className="mb-7 w-ful flex mx-3 md:mx-16 lg:mx-20 xl:mx-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-9">
+            <>
+              {data.map((data) => (
+                <CardProduct
+                  key={data.id_product}
+                  img={data.product_picture}
+                  name={data.product_name}
+                  price={data.rent_price}
+                />
+              ))}
+            </>
           </div>
         </div>
 
-        <div className="flex justify-end mx-10 md:mx-10 lg:mx-10 2xl:mx-10 gap-8 py-5">
+        <div className="flex justify-end mx-10 md:mx-10 lg:mx-20 2xl:mx-20 gap-8 py-5">
           <button className="w-14 h-14 rounded bg-none border-2 border-primary place-content-center grid content-center">
             <HiArrowLeft className="text-primary text-2xl" />
           </button>
