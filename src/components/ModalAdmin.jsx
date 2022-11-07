@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { apiRequest } from "../utils/apiRequest";
 
 import { InputCustom, InputForModal } from "components/Input";
 import { ButtonCustom } from "components/Button";
 
 import { AiFillEdit } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const ModalEditRanger = () => {
   return (
@@ -70,6 +72,38 @@ const ModalEditRanger = () => {
 };
 
 const ModalAdminProduct = () => {
+  const [loading, setLoading] = useState(true);
+  const [objSubmit, setObjSubmit] = useState("");
+
+  const handleAddProduct = async () => {
+    setLoading(true);
+    const formData = new FormData();
+    for (const key in objSubmit) {
+      formData.append(key, objSubmit[key]);
+    }
+    apiRequest("admin/product", "post", objSubmit, "multipart/form-data")
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Data added successfully",
+        });
+        setObjSubmit({});
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "warning",
+          title: "There is an error please check again",
+        });
+      })
+      .finally(() => setLoading(false));
+  };
+
+  const handleChange = (value, key) => {
+    let temp = { ...objSubmit };
+    temp[key] = value;
+    setObjSubmit(temp);
+  };
+
   return (
     <div>
       <label
@@ -94,7 +128,14 @@ const ModalAdminProduct = () => {
               Photo Product
             </h3>
             <div className="text-left">
-              <input type="file" className="file-input w-full max-w-xs" />
+              <input
+                value={objSubmit.product_picture}
+                onChange={(e) =>
+                  handleChange(e.target.value, "product_picture")
+                }
+                type="file"
+                className="file-input w-full max-w-xs"
+              />
             </div>
           </div>
 
@@ -103,7 +144,11 @@ const ModalAdminProduct = () => {
             <p className="font-normal text-lg text-secondary text-left mb-3">
               Product Name
             </p>
-            <InputForModal placeholder="Enter your product name" />
+            <InputForModal
+              value={objSubmit.product_name}
+              onChange={(e) => handleChange(e.target.value, "product_name")}
+              placeholder="Enter your product name"
+            />
           </div>
 
           {/* Input Rent Price*/}
@@ -111,7 +156,11 @@ const ModalAdminProduct = () => {
             <p className="font-normal text-lg text-secondary text-left mb-3">
               Rent Price
             </p>
-            <InputForModal placeholder="100K" />
+            <InputForModal
+              value={objSubmit.rent_price}
+              onChange={(e) => handleChange(e.target.value, "rent_price")}
+              placeholder="100K"
+            />
           </div>
 
           {/* Input Description*/}
@@ -120,6 +169,21 @@ const ModalAdminProduct = () => {
               Description
             </p>
             <textarea
+              value={objSubmit.detail}
+              onChange={(e) => handleChange(e.target.value, "detail")}
+              className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
+              placeholder="Enter your product description"
+            ></textarea>
+          </div>
+
+          {/* Input Note Warning*/}
+          <div className="mb-5">
+            <p className="font-normal text-lg text-secondary text-left mb-3">
+              Warning
+            </p>
+            <textarea
+              value={objSubmit.note}
+              onChange={(e) => handleChange(e.target.value, "note")}
               className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
               placeholder="Enter your product description"
             ></textarea>
@@ -127,8 +191,9 @@ const ModalAdminProduct = () => {
 
           <div className="divider m-0" />
           <ButtonCustom
+            onClick={() => handleAddProduct()}
             className="cursor-pointer font-medium text-center justify-center h-11 w-full mt-5 mb-3 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
-            label="Edit Data"
+            label="Save Data"
           />
 
           <label htmlFor="my-modal-3">
