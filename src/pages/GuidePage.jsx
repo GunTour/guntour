@@ -1,6 +1,6 @@
 import React from "react";
 
-import LayoutAnonym from "components/LayoutAnonym";
+import Layout from "components/LayoutAnonym";
 import {
   CardClimber,
   CardParent,
@@ -14,7 +14,7 @@ import imgmap from "assets/img-map.jpg";
 const GuidePage = () => {
   return (
     <>
-      <LayoutAnonym>
+      <Layout>
         <section className="carousel w-full">
           <figure className="carousel-item relative w-full">
             <img src={imgguide} className="w-full" alt="img1" />
@@ -119,7 +119,7 @@ const GuidePage = () => {
             />
           </figure>
         </section>
-      </LayoutAnonym>
+      </Layout>
     </>
   );
 };

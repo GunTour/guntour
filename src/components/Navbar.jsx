@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { useNavigate, Link } from "react-router-dom";
 
 import { ButtonLogin, ButtonRegisterAnonym } from "components/Button";
 
@@ -72,6 +73,14 @@ const Navbar = () => {
 };
 
 const NavbarLogin = () => {
+  const [removeCookie] = useCookies();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    removeCookie("token");
+    navigate("/");
+  };
+  
   return (
     <nav className="bg-white border-gray-200 px-2 md:px-4 py-7">
       <div className="flex flex-wrap justify-between items-center mx-20">
@@ -107,7 +116,7 @@ const NavbarLogin = () => {
                 <p className="active:bg-slate-200">Become Ranger</p>
               </li>
               <li>
-                <p className="active:bg-slate-200">Logout</p>
+                <a onClick={() => handleLogout()} className="active:bg-slate-200">Logout</a >
               </li>
             </ul>
           </div>

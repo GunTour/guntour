@@ -60,8 +60,13 @@ const Login = () => {
         });
         navigate("/home");
       })
-      .catch((err) => {
-        alert(err);
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "There is a mistake!",
+          text: "Please fill in the data correctly",
+          showConfirmButton: true,
+        });
       })
       .finally(() => setLoading(false));
   };

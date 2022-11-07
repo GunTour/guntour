@@ -22,8 +22,7 @@ import Admin from "pages/admin/Index";
 import AdminRanger from "pages/admin/AdminRanger";
 import UsersPage from "pages/admin/UsersPage";
 
-axios.defaults.baseURL =
-  "https://virtserver.swaggerhub.com/khalidrianda/GunTour/1.0.0/";
+axios.defaults.baseURL = "https://mdanys.online/";
 
 const Index = () => {
   const [cookie, removeCookie] = useCookies();
@@ -80,13 +79,32 @@ const Index = () => {
             path="/register"
             element={checkToken ? <Navigate to="/home" /> : <Register />}
           />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/detail/:id" element={<DetailPage />} />
-          <Route path="/booking" element={<Booking />} />
-          <Route path="/confirm" element={<ConfirmBooking />} />
-          <Route path="/history" element={<OrderHistory />} />
-          <Route path="/ranger" element={<BecomeRanger />} />
-          <Route path="/guide" element={<GuidePage />} />
+          <Route path="/home" element={checkToken ? <HomePage /> : <Login />} />
+          {/* <Route path="/home" element={<HomePage />} /> */}
+          <Route
+            path="/detail/:id"
+            element={checkToken ? <DetailPage /> : <Login />}
+          />
+          <Route
+            path="/booking"
+            element={checkToken ? <Booking /> : <Login />}
+          />
+          <Route
+            path="/confirm"
+            element={checkToken ? <ConfirmBooking /> : <Login />}
+          />
+          <Route
+            path="/history"
+            element={checkToken ? <OrderHistory /> : <Login />}
+          />
+          <Route
+            path="/ranger"
+            element={checkToken ? <BecomeRanger /> : <Login />}
+          />
+          <Route
+            path="/guide"
+            element={checkToken ? <GuidePage /> : <Login />}
+          />
           <Route path="/admin" element={<Admin />} />
           <Route path="/adminranger" element={<AdminRanger />} />
           <Route path="/users" element={<UsersPage />} />
