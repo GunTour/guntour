@@ -108,7 +108,7 @@ export const InputSelectRanger = (props) => {
 export const Input = (props) => {
   return (
     <input
-      className="w-[468px] h-14 py-2 px-3 border-2 border-[#577D7B] rounded-md"
+      className="w-full h-14 py-2 px-3 border-2 border-[#577D7B] rounded-md"
       onChange={props.onChange}
       id={props.id}
       placeholder={props.placeholder}
@@ -120,7 +120,7 @@ export const Input = (props) => {
 export const InputEmail = (props) => {
   return (
     <input
-      className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-[60px] w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="Email address"
@@ -132,7 +132,7 @@ export const InputEmail = (props) => {
 export const InputPassword = (props) => {
   return (
     <input
-      className="h-[60px] w-[468px] py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
+      className="h-[60px] w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="Password"

@@ -27,7 +27,7 @@ export const ButtonSign = (props) => {
       <button
         onClick={props.onClick}
         id="sign"
-        className="login font-medium text-center justify-center h-[60px] w-[468px] px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
+        className="login font-medium text-center justify-center h-[60px] w-full px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
       >
         <span>Sign In</span>
       </button>
@@ -41,7 +41,7 @@ export const ButtonRegister = (props) => {
       <button
         onClick={props.onClick}
         id="register"
-        className="login font-medium text-center justify-center h-[60px] w-[468px] px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
+        className="login font-medium text-center justify-center h-[60px] w-full px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
       >
         <span>Register Account</span>
       </button>
