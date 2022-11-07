@@ -26,60 +26,42 @@ const Booking = () => {
           <img className="w-full" src={Background} alt="Background" />
         </header>
 
-        <section className="mx-48 mb-32">
-          <div className="my-16">
-            <div className="flex justify-between mb-9">
-              <div>
-                <p className="font-medium text-xl mb-4 text-secondary">
-                  From Date
-                </p>
-                <InputDate />
-              </div>
-              <div>
-                <p className="font-medium text-xl mb-4 text-secondary">
-                  To Date
-                </p>
-                <InputDate />
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <div>
-                <p className="font-medium text-xl mb-4 text-secondary">
-                  Entrance
-                </p>
-                <InputSelectEntrance />
-              </div>
-              <div>
-                <p className="font-medium text-xl mb-4 text-secondary">
-                  Number of Person
-                </p>
-                <InputSelectPerson />
-              </div>
-            </div>
-            <div>
-              <p className="font-medium text-xl mt-9 mb-4 text-secondary">
-                Rangers
-              </p>
+        <main className="mx-auto grid md:grid-flow-col gap-4 px-20 my-10">
+          <article className="md:grid-col-span-2">
+            <section className="grid md:grid-rows-1 gap-2">
+              <p className="font-medium text-xl text-secondary">From Date</p>
+              <InputDate />
+              <p className="font-medium text-xl text-secondary">Entrance</p>
+              <InputSelectEntrance />
+              <p className="font-medium text-xl text-secondary">Rangers</p>
               <InputSelectRanger />
-            </div>
-          </div>
+            </section>
+          </article>
 
-          <div className="mt-20">
-            <h1 className="text-center font-bold text-[32px] text-secondary mb-3">
-              YOUR <span className="text-primary">PRODUCTS</span> BOOKING
-            </h1>
-            <p className="text-center font-medium text-base text-secondary mb-14">
-              This Product here are optional
-            </p>
-          </div>
+          <article className="md:grid-col-span-2">
+            <section className="grid md:grid-rows-1 gap-2">
+              <p className="font-medium text-xl text-secondary">To Date</p>
+              <InputDate />
+              <p className="font-medium text-xl text-secondary">
+                Number of Person
+              </p>
+              <InputSelectPerson />
+            </section>
+          </article>
+        </main>
 
-          {/* Card Booking */}
+        <h1 className="text-center font-bold text-[32px] text-secondary mb-3">
+          YOUR <span className="text-primary">PRODUCTS</span> BOOKING
+        </h1>
+        <p className="text-center font-medium text-base text-secondary">
+          This Product here are optional
+        </p>
+
+        <section className="grid grid-rows-2 grid-flow-col px-20 my-10 py-10">
           <div>
             <CardBooking />
           </div>
-
-          {/* Button Booked Now */}
-          <div className="mt-14">
+          <div className="py-5">
             <ButtonBooked />
           </div>
         </section>
