@@ -31,7 +31,7 @@ const Navbar = () => {
           </Link>
 
           <Link to="/register">
-            <p className=" px-4 py-2">
+            <p className="px-4 py-2">
               <ButtonRegisterAnonym />
             </p>
           </Link>
@@ -73,7 +73,7 @@ const Navbar = () => {
 };
 
 const NavbarLogin = () => {
-  const [removeCookie] = useCookies();
+  const [cookies, removeCookie] = useCookies();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -91,7 +91,7 @@ const NavbarLogin = () => {
         </Link>
 
         <div className="flex items-center md:order-2">
-          <Link to="">
+          <Link to="/booking">
             <p className="font-medium text-base text-white bg-primary hover:bg-line hover:text-primary focus:ring-4 focus:ring-gray-300 rounded-full px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 focus:outline-none">
               Booking Now
             </p>
@@ -105,15 +105,19 @@ const NavbarLogin = () => {
             </label>
             <ul
               tabIndex={0}
-              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-lg w-52"
+              className="mt-3 p-2 shadow menu menu-compact  dropdown-content bg-base-100 rounded-lg w-52"
             >
               <li>
-                <p className="justify-between active:bg-slate-200">
-                  My Booking{" "}
-                </p>
+                <Link to="/history">
+                  <p className="justify-between active:bg-slate-200">
+                    My Booking{" "}
+                  </p>
+                </Link>
               </li>
               <li>
-                <p className="active:bg-slate-200">Become Ranger</p>
+                <Link to="/ranger">
+                  <p className="active:bg-slate-200">Become Ranger</p>
+                </Link>
               </li>
               <li>
                 <button

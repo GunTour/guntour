@@ -80,7 +80,7 @@ export const ButtonLogin = () => {
     <div>
       <button
         id="login"
-        className="login font-medium text-center justify-center h-12 w-20 px-6 py-1 rounded-md text-primary bg-[#FEF3EB] transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
+        className="login font-medium text-center justify-center h-12 w-36 rounded-lg text-primary bg-[#FEF3EB] transform active:scale-75 transition-transform flex items-center hover:bg-orange-500 hover:text-white "
       >
         <span>Login</span>
       </button>
@@ -93,7 +93,7 @@ export const ButtonRegisterAnonym = () => {
     <div>
       <button
         id="regis-anonym"
-        className="font-medium text-center justify-center h-12 w-30 px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
+        className="font-medium text-center justify-center h-12 w-36 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-orange-600 hover:text-white "
       >
         <span>Register</span>
       </button>
@@ -200,7 +200,7 @@ export const ButtonCancel = () => {
     <div>
       <button
         id="cancel"
-        className="login font-normal text-center justify-center h-14 w-full rounded-lg text-slate-400 border border-slatetext-slate-400 transform active:scale-95 transition-transform flex items-center"
+        className="login font-normal text-center justify-center h-14 w-64 rounded-lg border border-slate text-slate-400 transform active:scale-95 transition-transform flex items-center"
       >
         <span>Cancel</span>
       </button>
