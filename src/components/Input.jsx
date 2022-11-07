@@ -15,7 +15,7 @@ export const InputCustom = (props) => {
 export const InputDate = (props) => {
   return (
     <input
-      className="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg"
+      className="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg"
       onChange={props.onChange}
       id={props.id}
       placeholder="dd/mm/yy"
@@ -29,7 +29,7 @@ export const InputSelectEntrance = (props) => {
     <select
       onChange={props.onChange}
       id="category"
-      class="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
+      class="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
     >
       <option value="" className="font-normal text-base text-secondary">
         Select the entrance
@@ -58,7 +58,7 @@ export const InputSelectPerson = (props) => {
     <select
       onChange={props.onChange}
       id="category"
-      class="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-normal text-base"
+      class="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-normal text-base"
     >
       <option value="1" className="font-normal text-base text-secondary">
         1
@@ -87,7 +87,7 @@ export const InputSelectRanger = (props) => {
     <select
       onChange={props.onChange}
       id="category"
-      class="w-[470px] h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
+      class="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
     >
       <option value="" className="font-normal text-base text-secondary">
         Add Ranger
