@@ -9,7 +9,7 @@ import axios from "axios";
 
 import Login from "pages/auth/Login";
 import Register from "pages/auth/Register";
-import HomeAnonym from "pages/Index";
+import HomeAnonym from "pages/HomeAnonym";
 import HomePage from "pages/HomePage";
 import DetailPage from "pages/DetailPage";
 import Booking from "pages/Booking";
@@ -18,7 +18,7 @@ import OrderHistory from "pages/OrderHistory";
 import BecomeRanger from "pages/BecomeRanger";
 import GuidePage from "pages/GuidePage";
 import NotFound from "pages/NotFound";
-import Admin from "pages/admin/Index";
+import AdminProduct from "pages/admin/AdminProduct";
 import AdminRanger from "pages/admin/AdminRanger";
 import UsersPage from "pages/admin/UsersPage";
 import About from "pages/About";
@@ -109,7 +109,7 @@ const Index = () => {
             path="/guide"
             element={checkToken ? <GuidePage /> : <GuidePage />}
           />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={<AdminProduct />} />
           <Route path="/adminranger" element={<AdminRanger />} />
           <Route path="/users" element={<UsersPage />} />
           <Route path="/about" element={<About />} />
