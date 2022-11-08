@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { apiRequest } from "../utils/apiRequest";
+import { apiRequest } from "utils/apiRequest";
 
 import { InputCustom, InputForModal } from "components/Input";
 import { ButtonCustom } from "components/Button";
