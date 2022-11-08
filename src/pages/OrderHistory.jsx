@@ -22,14 +22,22 @@ const OrderHistory = () => {
           <img className="w-full" src={Background} alt="Background" />
         </header>
 
-        <section className="mt-10 mb-7 w-ful flex mx-3 md:mx-16 lg:mx-20 xl:mx-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9">
-            <CardOrderProgress />
-            <CardOrderCancel />
-            <CardOrderSuccess />
-            <CardOrderProgress />
+        <div className="mx-20 py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="flex justify-center">
+              <CardOrderProgress />
+            </div>
+            <div className="flex justify-center">
+              <CardOrderCancel />
+            </div>
+            <div className="flex justify-center">
+              <CardOrderSuccess />
+            </div>
+            <div className="flex justify-center">
+              <CardOrderProgress />
+            </div>
           </div>
-        </section>
+        </div>
       </Layout>
     </>
   );

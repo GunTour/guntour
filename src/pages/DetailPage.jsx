@@ -30,7 +30,10 @@ const DetailPage = (props) => {
 
   if (loading) {
     return (
-      <h2 id="loading" className="text-secondary font-medium text-lg bg-white text-center mt-80">
+      <h2
+        id="loading"
+        className="text-secondary font-medium text-lg bg-white text-center mt-80"
+      >
         Loading Content...
       </h2>
     );
@@ -44,7 +47,46 @@ const DetailPage = (props) => {
       </Helmet>
 
       <Layout>
-        <section className="mx-auto max-w-screen-xl">
+        <main className="grid md:grid-flow-col gap-1 mx-10 py-10">
+          <aside className="md:grid-col-span-1">
+            <img
+              src={data.product_picture}
+              alt={data.product_name}
+              className="h-[515px] w-[560px] rounded-lg text-center"
+            />
+          </aside>
+
+          <article className="md:grid-col-span-2 px-5 py-10">
+            <section className="grid md:grid-rows-2 gap-1">
+              <h1 className="font-semibold text-3xl text-secondary py-2">
+                {data.product_name}
+              </h1>
+              <h2 className="text-secondary text-2xl font-semibold">
+                <span className="text-primary">Rp </span>100K
+                <span className="text-xl">/day</span>
+              </h2>
+              <ButtonBookNowDetails />
+              <div className="py-5">
+                <h5 className="text-xl font-semibold text-secondary">
+                  Description
+                </h5>
+                <p className="text-lg font-normal text-secondary">
+                  {data.detail}
+                </p>
+              </div>
+              <div className="py-5">
+                <h5 className="text-xl font-semibold text-secondary">
+                  Warning
+                </h5>
+                <p className="text-lg font-normal text-secondary">
+                  {data.note}
+                </p>
+              </div>
+            </section>
+          </article>
+        </main>
+
+        {/* <section className="mx-auto max-w-screen-xl">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="flex justify-center">
               <img
@@ -78,7 +120,7 @@ const DetailPage = (props) => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </Layout>
     </>
   );

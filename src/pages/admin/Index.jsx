@@ -1,78 +1,130 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { WithRouter } from "utils/Navigation";
+import { Helmet } from "react-helmet";
+import { apiRequest } from "utils/apiRequest";
 
 import { NavbarAdmin, Sidebar } from "components/Navbar";
-
 import { AiFillDelete } from "react-icons/ai";
-import Tent from "assets/camping-tent.svg";
-import { ModalAdminProduct, ModalEditAdminProduct } from "components/ModalAdmin";
+
+import {
+  ModalAdminProduct,
+  ModalEditAdminProduct,
+} from "components/ModalAdmin";
 
 const AdminProduct = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    apiRequest("admin/product", "get", {})
+      .then((res) => {
+        const results = res.data;
+        setData(results);
+      })
+      .catch((err) => {
+        alert(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  if (loading) {
+    return (
+      <h2
+        id="loading"
+        className="text-secondary font-medium text-lg bg-white text-center mt-80"
+      >
+        Loading Data...
+      </h2>
+    );
+  }
+
   return (
-    <div className="mx-auto grid base:grid-flow-col sm:grid-flow-col md:grid-flow-col xl:grid-flow-col gap-2">
-      <aside className="md:grid-col-span-1">
-        <Sidebar />
-      </aside>
+    <>
+      <Helmet>
+        <title>Admin | GunTour</title>
+        <meta name="description" content="App Description" />
+      </Helmet>
 
-      <div className="md:grid-col-span-2">
-        <NavbarAdmin />
-        <div className="divider text-[#F0F0F0]" />
+      <div className="mx-auto grid md:grid-flow-col gap-2">
+        <aside className="md:grid-col-span-1">
+          <Sidebar />
+        </aside>
 
-        <div className="mt-10">
-          <div className="col-span-2">
-            <div className="text-right flex items-center justify-end mt-3 font-medium text-base mr-11">
-              <ModalAdminProduct/>
-            </div>
+        <div className="md:grid-col-span-3">
+          <NavbarAdmin />
+          <div className="divider m-0 mr-14" />
 
-            <div className="overflow-x-auto py-6 mr-11">
-              <table className="table w-full">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>NAME</th>
-                    <th>PRICE</th>
-                    <th>DESCRIPTION</th>
-                    <th>ACTION</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th>1</th>
-                    <td>
-                      <div className="grid grid-cols-1 lg:grid-cols-2">
-                        <div className="flex">
-                          <img
-                            src={Tent}
-                            alt=""
-                            className="max-w-xl h-[56px] w-[56px] rounded-lg mr-10"
-                          />
-                          <p className="mt-4"> Camping Tent </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>100K/day</td>
-                    <td>See Details</td>
-                    <td>
-                      <div className="flex items-center text-sm">
-                      <button className="text-2xl text-gray-600 ml-4">
-                        <ModalEditAdminProduct/>
-                      </button>
-                        <button
-                          className="flex items justify-between px-2 py-2 text-sm font-medium leading-5  rounded-lg text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                          aria-label="Edit"
-                        >
-                          <AiFillDelete className="fill-[#CC0000] text-3xl mr-4" />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+          <div className="mt-10">
+            <div className="col-span-2">
+              <div className="text-right flex items-center justify-end mt-3 font-medium text-base mr-11">
+                <ModalAdminProduct />
+              </div>
+
+              <div className="overflow-x-auto py-6 mr-11">
+                <table className="table w-full">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th className="font-semibold text-base text-secondary">
+                        NAME
+                      </th>
+                      <th className="font-semibold text-base text-secondary">
+                        PRICE
+                      </th>
+                      <th className="font-semibold text-base text-secondary">
+                        DESCRIPTION
+                      </th>
+                      <th className="font-semibold text-base text-secondary">
+                        ACTION
+                      </th>
+                    </tr>
+                  </thead>
+                  <>
+                    {data.map((data) => (
+                      <tbody>
+                        <tr>
+                          <th>{data.id_product}</th>
+                          <td>
+                            <div className="grid grid-cols-1 lg:grid-cols-2">
+                              <div className="flex">
+                                <img
+                                  src={data.product_picture}
+                                  alt={data.product_name}
+                                  className="max-w-xl h-14 w-14 rounded-lg"
+                                />
+                                <p className="ml-5 mt-4">{data.product_name}</p>
+                              </div>
+                            </div>
+                          </td>
+                          <td>{data.rent_price}/day</td>
+                          <td>{data.detail}</td>
+                          <td>
+                            <div className="flex items-center text-sm">
+                              <button className="text-2xl text-gray-600">
+                                <ModalEditAdminProduct />
+                              </button>
+                              <button>
+                                <AiFillDelete className="fill-red-600 text-3xl mr-14 ml-4" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    ))}
+                  </>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

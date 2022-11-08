@@ -1,252 +1,131 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { WithRouter } from "utils/Navigation";
+import { Helmet } from "react-helmet";
+import { apiRequest } from "utils/apiRequest";
 
-import { InputCustom, InputForModal } from "components/Input";
+import { NavbarAdmin, Sidebar } from "components/Navbar";
+import { AiFillDelete } from "react-icons/ai";
+
 import {
-  ButtonCustom,
-} from "components/Button";
-
-import { AiFillEdit } from "react-icons/ai";
-
-const ModalEditRanger = () => {
-  return (
-    <div>
-      {/* The button to open modal */}
-      <label htmlFor="my-modal-6" className="cursor-pointer">
-        <AiFillEdit />
-      </label>
-
-      {/* Put this part before </body> tag */}
-      <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-      <div className="modal modal-bottom py-5 sm:modal-middle">
-        <div className="bg-white modal-box w-[600px] overflow-auto border p-6">
-          <h3 className="font-bold text-lg text-center">Edit Status Ranger</h3>
-          <hr className="text-line mt-6" />
-
-          {/* Form Product */}
-          <div className="mt-6 mb-5">
-            <p className="text-left font-normal text-lg">Status</p>
-            <select
-              // value={objSubmit.category}
-              // onChange={(e) => handleChange(e.target.value, "category")}
-              id="category"
-              class="w-full h-14 border pl-4 rounded-lg text-base mt-2 text-secondary"
-            >
-              <option value="avaliable">Avaliable</option>
-              <option value="duty">Duty</option>
-              <option value="off">Off Work</option>
-            </select>
-          </div>
-
-          <div>
-            <p className="text-left font-normal text-lg">Phone Number</p>
-            <InputCustom
-              // value={objSubmit.phone}
-              // onChange={(e) => handleChange(e.target.value, "phone")}
-              className="w-full h-14 border pl-4 rounded-lg text-base mt-2 text-secondary"
-              placeholder="085797556123"
-            />
-          </div>
-
-          {/* Button Add and Close */}
-          <hr className="mt-9" />
-          <div>
-            <ButtonCustom
-              // onClick={() => handleEditProduct()}
-              className="bg-primary mt-6 rounded-lg h-11 w-full flex items-center justify-center font-normal text-sm text-white cursor-pointer"
-              label="Edit Info"
-            />
-
-            <div className="modal-action">
-              <label htmlFor="my-modal-6">
-                <ButtonCustom
-                  className="border h-11 w-[464px] rounded-lg  flex items-center justify-center font-normal text-sm text-[#999999] cursor-pointer"
-                  label="Close"
-                />
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ModalAdminProduct = () => {
-  return (
-    <div>
-      <label
-        htmlFor="my-modal-3"
-        className="cursor-pointer font-medium text-lg text-center justify-center h-12 w-[183px] rounded-lg px-6 py-1 text-white bg-[#E5640E] transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-black"
-      >
-        Add Product
-      </label>
-
-      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box relative">
-          <h3 className="font-semibold text-xl text-secondary text-center">
-            Add Product
-          </h3>
-          <div className="divider text-[#E2E7E9]" />
-          <h3 className="font-normal text-[#373737] text-lg text-left">
-              Photo Product
-            </h3>
-            <div>
-      <button
-        id="select"
-        className="login font-normal text-lg text-center justify-center h-[48px] w-[135px] px-6 py-1 rounded-md text-white bg-[#d9d9d9d9] transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
-      >
-        <input className="font-normal text-lg" id="file_input" type="file">Select File</input>
-      </button>
-    </div>
-          <p className="font-normal text-lg text[#373737] text-left">
-            Product Name
-          </p>
-          <InputForModal />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Rent Price
-          </p>
-          <InputForModal />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Description
-          </p>
-          <input
-      className="h-[160px] w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
-      placeholder="120"
-      type="text"
-    />
-          <div className="divider text-[#E2E7E9]" />
-          <ButtonCustom
-            className="cursor-pointer font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white"
-            label="Save"
-          />
-          <br />
-          <label htmlFor="my-modal-3">
-            <ButtonCustom
-              className="cursor-pointer font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-[#999999] bg-white transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white"
-              label="Close"
-            />
-          </label>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ModalEditAdminProduct = () => {
-  return (
-    <div>
-      {/* The button to open modal */}
-      <label htmlFor="my-modal-9" className="cursor-pointer">
-        <AiFillEdit />
-      </label>
-      <input type="checkbox" id="my-modal-9" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box relative">
-          <h3 className="font-semibold text-xl text-secondary text-center">
-            Edit Product
-          </h3>
-          <div className="divider text-[#E2E7E9]" />
-          <h3 className="font-normal text-[#373737] text-lg text-left">
-              Photo Product
-            </h3>
-            <div>
-      <button
-        id="select"
-        className="login font-normal text-lg text-center justify-center h-[48px] w-[135px] px-6 py-1 rounded-md text-white bg-[#d9d9d9d9] transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
-      >
-        <input className="font-normal text-lg" id="file_input" type="file">Select File</input>
-      </button>
-              
-    </div>
-          <p className="font-normal text-lg text[#373737] text-left">
-            Product Name
-          </p>
-          <InputForModal />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Rent Price
-          </p>
-          <InputForModal />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Description
-          </p>
-          <input
-      className="h-[160px] w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
-      placeholder="120"
-      type="text"
-    />
-          <hr className="mt-9" />
-          <div>
-            <ButtonCustom
-              className="bg-primary mt-6 rounded-lg h-11 w-full flex items-center justify-center font-normal text-sm text-white cursor-pointer"
-              label="Save"
-            />
-
-            <div className="modal-action">
-              <label htmlFor="my-modal-9">
-                <ButtonCustom
-                  className="border h-11 w-[464px] rounded-lg  flex items-center justify-center font-normal text-sm text-[#999999] cursor-pointer"
-                  label="Close"
-                />
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ModalAdminUSer = () => {
-  return (
-    <div>
-      <label
-        htmlFor="my-modal-3"
-        className="cursor-pointer font-medium text-lg text-center justify-center h-12 w-[183px] rounded-lg px-6 py-1 text-white bg-[#E5640E] transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-black"
-      >
-        Edit Data
-      </label>
-
-      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box relative">
-          <h3 className="font-semibold text-xl text-secondary text-center">
-            Edit Climbers Data
-          </h3>
-          <div className="divider text-[#E2E7E9]" />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Is Climbers
-          </p>
-          <InputForModal />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Male Climbers
-          </p>
-          <InputForModal />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Female Climbers
-          </p>
-          <InputForModal />
-          <div className="divider text-[#E2E7E9]" />
-          <ButtonCustom
-            className="cursor-pointer font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white"
-            label="Save"
-          />
-          <br />
-          <label htmlFor="my-modal-3">
-            <ButtonCustom
-              className="cursor-pointer font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-[#999999] bg-white transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white"
-              label="Close"
-            />
-          </label>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export {
-  ModalEditRanger,
   ModalAdminProduct,
   ModalEditAdminProduct,
-  ModalAdminUSer,
+} from "components/ModalAdmin";
+
+const AdminProduct = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    apiRequest("admin/product", "get", {})
+      .then((res) => {
+        const results = res.data;
+        setData(results);
+      })
+      .catch((err) => {
+        alert(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  if (loading) {
+    return (
+      <h2
+        id="loading"
+        className="text-secondary font-medium text-lg bg-white text-center mt-80"
+      >
+        Loading Data...
+      </h2>
+    );
+  }
+
+  return (
+    <>
+      <Helmet>
+        <title>Admin | GunTour</title>
+        <meta name="description" content="App Description" />
+      </Helmet>
+
+      <div className="mx-auto grid md:grid-flow-col gap-2">
+        <aside className="md:grid-col-span-1">
+          <Sidebar />
+        </aside>
+
+        <div className="md:grid-col-span-3">
+          <NavbarAdmin />
+          <div className="divider m-0 mr-14" />
+
+          <div className="mt-10">
+            <div className="col-span-2">
+              <div className="text-right flex items-center justify-end mt-3 font-medium text-base mr-11">
+                <ModalAdminProduct />
+              </div>
+
+              <div className="overflow-x-auto py-6 mr-11">
+                <table className="table w-full">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th className="font-semibold text-base text-secondary">
+                        NAME
+                      </th>
+                      <th className="font-semibold text-base text-secondary">
+                        PRICE
+                      </th>
+                      <th className="font-semibold text-base text-secondary">
+                        DESCRIPTION
+                      </th>
+                      <th className="font-semibold text-base text-secondary">
+                        ACTION
+                      </th>
+                    </tr>
+                  </thead>
+                  <>
+                    {data.map((data) => (
+                      <tbody>
+                        <tr>
+                          <th>{data.id_product}</th>
+                          <td>
+                            <div className="grid grid-cols-1 lg:grid-cols-2">
+                              <div className="flex">
+                                <img
+                                  src={data.product_picture}
+                                  alt={data.product_name}
+                                  className="max-w-xl h-14 w-14 rounded-lg"
+                                />
+                                <p className="ml-5 mt-4">{data.product_name}</p>
+                              </div>
+                            </div>
+                          </td>
+                          <td>{data.rent_price}/day</td>
+                          <td>{data.detail}</td>
+                          <td>
+                            <div className="flex items-center text-sm">
+                              <button className="text-2xl text-gray-600">
+                                <ModalEditAdminProduct />
+                              </button>
+                              <button>
+                                <AiFillDelete className="fill-red-600 text-3xl mr-14 ml-4" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    ))}
+                  </>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
+
+export default WithRouter(AdminProduct);

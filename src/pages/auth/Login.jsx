@@ -47,9 +47,10 @@ const Login = () => {
       email: email,
       password: password,
     };
+
     apiRequest("login", "post", body)
       .then((res) => {
-        setCookie("token", res.data.token, { path: "/login" });
+        setCookie("token", res.data.token, { path: "/" });
         dispatch(handleAuth(true));
         Swal.fire({
           position: "center",
@@ -57,8 +58,14 @@ const Login = () => {
           title: "You're logged in !",
           showConfirmButton: true,
         });
-        navigate("/home");
+
+        if (res.data.role === "admin") {
+          navigate("/admin");
+        } else if (res.data.role === "pendaki") {
+          navigate("/home");
+        }
       })
+      
       .catch(() => {
         Swal.fire({
           icon: "error",
