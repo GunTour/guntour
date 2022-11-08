@@ -74,12 +74,12 @@ const Booking = () => {
           This Product here are optional
         </p>
 
-        <section className="grid grid-rows-2 grid-flow-col px-20 my-10 py-10">
+        <section className="grid grid-rows-1 grid-flow-col px-20 my-5">
           <div>
             {booking.map((data) => (
               <CardBooking
                 key={data.id_product}
-                image={data.image}
+                images={data.product_picture}
                 name={data.product_name}
                 price={data.rent_price}
                 removeBooking={() => handleRemove(data)}
@@ -87,8 +87,6 @@ const Booking = () => {
                 add={1}
               />
             ))}
-          </div>
-          <div className="py-5">
             <ButtonBooked />
           </div>
         </section>
