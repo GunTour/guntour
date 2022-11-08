@@ -75,7 +75,41 @@ const UsersPage = () => {
             <ModalAdminUSer />
           </div>
 
-          {/* {climber.map((data) => (
+          {Array.isArray(climber)
+            ? climber.map((data) => (
+                <article className="container mx-auto py-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
+                      <p className="font-semibold text-xl text-primary">
+                        IS CLIMBERS
+                      </p>
+                      <p className="font-semibold text-[32px] text-secondary">
+                        {data.is_climber}
+                      </p>
+                    </div>
+                    <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
+                      <p className="font-semibold text-xl text-primary">
+                        MALE CLIMBER
+                      </p>
+                      <p className="font-semibold text-[32px] text-secondary">
+                        {data.male_climber}
+                      </p>
+                    </div>
+                    <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
+                      <p className="font-semibold text-xl text-primary">
+                        FEMALE CLIMBER
+                      </p>
+                      <p className="font-semibold text-[32px] text-secondary">
+                        {data.female_climber}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              ))
+            : null}
+
+          {/*
+          {climber.map((data) => (
             <article className="container mx-auto py-5">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
@@ -98,7 +132,9 @@ const UsersPage = () => {
                   <p className="font-semibold text-xl text-primary">
                     FEMALE CLIMBER
                   </p>
-                  <p className="font-semibold text-[32px] text-secondary">{data.female_climber}</p>
+                  <p className="font-semibold text-[32px] text-secondary">
+                    {data.female_climber}
+                  </p>
                 </div>
               </div>
             </article>
@@ -127,7 +163,9 @@ const UsersPage = () => {
             </div>
           </article>
 
-          <p className="text-secondary font-semibold text-xl mb-2 mt-3">Climbers</p>
+          <p className="text-secondary font-semibold text-xl mb-2 mt-3">
+            Climbers
+          </p>
           <p className="font-normal text-base text-gray-400">
             More than 200+ users
           </p>
