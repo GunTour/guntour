@@ -18,7 +18,7 @@ import OrderHistory from "pages/OrderHistory";
 import BecomeRanger from "pages/BecomeRanger";
 import GuidePage from "pages/GuidePage";
 import NotFound from "pages/NotFound";
-import Admin from "pages/admin/AdminProduct";
+import AdminProduct from "pages/admin/AdminProduct";
 import AdminRanger from "pages/admin/AdminRanger";
 import UsersPage from "pages/admin/UsersPage";
 import About from "pages/About";
@@ -78,7 +78,7 @@ const Index = () => {
           />
           <Route
             path="/register"
-            element={checkToken ? <Register /> : <Login/>}
+            element={checkToken ? <Register /> : <Login />}
           />
           <Route
             path="/home"
@@ -109,7 +109,7 @@ const Index = () => {
             path="/guide"
             element={checkToken ? <GuidePage /> : <GuidePage />}
           />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={<AdminProduct />} />
           <Route path="/adminranger" element={<AdminRanger />} />
           <Route path="/users" element={<UsersPage />} />
           <Route path="/about" element={<About />} />
