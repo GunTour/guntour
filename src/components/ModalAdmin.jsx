@@ -416,39 +416,48 @@ const ModalAdminUSer = () => {
     <div>
       <label
         htmlFor="my-modal-3"
-        className="cursor-pointer font-medium text-lg text-center justify-center h-12 w-[183px] rounded-lg px-6 py-1 text-white bg-[#E5640E] transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-black"
+        className="cursor-pointer font-normal text-base text-center justify-center h-12 w-44 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
       >
         Edit Data
       </label>
 
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
       <div className="modal">
-        <div className="modal-box relative">
+        <div className="modal-box rounded-lg relative">
           <h3 className="font-semibold text-xl text-secondary text-center">
             Edit Climbers Data
           </h3>
-          <div className="divider text-[#E2E7E9]" />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Is Climbers
-          </p>
-          <InputForModal />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Male Climbers
-          </p>
-          <InputForModal />
-          <p className="font-normal text-lg text[#373737] text-left">
-            Female Climbers
-          </p>
-          <InputForModal />
-          <div className="divider text-[#E2E7E9]" />
+          <div className="divider m-0" />
+          <div className="mb-5">
+            <p className="font-normal text-lg text-secondary text-left mb-3 mt-6">
+              Is Climbers
+            </p>
+            <InputForModal placeholder="140" />
+          </div>
+
+          <div className="mb-5">
+            <p className="font-normal text-lg text-secondary text-left mb-3 mt-6">
+              Male Climbers
+            </p>
+            <InputForModal placeholder="90" />
+          </div>
+
+          <div className="mb-5">
+            <p className="font-normal text-lg text-secondary text-left mb-3 mt-6">
+              Female Climbers
+            </p>
+            <InputForModal placeholder="60" />
+          </div>
+
+          <div className="divider m-0" />
           <ButtonCustom
-            className="cursor-pointer font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white"
-            label="Save"
+            className="cursor-pointer font-medium text-center justify-center h-11 w-full mt-5 mb-3 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
+            label="Edit Info"
           />
-          <br />
+
           <label htmlFor="my-modal-3">
             <ButtonCustom
-              className="cursor-pointer font-medium text-center justify-center h-11 w-full px-6 py-1 rounded-lg text-[#999999] bg-white transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white"
+              className="cursor-pointer font-medium text-center justify-center h-11 w-full rounded-lg text-slate-400 border bg-white transform active:scale-95 transition-transform flex items-center"
               label="Close"
             />
           </label>
