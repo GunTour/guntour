@@ -84,7 +84,6 @@ const Index = () => {
             path="/home"
             element={checkToken ? <HomePage /> : <HomePage />}
           />
-          {/* <Route path="/home" element={<HomePage />} /> */}
           <Route
             path="/detail/:id"
             element={checkToken ? <DetailPage /> : <Login />}
