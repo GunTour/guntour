@@ -221,6 +221,7 @@ export const InputForModal = (props) => {
       onChange={props.onChange}
       id={props.id}
       placeholder={props.placeholder}
+      value={props.value}
       type="text"
     />
   );
