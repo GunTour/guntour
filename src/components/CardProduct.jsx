@@ -17,7 +17,7 @@ const CardProduct = (props) => {
       <figure className="px-3 pt-3">
         <img
           onClick={props.onDetail}
-          src={props.image}
+          src={props.img}
           alt="items"
           className="rounded-xl w-72 h-48"
         />
@@ -48,10 +48,10 @@ const CardBooking = (props) => {
   };
 
   return (
-    <section className="w-full bg-white rounded-lg">
+    <section className="w-full bg-white rounded-lg my-2">
       <div className="flex">
         <div>
-          <img className="h-40 w-44 ml-6" src={props.image} alt="items" />
+          <img className="h-40 w-44 ml-6" src={props.images} alt="items" />
         </div>
         <div className="flex justify-between w-full pl-4">
           <div className="ml-6 mt-6">

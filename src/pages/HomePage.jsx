@@ -50,7 +50,7 @@ const HomePage = (props) => {
   function validasiHandleBook(product) {
     const getProduct = localStorage.getItem("BookingNow");
     if (getProduct) {
-      const parsedProducts = JSON.parsed(getProduct);
+      const parsedProducts = JSON.parse(getProduct);
       parsedProducts.push(product);
       const temp = JSON.stringify(parsedProducts);
       dispatch(setBooking(parsedProducts));
