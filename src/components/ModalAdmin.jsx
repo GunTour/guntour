@@ -209,6 +209,38 @@ const ModalAdminProduct = () => {
 };
 
 const ModalEditAdminProduct = () => {
+  const [loading, setLoading] = useState(true);
+  const [objSubmit, setObjSubmit] = useState("");
+
+  const handleAddProduct = async () => {
+    setLoading(true);
+    const formData = new FormData();
+    for (const key in objSubmit) {
+      formData.append(key, objSubmit[key]);
+    }
+    apiRequest("admin/product", "put", objSubmit, "multipart/form-data")
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Data added successfully",
+        });
+        setObjSubmit({});
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "warning",
+          title: "There is an error please check again",
+        });
+      })
+      .finally(() => setLoading(false));
+  };
+
+  const handleChange = (value, key) => {
+    let temp = { ...objSubmit };
+    temp[key] = value;
+    setObjSubmit(temp);
+  };
+
   return (
     <div>
       <label htmlFor="my-modal-3" className="text-2xl text-gray-600">
@@ -220,7 +252,7 @@ const ModalEditAdminProduct = () => {
       <div className="modal">
         <div className="modal-box rounded-lg relative">
           <h3 className="font-semibold text-xl text-secondary text-center">
-            Edit Product
+            Data Product
           </h3>
           <div className="divider m-0" />
 
@@ -230,7 +262,14 @@ const ModalEditAdminProduct = () => {
               Photo Product
             </h3>
             <div className="text-left">
-              <input type="file" className="file-input w-full max-w-xs" />
+              <input
+                // value={objSubmit.product_picture}
+                onChange={(e) =>
+                  handleChange(e.target.files[0], "product_picture")
+                }
+                type="file"
+                className="file-input w-full max-w-xs"
+              />
             </div>
           </div>
 
@@ -239,7 +278,11 @@ const ModalEditAdminProduct = () => {
             <p className="font-normal text-lg text-secondary text-left mb-3">
               Product Name
             </p>
-            <InputForModal placeholder="Enter your product name" />
+            <InputForModal
+              value={objSubmit.product_name}
+              onChange={(e) => handleChange(e.target.value, "product_name")}
+              placeholder="Enter your product name"
+            />
           </div>
 
           {/* Input Rent Price*/}
@@ -247,7 +290,11 @@ const ModalEditAdminProduct = () => {
             <p className="font-normal text-lg text-secondary text-left mb-3">
               Rent Price
             </p>
-            <InputForModal placeholder="100K" />
+            <InputForModal
+              value={objSubmit.rent_price}
+              onChange={(e) => handleChange(e.target.value, "rent_price")}
+              placeholder="100K"
+            />
           </div>
 
           {/* Input Description*/}
@@ -256,6 +303,21 @@ const ModalEditAdminProduct = () => {
               Description
             </p>
             <textarea
+              value={objSubmit.detail}
+              onChange={(e) => handleChange(e.target.value, "detail")}
+              className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
+              placeholder="Enter your product description"
+            ></textarea>
+          </div>
+
+          {/* Input Note Warning*/}
+          <div className="mb-5">
+            <p className="font-normal text-lg text-secondary text-left mb-3">
+              Warning
+            </p>
+            <textarea
+              value={objSubmit.note}
+              onChange={(e) => handleChange(e.target.value, "note")}
               className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
               placeholder="Enter your product description"
             ></textarea>
@@ -263,8 +325,9 @@ const ModalEditAdminProduct = () => {
 
           <div className="divider m-0" />
           <ButtonCustom
+            onClick={() => handleAddProduct()}
             className="cursor-pointer font-medium text-center justify-center h-11 w-full mt-5 mb-3 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
-            label="Edit Product"
+            label="Save Data"
           />
 
           <label htmlFor="my-modal-3">
@@ -278,6 +341,75 @@ const ModalEditAdminProduct = () => {
     </div>
   );
 };
+//   return (
+//     <div>
+//       <label htmlFor="my-modal-3" className="text-2xl text-gray-600">
+//         <AiFillEdit />
+//       </label>
+
+//       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+
+//       <div className="modal">
+//         <div className="modal-box rounded-lg relative">
+//           <h3 className="font-semibold text-xl text-secondary text-center">
+//             Edit Product
+//           </h3>
+//           <div className="divider m-0" />
+
+//           {/* Add Photo Product */}
+//           <div className="mt-6 mb-5">
+//             <h3 className="font-normal text-secondary text-lg text-left mb-3">
+//               Photo Product
+//             </h3>
+//             <div className="text-left">
+//               <input type="file" className="file-input w-full max-w-xs" />
+//             </div>
+//           </div>
+
+//           {/* Input Product Name*/}
+//           <div className="mb-5">
+//             <p className="font-normal text-lg text-secondary text-left mb-3">
+//               Product Name
+//             </p>
+//             <InputForModal placeholder="Enter your product name" />
+//           </div>
+
+//           {/* Input Rent Price*/}
+//           <div className="mb-5">
+//             <p className="font-normal text-lg text-secondary text-left mb-3">
+//               Rent Price
+//             </p>
+//             <InputForModal placeholder="100K" />
+//           </div>
+
+//           {/* Input Description*/}
+//           <div className="mb-5">
+//             <p className="font-normal text-lg text-secondary text-left mb-3">
+//               Description
+//             </p>
+//             <textarea
+//               className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
+//               placeholder="Enter your product description"
+//             ></textarea>
+//           </div>
+
+//           <div className="divider m-0" />
+//           <ButtonCustom
+//             className="cursor-pointer font-medium text-center justify-center h-11 w-full mt-5 mb-3 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
+//             label="Edit Product"
+//           />
+
+//           <label htmlFor="my-modal-3">
+//             <ButtonCustom
+//               className="cursor-pointer font-medium text-center justify-center h-11 w-full rounded-lg text-slate-400 border bg-white transform active:scale-95 transition-transform flex items-center"
+//               label="Close"
+//             />
+//           </label>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 const ModalAdminUSer = () => {
   return (
