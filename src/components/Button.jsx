@@ -200,7 +200,7 @@ export const ButtonCancel = () => {
     <div>
       <button
         id="cancel"
-        className="login font-normal text-center justify-center h-14 w-64 rounded-lg border border-slate text-slate-400 transform active:scale-95 transition-transform flex items-center"
+        className="login font-normal text-center justify-center h-14 w-full rounded-lg border border-slate text-slate-400 transform active:scale-95 transition-transform flex items-center"
       >
         <span>Cancel</span>
       </button>

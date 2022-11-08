@@ -26,62 +26,46 @@ const BecomeRanger = () => {
           <img className="w-full" src={Background} alt="Background" />
         </header>
 
-        <section className="bg-white mt-14 mx-48 rounded-lg py-7 px-8 mb-52">
-          <h5 className="font-semibold text-xl text-secondary">
-            Please Fill In The Data Completely
-          </h5>
-          <div className="divider m-0 mt-4" />
-          <div>
-            <p className="font-normal text-lg text-secondary mt-7 mb-3">
-              Full Name
-            </p>
+        <main className="grid grid-cols-1 mx-20 py-20">
+          <section className="grid grid-flow-row">
+            <h5 className="font-semibold text-xl text-secondary">
+              Please Fill In The Data Completely
+            </h5>
+            <div className="divider" />
+            <p className="font-normal text-lg text-secondary pb-2">Full Name</p>
             <InputFullNameRangers />
-          </div>
-          <div>
-            <p className="font-normal text-lg text-secondary mt-7 mb-3">
+            <p className="font-normal text-lg text-secondary py-2">
               Phone Number
             </p>
             <InputPhoneNumber />
-          </div>
-          <div>
-            <p className="font-normal text-lg text-secondary mt-7 mb-3">
+            <p className="font-normal text-lg text-secondary py-2">
               Place & Date of Birth
             </p>
             <InputPlaceDateBirth />
-          </div>
-          <div>
-            <p className="font-normal text-lg text-secondary mt-7 mb-3">
-              Gender
-            </p>
+            <p className="font-normal text-lg text-secondary py-2">Gender</p>
             <InputGender />
-          </div>
-          <div>
-            <p className="font-normal text-lg text-secondary mt-7 mb-3">
-              Gender
-            </p>
+            <p className="font-normal text-lg text-secondary py-2">Address</p>
             <InputAddress />
-          </div>
-          <div>
-            <p className="font-normal text-lg text-secondary mt-7 mb-3">
+            <p className="font-normal text-lg text-secondary py-2">
               Supporting documents
             </p>
-            <input type="file" className="file-input w-full max-w-xs" />
-          </div>
-          <div>
-            <p className="font-light text-sm text-[#A3A3A3] mb-2 mt-3">
+            <input type="file" className="file-input" />
+            <p className="font-light text-sm text-[#A3A3A3] py-2">
               *Dokumen pendukung seperti lamaran pengajuan pekerjaan secara
               lengkap berbentuk pdf
             </p>
-            <p className="font-light text-sm text-[#A3A3A3] mb-7">
+            <p className="font-light text-sm text-[#A3A3A3]">
               *Proses seleksi tidak dikenakan biaya
             </p>
-          </div>
-          <div className="divider m-0" />
-          <div className="mt-9 mb-6">
-            <ButtonSubmitData />
-          </div>
-          <ButtonCancel />
-        </section>
+            <div className="divider" />
+            <div>
+              <ButtonSubmitData />
+            </div>
+            <div className="pt-2">
+              <ButtonCancel />
+            </div>
+          </section>
+        </main>
       </Layout>
     </>
   );
