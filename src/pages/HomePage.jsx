@@ -5,6 +5,7 @@ import { apiRequest } from "utils/apiRequest";
 import { useDispatch } from "react-redux";
 import { handleAuth } from "utils/redux/reducers/reducer";
 import { useCookies } from "react-cookie";
+import { setBooking } from "utils/redux/reducers/reducer";
 
 import Hero from "components/Hero";
 import Layout from "components/Layout";
@@ -46,6 +47,22 @@ const HomePage = (props) => {
       });
   };
 
+  function validasiHandleBook(product) {
+    const getProduct = localStorage.getItem("BookingNow");
+    if (getProduct) {
+      const parsedProducts = JSON.parsed(getProduct);
+      parsedProducts.push(product);
+      const temp = JSON.stringify(parsedProducts);
+      dispatch(setBooking(parsedProducts));
+      localStorage.setItem("BookingNow", temp);
+    } else {
+      const temp = JSON.stringify([product]);
+      dispatch(setBooking([product]));
+      localStorage.setItem("BookingNow", temp);
+    }
+    alert("Added to Booking Now");
+  }
+
   return (
     <Layout>
       <div>
@@ -70,6 +87,7 @@ const HomePage = (props) => {
                 name={data.product_name}
                 price={data.rent_price}
                 onDetail={() => props.navigate(`/detail/${data.id_product}`)}
+                handleBook={() => validasiHandleBook(data)}
               />
             ))}
           </>

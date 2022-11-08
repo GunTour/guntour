@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import items from "assets/items-tenda.svg";
+import React from "react";
 import booking from "assets/booking.svg";
 import {
   ButtonBookNow,
@@ -8,36 +7,17 @@ import {
   ButtonDownloadFile,
 } from "components/Button";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import { AiFillMinusCircle } from "react-icons/ai";
 import { AiFillPlusCircle } from "react-icons/ai";
-import Swal from "sweetalert2";
 
 const CardProduct = (props) => {
-  const isLoggedin = useSelector((state) => state.data.isLoggedin);
-  const [loading, setLoading] = useState(false);
-
-  const validateBookNow = async (e) => {
-    setLoading(true);
-    e.preventDefault();
-
-    if (!isLoggedin) {
-      Swal.fire({
-        position: "center",
-        icon: "info",
-        title: "You have to login first!",
-        showConfirmButton: true,
-      });
-    }
-  };
-
   return (
     <section className="card w-72 bg-white">
       <figure className="px-3 pt-3">
         <img
           onClick={props.onDetail}
-          src={props.img}
+          src={props.image}
           alt="items"
           className="rounded-xl w-72 h-48"
         />
@@ -54,42 +34,62 @@ const CardProduct = (props) => {
           <span className="text-secondary font-medium text-xl">/day</span>
         </p>
         <div className="card-actions justify-center w-full">
-          <ButtonBookNow onClick={(e) => validateBookNow(e)} />
+          <ButtonBookNow onClick={props.handleBook} />
         </div>
       </div>
     </section>
   );
 };
 
-const CardBooking = () => {
+const CardBooking = (props) => {
+  const [counter, setCounter] = React.useState(1);
+  let handleCounter = (value) => {
+    setCounter(counter + value);
+  };
+
   return (
     <section className="w-full bg-white rounded-lg">
       <div className="flex">
         <div>
-          <img className="h-40 w-44 ml-6" src={items} alt="items" />
+          <img className="h-40 w-44 ml-6" src={props.image} alt="items" />
         </div>
         <div className="flex justify-between w-full pl-4">
           <div className="ml-6 mt-6">
             <h2 className="card-title font-semibold text-2xl text-secondary">
-              Camping Tent
+              {props.name}
             </h2>
             <p className="font-medium text-xl">
               <span className="text-primary font-semibold text-xl">Rp </span>
-              <span className="text-secondary font-semibold text-xl">100K</span>
+              <span className="text-secondary font-semibold text-xl">
+                {props.price}
+              </span>
               <span className="text-secondary font-medium text-lg">/day</span>
             </p>
             <div className="flex mt-4">
               <button>
-                <AiFillMinusCircle className="mr-3.5 rounded-full bg-primary text-3xl text-white mt-1" />
+                <AiFillMinusCircle
+                  className="mr-3.5 rounded-full bg-primary text-3xl text-white mt-1"
+                  onClick={() => handleCounter(props.sub)}
+                />
               </button>
-              <p className="text-lg font-medium w-auto text-center mt-1.5">1</p>
+              <p className="text-lg font-medium w-auto text-center mt-1.5">
+                {counter}
+              </p>
               <button>
-                <AiFillPlusCircle className="text-primary text-3xl mt-1 ml-3.5" />
+                <AiFillPlusCircle
+                  className="text-primary text-3xl mt-1 ml-3.5"
+                  onClick={() => handleCounter(props.add)}
+                />
               </button>
             </div>
           </div>
           <div className="mr-6 text-right">
-            <button className="text-primary mt-28">Remove Product</button>
+            <button
+              className="text-primary mt-28"
+              onClick={props.removeBooking}
+            >
+              Remove Product
+            </button>
           </div>
         </div>
       </div>
