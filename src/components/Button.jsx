@@ -200,7 +200,7 @@ export const ButtonCancel = () => {
     <div>
       <button
         id="cancel"
-        className="login font-normal text-center justify-center h-14 w-full rounded-lg border border-slate text-slate-400 transform active:scale-95 transition-transform flex items-center"
+        className="login font-normal text-center justify-center h-[48px] w-[265px] rounded-lg border border-slate text-slate-400 transform active:scale-95 transition-transform flex items-center"
       >
         <span>Cancel</span>
       </button>
@@ -211,7 +211,7 @@ export const ButtonCancel = () => {
 export const ButtonPay = () => {
   return (
     <div>
-      <button className="login font-medium text-center justify-center h-12 w-64 px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
+      <button className="login font-medium text-center justify-center h-[48px] w-[265px] px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
         <span>Pay Now</span>
       </button>
     </div>
