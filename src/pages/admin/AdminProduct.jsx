@@ -20,10 +20,6 @@ const AdminProduct = () => {
     fetchData();
   }, [page]);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     apiRequest(`admin/product?page=${page}`, "get", {})
       .then((res) => {
