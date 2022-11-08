@@ -96,7 +96,7 @@ const ModalAdminProduct = () => {
         id="select"
         className="login font-normal text-lg text-center justify-center h-[48px] w-[135px] px-6 py-1 rounded-md text-white bg-[#d9d9d9d9] transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
       >
-        <span className="font-normal text-lg">Select File</span>
+        <input className="font-normal text-lg" id="file_input" type="file">Select File</input>
       </button>
     </div>
           <p className="font-normal text-lg text[#373737] text-left">
@@ -155,8 +155,9 @@ const ModalEditAdminProduct = () => {
         id="select"
         className="login font-normal text-lg text-center justify-center h-[48px] w-[135px] px-6 py-1 rounded-md text-white bg-[#d9d9d9d9] transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
       >
-        <span className="font-normal text-lg">Select File</span>
+        <input className="font-normal text-lg" id="file_input" type="file">Select File</input>
       </button>
+              
     </div>
           <p className="font-normal text-lg text[#373737] text-left">
             Product Name

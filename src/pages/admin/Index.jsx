@@ -9,7 +9,7 @@ import { ModalAdminProduct, ModalEditAdminProduct } from "components/ModalAdmin"
 
 const AdminProduct = () => {
   return (
-    <div className="mx-auto grid md:grid-flow-col gap-2">
+    <div className="mx-auto grid base:grid-flow-col sm:grid-flow-col md:grid-flow-col xl:grid-flow-col gap-2">
       <aside className="md:grid-col-span-1">
         <Sidebar />
       </aside>
