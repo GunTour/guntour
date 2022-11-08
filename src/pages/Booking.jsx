@@ -1,6 +1,8 @@
 import React from "react";
 import { WithRouter } from "utils/Navigation";
 import { Helmet } from "react-helmet";
+import { useSelector, useDispatch } from "react-redux";
+import { setBooking } from "utils/redux/reducers/reducer";
 
 import Layout from "components/Layout";
 import Background from "assets/header-booking.jpg";
@@ -14,6 +16,21 @@ import { CardBooking } from "components/CardProduct";
 import { ButtonBooked } from "components/Button";
 
 const Booking = () => {
+  const booking = useSelector((state) => state.data.booking);
+  const dispatch = useDispatch();
+
+  function handleRemove(bookingNow) {
+    let filtered = booking.filter(({ id }) => {
+      return id !== bookingNow.id;
+    });
+    filtered.join(" - ");
+    const newList = JSON.stringify(filtered);
+    localStorage.setItem("BookingNow", newList);
+    dispatch(setBooking(filtered));
+    localStorage.removeItem(filtered);
+    alert("Remove Success");
+  }
+
   return (
     <>
       <Helmet>
@@ -59,7 +76,17 @@ const Booking = () => {
 
         <section className="grid grid-rows-2 grid-flow-col px-20 my-10 py-10">
           <div>
-            <CardBooking />
+            {booking.map((data) => (
+              <CardBooking
+                key={data.id_product}
+                image={data.image}
+                name={data.product_name}
+                price={data.rent_price}
+                removeBooking={() => handleRemove(data)}
+                sub={-1}
+                add={1}
+              />
+            ))}
           </div>
           <div className="py-5">
             <ButtonBooked />

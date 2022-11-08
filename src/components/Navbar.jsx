@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate, Link } from "react-router-dom";
