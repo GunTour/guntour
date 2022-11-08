@@ -16,7 +16,7 @@ import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 
 import Community from "assets/img-community.png";
 
-const Index = () => {
+const HomeAnonym = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [cookies, removeCookies] = useCookies();
@@ -171,4 +171,4 @@ const Index = () => {
   );
 };
 
-export default WithRouter(Index);
+export default WithRouter(HomeAnonym);
