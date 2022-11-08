@@ -14,16 +14,34 @@ import {
 const AdminProduct = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    fetchData();
+  }, [page]);
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    apiRequest("admin/product", "get", {})
+    apiRequest(`admin/product?page=${page}`, "get", {})
       .then((res) => {
         const results = res.data;
         setData(results);
+      })
+      .catch((err) => {
+        alert(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const handleDelete = (id_product) => {
+    apiRequest(`admin/product/${id_product}`, "delete", {})
+      .then((res) => {
+        fetchData();
       })
       .catch((err) => {
         alert(err);
@@ -109,7 +127,9 @@ const AdminProduct = () => {
                               <button className="text-2xl text-gray-600">
                                 <ModalEditAdminProduct />
                               </button>
-                              <button>
+                              <button
+                                onClick={() => handleDelete(data.id_product)}
+                              >
                                 <AiFillDelete className="fill-red-600 text-3xl mr-14 ml-4" />
                               </button>
                             </div>
