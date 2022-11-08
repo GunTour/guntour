@@ -1,17 +1,23 @@
 import React from "react";
 import { WithRouter } from "utils/Navigation";
+import { Helmet } from "react-helmet";
+
+import Layout from "components/Layout";
 
 import Background from "assets/bgabout.svg";
 import Sejarah from "assets/sejarah.jpg";
 import Visi from "assets/visi.jpg";
-import { FaHiking, FaSignature } from "react-icons/fa";
+import { FaHiking } from "react-icons/fa";
 import { GiCampingTent, GiHills } from "react-icons/gi";
-import Layout from "components/Layout";
-import { HiMenuAlt1 } from "react-icons/hi";
 
 const About = () => {
   return (
     <>
+      <Helmet>
+        <title>About | GunTour</title>
+        <meta name="description" content="App Description" />
+      </Helmet>
+
       <Layout>
         <section className="carousel w-full">
           <figure className="carousel-item relative w-full">
@@ -19,8 +25,8 @@ const About = () => {
           </figure>
         </section>
 
-        <main className="grid md:grid-flow-col gap-4 py-5">
-          <article className="md:grid-col-span-2 mx-10">
+        <main className="grid md:grid-flow-col gap-36 py-5 mt-20 mx-20">
+          <article className="md:grid-col-span-2">
             <h1 className="font-bold text-3xl text-secondary">
               SEJARAH GUNUNG
             </h1>
@@ -58,13 +64,13 @@ const About = () => {
           </aside>
         </main>
 
-        <main className="grid md:grid-flow-col gap-4 py-5">
+        <main className="grid md:grid-flow-col gap-36 py-5 mt-14 mx-20">
           <aside className="md:grid-col-span-1">
-            <img className="w-[550px] h-[260px]" src={Visi} alt="visi" />
+            <img className="w-[550px h-[260px]" src={Visi} alt="visi" />
           </aside>
 
-          <article className="md:grid-col-span-2 mx-10 text-right">
-            <h1 className="font-bold mr-24 text-3xl text-secondary mx-10">
+          <article className="md:grid-col-span-2 text-right">
+            <h1 className="font-bold text-3xl text-secondary">
               VISI DAN MISI
             </h1>
 
@@ -81,34 +87,36 @@ const About = () => {
           </article>
         </main>
 
-        <h1 className="font-bold text-3xl text-secondary text-center py-5">
-          PESONA
-          <span className="text-primary"> GUNUNG </span>
-          GEDE
-        </h1>
+        <section className="mt-14 mb-28">
+          <h1 className="font-bold text-3xl text-secondary text-center py-5">
+            PESONA
+            <span className="text-primary"> GUNUNG </span>
+            GEDE
+          </h1>
 
-        <div className="mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="grid grid-flow-row justify-center">
-              <GiCampingTent className="w-[160px] h-[130px] text-[#494949]" />
-              <p className="font-semibold text-2xl text-secondary text-center py-5">
-                Camping
-              </p>
-            </div>
-            <div className="grid grid-flow-row justify-center">
-              <GiHills className="w-[160px] h-[130px] text-[#494949]" />
-              <p className="font-semibold text-2xl text-secondary text-center py-5">
-                Curug
-              </p>
-            </div>
-            <div className="grid grid-flow-row justify-center">
-              <FaHiking className="w-[160px] h-[130px] text-[#494949]" />
-              <p className="font-semibold text-2xl text-secondary text-center py-5">
-                Hiking
-              </p>
+          <div className="mx-auto mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-flow-row justify-center">
+                <GiCampingTent className="w-40 h-32 text-slate-700" />
+                <p className="font-semibold text-xl text-secondary text-center py-5">
+                  Camping
+                </p>
+              </div>
+              <div className="grid grid-flow-row justify-center">
+                <GiHills className="w-40 h-32 text-slate-700" />
+                <p className="font-semibold text-xl text-secondary text-center py-5">
+                  Curug
+                </p>
+              </div>
+              <div className="grid grid-flow-row justify-center">
+                <FaHiking className="w-40 h-32 text-slate-700" />
+                <p className="font-semibold text-xl text-secondary text-center py-5">
+                  Hiking
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </Layout>
     </>
   );

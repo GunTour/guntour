@@ -8,7 +8,7 @@ const ConfirmBooking = () => {
   return (
     <Layout>
       <main className="grid grid-cols-1 mx-20 py-20">
-        <section className="grid grid-flow-row">
+        <section className="grid grid-flow-row bg-white py-7 px-8 rounded-lg">
           <h5 className="font-semibold text-xl text-secondary">
             Payment Description
           </h5>
