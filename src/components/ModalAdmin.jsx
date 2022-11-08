@@ -129,9 +129,9 @@ const ModalAdminProduct = () => {
             </h3>
             <div className="text-left">
               <input
-                value={objSubmit.product_picture}
+                // value={objSubmit.product_picture}
                 onChange={(e) =>
-                  handleChange(e.target.value, "product_picture")
+                  handleChange(e.target.files[0], "product_picture")
                 }
                 type="file"
                 className="file-input w-full max-w-xs"

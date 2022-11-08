@@ -214,6 +214,14 @@ const NavbarAdmin = () => {
 };
 
 const Sidebar = () => {
+  const [cookies, removeCookie] = useCookies();
+  const navigate = useNavigate();
+
+  const handleLogoutAdmin = () => {
+    removeCookie("token");
+    navigate("/login");
+  };
+
   return (
     <div className="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -257,7 +265,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="text-white mt-72">
-            <button className="active:bg-slate-800">
+            <button onClick={() => handleLogoutAdmin()} className="active:bg-slate-800">
               <RiLogoutBoxLine className="fill-white text-2xl" />
               <p>Logout</p>
             </button>
