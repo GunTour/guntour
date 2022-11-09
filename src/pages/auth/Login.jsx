@@ -61,7 +61,7 @@ const Login = () => {
 
         if (res.data.role === "admin") {
           navigate("/admin");
-        } else {
+        } else if (res.data.role === "pendaki") {
           navigate("/home");
         }
       })
