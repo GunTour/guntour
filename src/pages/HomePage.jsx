@@ -22,11 +22,13 @@ const HomePage = (props) => {
   const dispatch = useDispatch();
   const [cookies, removeCookies] = useCookies();
   const [data, setData] = useState([]);
+  const [climber, setClimber] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     fetchData();
+    handleClimber();
   }, [page]);
 
   const fetchData = async () => {
@@ -43,6 +45,23 @@ const HomePage = (props) => {
           navigate("/login");
         }
         alert(data.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const handleClimber = async () => {
+    apiRequest("climber", "get", {})
+      .then((res) => {
+        const results = res.data;
+        if (results.length > 0) {
+          setClimber(results);
+        }
+        console.log(results);
+      })
+      .catch((err) => {
+        alert(err);
       })
       .finally(() => {
         setLoading(false);
@@ -94,7 +113,7 @@ const HomePage = (props) => {
         <title>Home | GunTour</title>
         <meta name="description" content="App Description" />
       </Helmet>
-      
+
       <Layout>
         <div>
           <Hero />
@@ -159,6 +178,36 @@ const HomePage = (props) => {
             </aside>
 
             <article className="md:grid-col-span-2 py-28 items-center">
+              <>
+                {climber.map((data) => (
+                  <div className="flex flex-wrap items-center">
+                    <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start">
+                      <div className="bg-[#FEF3EB] p-4 rounded-lg">
+                        <BsPeopleFill className="text-primary text-4xl" />
+                      </div>
+                      <p className="font-bold text-xl ml-3">
+                        {data.is_climber} <br /> IS CLIMBERS
+                      </p>
+                    </div>
+                    <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start md:ml-0 lg:ml-10 xl:ml-10 sm:ml-0 ml-0">
+                      <div className="bg-[#FEF3EB] p-4 rounded-lg">
+                        <BsPeopleFill className="text-primary text-4xl" />
+                      </div>
+                      <p className="font-bold text-xl ml-3">
+                        {data.male_climber} <br /> MALE CLIMBER
+                      </p>
+                    </div>
+                    <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start md:ml-0 lg:ml-10 xl:ml-10 sm:ml-0 ml-0">
+                      <div className="bg-[#FEF3EB] p-4 rounded-lg">
+                        <BsPeopleFill className="text-primary text-4xl" />
+                      </div>
+                      <p className="font-bold text-xl ml-3">
+                        {data.female_climber} <br /> FEMALE CLIMBER
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </>
               <div className="flex flex-wrap items-center">
                 <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start">
                   <div className="bg-[#FEF3EB] p-4 rounded-lg">
