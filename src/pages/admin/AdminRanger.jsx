@@ -11,8 +11,8 @@ import { ModalEditRanger } from "components/ModalAdmin";
 const AdminRanger = () => {
   const [data, setData] = useState([]);
   const [ranger, setRanger] = useState([]);
-  // const [accept, seAccept] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [objSubmit, setObjSubmit] = useState("");
 
   useEffect(() => {
     handleApplyRanger();
@@ -63,6 +63,30 @@ const AdminRanger = () => {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const handleStatus = async (id_ranger) => {
+    setLoading(true);
+    const formData = new FormData();
+    for (const key in objSubmit) {
+      formData.append(key, objSubmit[key]);
+    }
+    apiRequest(`admin/ranger/${id_ranger}`, "put", objSubmit)
+      .then((res) => {
+        handleRanger();
+      })
+      .catch((err) => {
+        alert(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const handleChange = (value, key) => {
+    let temp = { ...objSubmit };
+    temp[key] = value;
+    setObjSubmit(temp);
   };
 
   if (loading) {
@@ -131,7 +155,13 @@ const AdminRanger = () => {
                       <td>{data.status}</td>
                       <td>
                         <button className="text-2xl text-gray-600 ml-4">
-                          <ModalEditRanger />
+                          <ModalEditRanger
+                            value={objSubmit.status}
+                            onChange={(e) =>
+                              handleChange(e.target.value, "status")
+                            }
+                            onStatus={() => handleStatus(data.id_ranger)}
+                          />
                         </button>
                       </td>
                     </tr>
