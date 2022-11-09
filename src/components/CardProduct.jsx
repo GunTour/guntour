@@ -120,6 +120,40 @@ const CardOrderProgress = () => {
   );
 };
 
+const CardOrderBooking = (props) => {
+  return (
+    <section className="card w-72 bg-white ">
+      <figure className="px-3 pt-3">
+        <img src={booking} alt="booking" className="rounded-xl w-72 h-48" />
+      </figure>
+      <div className="card-body items-left text-left px-4 py-[14px]">
+        <h2 className="card-title font-semibold text-2xl text-secondary">
+          Your Booking #{props.idBooking}
+        </h2>
+        <p className="font-medium text-xl text-secondary">Rp. {props.priceBooking}</p>
+        <p className="py-1 px-2 w-32 h-9 rounded-lg bg-[#FFF1CC] text-primary text-center font-medium text-base">
+          {props.statusBooking}
+        </p>
+        <div className="card-actions justify-center">
+          <a href={props.payBooking}> 
+            <button className="login font-medium text-center justify-center h-[48px] w-[265px] px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
+              Pay Now
+            </button>
+          </a>
+          <div>
+            <button
+              id="cancel"
+              className="login font-normal text-center justify-center h-[48px] w-[265px] rounded-lg border border-slate text-slate-400 transform active:scale-95 transition-transform flex items-center"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const CardOrderCancel = () => {
   return (
     <section className="card w-72 bg-white ">
@@ -236,6 +270,7 @@ const CardGarbage = () => {
 
 export {
   CardProduct,
+  CardOrderBooking,
   CardBooking,
   CardOrderProgress,
   CardOrderCancel,
