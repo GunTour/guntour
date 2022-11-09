@@ -28,6 +28,18 @@ const HomeAnonym = () => {
     fetchData();
   }, [page]);
 
+  const previousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+    fetchData(page);
+  };
+
+  const nextPage = () => {
+    setPage(page + 1);
+    fetchData(page);
+  };
+
   const fetchData = async () => {
     apiRequest(`product?page=${page}`, "get", {})
       .then((res) => {
@@ -47,6 +59,17 @@ const HomeAnonym = () => {
         setLoading(false);
       });
   };
+
+  if (loading) {
+    return (
+      <h2
+        id="loading"
+        className="text-secondary font-medium text-lg bg-white text-center mt-80"
+      >
+        Loading Content...
+      </h2>
+    );
+  }
 
   return (
     <>
@@ -84,10 +107,16 @@ const HomeAnonym = () => {
         </div>
 
         <div className="flex justify-end mx-10 md:mx-10 lg:mx-20 2xl:mx-20 gap-8 py-5">
-          <button className="w-14 h-14 rounded bg-none border-2 border-primary place-content-center grid content-center">
+          <button
+            onClick={(value) => previousPage(value)}
+            className="w-14 h-14 rounded bg-none border-2 border-primary place-content-center grid content-center"
+          >
             <HiArrowLeft className="text-primary text-2xl" />
           </button>
-          <button className="w-14 h-14 rounded bg-none border-2 border-primary place-content-center grid content-center">
+          <button
+            onClick={(value) => nextPage(value)}
+            className="w-14 h-14 rounded bg-none border-2 border-primary place-content-center grid content-center"
+          >
             <HiArrowRight className="text-primary text-2xl" />
           </button>
         </div>
