@@ -11,6 +11,7 @@ import { ModalEditRanger } from "components/ModalAdmin";
 const AdminRanger = () => {
   const [data, setData] = useState([]);
   const [ranger, setRanger] = useState([]);
+  // const [accept, seAccept] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -37,6 +38,24 @@ const AdminRanger = () => {
       .then((res) => {
         const results = res.data_apply.data;
         setData(results);
+      })
+      .catch((err) => {
+        alert(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const handleAccept = (id_ranger) => {
+    const body = {
+      status: "",
+      status_apply: "accepted",
+    };
+
+    apiRequest(`admin/ranger/${id_ranger}`, "put", body)
+      .then((res) => {
+        handleApplyRanger();
       })
       .catch((err) => {
         alert(err);
@@ -169,7 +188,10 @@ const AdminRanger = () => {
                         </a>
                       </td>
                       <td>
-                        <button className="text-2xl text-green-400">
+                        <button
+                          onClick={() => handleAccept(data.id_ranger)}
+                          className="text-2xl text-green-400"
+                        >
                           <MdOutlineDownloadDone />
                         </button>
                         <button className="text-2xl text-red-600 ml-4">
