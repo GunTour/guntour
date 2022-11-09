@@ -20,9 +20,11 @@ const Booking = () => {
   const booking = useSelector((state) => state.data.booking);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [date, setDate] = useState("");
+  const [dateStart, setDateStart] = useState("");
+  const [dateEnd, setDateEnd] = useState("");
   const [entrance, setEntrance] = useState("");
-  const [ranger, setRanger] = useState("");
+  const [idRanger, setidRanger] = useState("");
+
   const [person, setPerson] = useState("");
 
   function handleRemove(bookingNow) {
@@ -38,18 +40,24 @@ const Booking = () => {
   }
 
   function validasiHandleBookedNow(product) {
-    const getProduct = localStorage.getItem("ConfirmBook");
-    if (getProduct) {
-      const parsedProducts = JSON.parse(getProduct);
-      parsedProducts.push(product);
-      const temp = JSON.stringify(parsedProducts);
-      dispatch(setBooking(parsedProducts));
-      localStorage.setItem("ConfirmBook", temp);
-    } else {
-      const temp = JSON.stringify([product]);
-      dispatch(setBooking([product]));
-      localStorage.setItem("ConfirmBook", temp);
-    }
+    const sel = document.getElementById("categoryRanger");
+    const ranger_name = sel.options[sel.selectedIndex].text;
+    var formBooking = [
+      {
+        date_start: dateStart,
+        date_end: dateEnd,
+        entrance: entrance,
+        ticket: person,
+        product,
+        id_ranger: idRanger,
+        ranger_name: ranger_name,
+        gross_amount: 200000,
+      },
+    ];
+    localStorage.removeItem("ConfirmBook");
+    const temp = JSON.stringify(formBooking);
+    dispatch(setBooking(formBooking));
+    localStorage.setItem("ConfirmBook", temp);
     navigate("/confirm");
   }
 
@@ -66,42 +74,45 @@ const Booking = () => {
         </header>
 
         <main className="mx-auto grid md:grid-flow-col gap-4 px-20 my-10">
-          <article className="md:grid-col-span-2">
-            <section className="grid md:grid-rows-1 gap-2">
-              <p className="font-medium text-xl text-secondary">From Date</p>
-              <InputDate
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              />
-              <p className="font-medium text-xl text-secondary">Entrance</p>
-              <InputSelectEntrance
-                value={entrance}
-                onChange={(e) => setEntrance(e.target.value)}
-              />
-              <p className="font-medium text-xl text-secondary">Rangers</p>
-              <InputSelectRanger
-                value={ranger}
-                onChange={(e) => setRanger(e.target.value)}
-              />
-            </section>
-          </article>
-
-          <article className="md:grid-col-span-2">
-            <section className="grid md:grid-rows-1 gap-2">
-              <p className="font-medium text-xl text-secondary">To Date</p>
-              <InputDate
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              />
-              <p className="font-medium text-xl text-secondary">
-                Number of Person
-              </p>
-              <InputSelectPerson
-                value={person}
-                onChange={(e) => setPerson(e.target.value)}
-              />
-            </section>
-          </article>
+          <>
+            <article className="md:grid-col-span-2">
+              <section className="grid md:grid-rows-1 gap-2">
+                <p className="font-medium text-xl text-secondary">From Date</p>
+                <InputDate
+                  value={dateStart}
+                  onChange={(e) => setDateStart(e.target.value)}
+                />
+                <p className="font-medium text-xl text-secondary">Entrance</p>
+                <InputSelectEntrance
+                  value={entrance}
+                  onChange={(e) => setEntrance(e.target.value)}
+                />
+                <p className="font-medium text-xl text-secondary">Rangers</p>
+                <InputSelectRanger
+                  value={idRanger}
+                  onChange={(e) => {
+                    setidRanger(e.target.value);
+                  }}
+                />
+              </section>
+            </article>
+            <article className="md:grid-col-span-2">
+              <section className="grid md:grid-rows-1 gap-2">
+                <p className="font-medium text-xl text-secondary">To Date</p>
+                <InputDate
+                  value={dateEnd}
+                  onChange={(e) => setDateEnd(e.target.value)}
+                />
+                <p className="font-medium text-xl text-secondary">
+                  Number of Person
+                </p>
+                <InputSelectPerson
+                  value={person}
+                  onChange={(e) => setPerson(e.target.value)}
+                />
+              </section>
+            </article>
+          </>
         </main>
 
         <h1 className="text-center font-bold text-[32px] text-secondary mb-3">

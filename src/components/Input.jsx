@@ -86,13 +86,13 @@ export const InputSelectRanger = (props) => {
   return (
     <select
       onChange={props.onChange}
-      id="category"
+      id="categoryRanger"
       class="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
     >
-      <option value="" className="font-normal text-base text-secondary">
+      <option value="1" className="font-normal text-base text-secondary">
         Add Ranger
       </option>
-      <option value="" className="font-normal text-base text-secondary">
+      <option value="2" className="font-normal text-base text-secondary">
         Fajar Nugraha
       </option>
       <option
