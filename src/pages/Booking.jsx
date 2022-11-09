@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { WithRouter } from "utils/Navigation";
 import { Helmet } from "react-helmet";
 import { useSelector, useDispatch } from "react-redux";
 import { setBooking } from "utils/redux/reducers/reducer";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Layout from "components/Layout";
 import Background from "assets/header-booking.jpg";
@@ -19,6 +19,11 @@ import { ButtonBooked } from "components/Button";
 const Booking = () => {
   const booking = useSelector((state) => state.data.booking);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [date, setDate] = useState("");
+  const [entrance, setEntrance] = useState("");
+  const [ranger, setRanger] = useState("");
+  const [person, setPerson] = useState("");
 
   function handleRemove(bookingNow) {
     let filtered = booking.filter(({ id_product }) => {
@@ -30,6 +35,22 @@ const Booking = () => {
     dispatch(setBooking(filtered));
     localStorage.removeItem(filtered);
     alert("Remove Success");
+  }
+
+  function validasiHandleBookedNow(product) {
+    const getProduct = localStorage.getItem("ConfirmBook");
+    if (getProduct) {
+      const parsedProducts = JSON.parse(getProduct);
+      parsedProducts.push(product);
+      const temp = JSON.stringify(parsedProducts);
+      dispatch(setBooking(parsedProducts));
+      localStorage.setItem("ConfirmBook", temp);
+    } else {
+      const temp = JSON.stringify([product]);
+      dispatch(setBooking([product]));
+      localStorage.setItem("ConfirmBook", temp);
+    }
+    navigate("/confirm");
   }
 
   return (
@@ -48,22 +69,37 @@ const Booking = () => {
           <article className="md:grid-col-span-2">
             <section className="grid md:grid-rows-1 gap-2">
               <p className="font-medium text-xl text-secondary">From Date</p>
-              <InputDate />
+              <InputDate
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
               <p className="font-medium text-xl text-secondary">Entrance</p>
-              <InputSelectEntrance />
+              <InputSelectEntrance
+                value={entrance}
+                onChange={(e) => setEntrance(e.target.value)}
+              />
               <p className="font-medium text-xl text-secondary">Rangers</p>
-              <InputSelectRanger />
+              <InputSelectRanger
+                value={ranger}
+                onChange={(e) => setRanger(e.target.value)}
+              />
             </section>
           </article>
 
           <article className="md:grid-col-span-2">
             <section className="grid md:grid-rows-1 gap-2">
               <p className="font-medium text-xl text-secondary">To Date</p>
-              <InputDate />
+              <InputDate
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
               <p className="font-medium text-xl text-secondary">
                 Number of Person
               </p>
-              <InputSelectPerson />
+              <InputSelectPerson
+                value={person}
+                onChange={(e) => setPerson(e.target.value)}
+              />
             </section>
           </article>
         </main>
@@ -88,9 +124,11 @@ const Booking = () => {
                 add={1}
               />
             ))}
-            <Link to="/confirm">
-              <ButtonBooked />
-            </Link>
+            <ButtonBooked
+              onClick={() => {
+                validasiHandleBookedNow(booking);
+              }}
+            />
           </div>
         </section>
       </Layout>

@@ -22,13 +22,14 @@ const HomePage = (props) => {
   const [cookies, removeCookies] = useCookies();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [page]);
 
   const fetchData = async () => {
-    apiRequest("product", "get", {})
+    apiRequest(`product?page=${page}`, "get", {})
       .then((res) => {
         const results = res.data;
         setData(results);
