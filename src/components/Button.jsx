@@ -143,10 +143,11 @@ export const ButtonBookNowDetails = () => {
   );
 };
 
-export const ButtonBooked = () => {
+export const ButtonBooked = (props) => {
   return (
     <div>
       <button
+        onClick={props.onClick}
         id="booked-now"
         className="login font-medium text-xl text-center justify-center h-14 w-full px-6 py-1 rounded-md text-white bg-primary transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
       >
