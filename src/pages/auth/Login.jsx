@@ -65,7 +65,7 @@ const Login = () => {
           navigate("/home");
         }
       })
-      
+
       .catch(() => {
         Swal.fire({
           icon: "error",
@@ -86,7 +86,7 @@ const Login = () => {
 
       <main className="mx-auto">
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-1">
-          <aside className="flex justify-center">
+          <aside className="hidden md:flex lg:flex xl:flex justify-center">
             <img src={imgLogin} alt="imgLogin" className="w-full h-full" />
           </aside>
           <article className="md:grid-col-span-2 bg-white px-20 py-60">

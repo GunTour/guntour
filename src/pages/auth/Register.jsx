@@ -85,7 +85,7 @@ const Register = () => {
 
       <main className="mx-auto">
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-1">
-          <aside className="flex justify-center">
+          <aside className="hidden md:flex lg:flex xl:flex justify-center">
             <img
               src={imgRegister}
               alt="imgRegister"

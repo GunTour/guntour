@@ -3,6 +3,7 @@ import { WithRouter } from "utils/Navigation";
 import { Helmet } from "react-helmet";
 import { useSelector, useDispatch } from "react-redux";
 import { setBooking } from "utils/redux/reducers/reducer";
+import { Link } from "react-router-dom";
 
 import Layout from "components/Layout";
 import Background from "assets/header-booking.jpg";
@@ -20,8 +21,8 @@ const Booking = () => {
   const dispatch = useDispatch();
 
   function handleRemove(bookingNow) {
-    let filtered = booking.filter(({ id }) => {
-      return id !== bookingNow.id;
+    let filtered = booking.filter(({ id_product }) => {
+      return id_product !== bookingNow.id_product;
     });
     filtered.join(" - ");
     const newList = JSON.stringify(filtered);
@@ -87,7 +88,9 @@ const Booking = () => {
                 add={1}
               />
             ))}
-            <ButtonBooked />
+            <Link to="/confirm">
+              <ButtonBooked />
+            </Link>
           </div>
         </section>
       </Layout>
