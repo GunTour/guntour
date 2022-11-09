@@ -7,7 +7,7 @@ import { ButtonCustom } from "components/Button";
 import { AiFillEdit } from "react-icons/ai";
 import Swal from "sweetalert2";
 
-const ModalEditRanger = () => {
+const ModalEditRanger = (props) => {
   return (
     <div>
       {/* The button to open modal */}
@@ -26,18 +26,18 @@ const ModalEditRanger = () => {
           <div className="mt-6 mb-5">
             <p className="text-left font-normal text-lg">Status</p>
             <select
-              // value={objSubmit.category}
-              // onChange={(e) => handleChange(e.target.value, "category")}
+              value={props.value}
+              onChange={props.onChange}
               id="category"
               class="w-full h-14 border pl-4 rounded-lg text-base mt-2 text-secondary"
             >
-              <option value="avaliable">Avaliable</option>
+              <option value="available">Avaliable</option>
               <option value="duty">Duty</option>
               <option value="off">Off Work</option>
             </select>
           </div>
 
-          <div>
+          {/* <div>
             <p className="text-left font-normal text-lg">Phone Number</p>
             <InputCustom
               // value={objSubmit.phone}
@@ -45,13 +45,13 @@ const ModalEditRanger = () => {
               className="w-full h-14 border pl-4 rounded-lg text-base mt-2 text-secondary"
               placeholder="085797556123"
             />
-          </div>
+          </div> */}
 
           {/* Button Add and Close */}
           <hr className="mt-9" />
           <div>
             <ButtonCustom
-              // onClick={() => handleEditProduct()}
+              onClick={props.onStatus}
               className="bg-primary mt-6 rounded-lg h-11 w-full flex items-center justify-center font-normal text-sm text-white cursor-pointer"
               label="Edit Info"
             />
