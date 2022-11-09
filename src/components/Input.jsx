@@ -160,6 +160,7 @@ export const InputFullNameRangers = (props) => {
       className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
+      value={props.value}
       placeholder="Full Name"
       type="text"
     />
@@ -172,6 +173,7 @@ export const InputPhoneNumber = (props) => {
       className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
+      value={props.value}
       placeholder="+62 85797556122"
       type="text"
     />
@@ -184,6 +186,7 @@ export const InputPlaceDateBirth = (props) => {
       className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
+      value={props.value}
       placeholder="Sukabumi, 12 Oktober 2000"
       type="text"
     />
@@ -196,6 +199,7 @@ export const InputGender = (props) => {
       className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
+      value={props.value}
       placeholder="Laki-laki"
       type="text"
     />
@@ -208,6 +212,7 @@ export const InputAddress = (props) => {
       className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
       id={props.id}
+      value={props.value}
       placeholder="Jl. Legok Hangser"
       type="text"
     />

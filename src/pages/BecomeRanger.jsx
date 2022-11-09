@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { WithRouter } from "utils/Navigation";
+import { apiRequest } from "utils/apiRequest";
 import { Helmet } from "react-helmet";
 
+import Swal from "sweetalert2";
 import Layout from "components/Layout";
 import Background from "assets/header-ranger.jpg";
 import {
@@ -11,9 +13,38 @@ import {
   InputGender,
   InputAddress,
 } from "components/Input";
-import { ButtonCancel, ButtonSubmitData } from "components/Button";
+import { ButtonCancelRanger, ButtonSubmitData } from "components/Button";
 
 const BecomeRanger = () => {
+  const [submit, setSubmit] = useState("");
+
+  const handleSubmit = async () => {
+    const formData = new FormData();
+    for (const key in submit) {
+      formData.append(key, submit[key]);
+    }
+    apiRequest("ranger", "post", submit, "multipart/form-data")
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Data added successfully",
+        });
+        setSubmit({});
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "warning",
+          title: "There is an error please check again",
+        });
+      });
+  };
+
+  const handleChange = (value, key) => {
+    let temp = { ...submit };
+    temp[key] = value;
+    setSubmit(temp);
+  };
+
   return (
     <>
       <Helmet>
@@ -27,29 +58,50 @@ const BecomeRanger = () => {
         </header>
 
         <main className="grid grid-cols-1 mx-20 py-20">
-          <section className="grid grid-flow-row">
+          <section className="grid grid-flow-row bg-white py-7 px-8 rounded-lg">
             <h5 className="font-semibold text-xl text-secondary">
               Please Fill In The Data Completely
             </h5>
             <div className="divider" />
-            <p className="font-normal text-lg text-secondary pb-2">Full Name</p>
-            <InputFullNameRangers />
-            <p className="font-normal text-lg text-secondary py-2">
+            <p className="font-normal text-lg text-secondary pb-3">Full Name</p>
+            <InputFullNameRangers
+              value={submit.fullname}
+              onChange={(e) => handleChange(e.target.value, "fullname")}
+            />
+            <p className="font-normal text-lg text-secondary py-3">
               Phone Number
             </p>
-            <InputPhoneNumber />
-            <p className="font-normal text-lg text-secondary py-2">
+            <InputPhoneNumber
+              value={submit.phone}
+              onChange={(e) => handleChange(e.target.value, "phone")}
+            />
+            <p className="font-normal text-lg text-secondary py-3">
               Place & Date of Birth
             </p>
-            <InputPlaceDateBirth />
-            <p className="font-normal text-lg text-secondary py-2">Gender</p>
-            <InputGender />
-            <p className="font-normal text-lg text-secondary py-2">Address</p>
-            <InputAddress />
-            <p className="font-normal text-lg text-secondary py-2">
+            <InputPlaceDateBirth
+              value={submit.ttl}
+              onChange={(e) => handleChange(e.target.value, "ttl")}
+            />
+            <p className="font-normal text-lg text-secondary py-3">Gender</p>
+            <InputGender
+              value={submit.gender}
+              onChange={(e) => handleChange(e.target.value, "gender")}
+            />
+            <p className="font-normal text-lg text-secondary py-3">Address</p>
+            <InputAddress
+              value={submit.address}
+              onChange={(e) => handleChange(e.target.value, "address")}
+            />
+            <p className="font-normal text-lg text-secondary py-3">
               Supporting documents
             </p>
-            <input type="file" className="file-input" />
+            <input
+              onChange={(e) =>
+                handleChange(e.target.files[0], "product_picture")
+              }
+              type="file"
+              className="file-input"
+            />
             <p className="font-light text-sm text-[#A3A3A3] py-2">
               *Dokumen pendukung seperti lamaran pengajuan pekerjaan secara
               lengkap berbentuk pdf
@@ -59,10 +111,10 @@ const BecomeRanger = () => {
             </p>
             <div className="divider" />
             <div>
-              <ButtonSubmitData />
+              <ButtonSubmitData onClick={() => handleSubmit()} />
             </div>
-            <div className="pt-2">
-              <ButtonCancel />
+            <div className="mt-6">
+              <ButtonCancelRanger />
             </div>
           </section>
         </main>

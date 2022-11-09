@@ -108,8 +108,8 @@ const HomePage = (props) => {
           </header>
         </div>
 
-        <section className="mb-7 w-ful flex mx-3 md:mx-16 lg:mx-20 xl:mx-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-9">
+        <section className="mb-7 w-full flex mx-3 md:mx-16 lg:mx-20 xl:mx-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-9">
             <>
               {data.map((data) => (
                 <CardProduct

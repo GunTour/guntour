@@ -183,14 +183,15 @@ export const ButtonCancelBooking = () => {
   );
 };
 
-export const ButtonSubmitData = () => {
+export const ButtonSubmitData = (props) => {
   return (
     <div>
       <button
+        onClick={props.onClick}
         id="submit"
-        className="login font-medium text-lg text-center justify-center h-14 w-full rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
+        className="login font-medium text-lg text-center cursor-pointer justify-center h-14 w-full rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
       >
-        <span>Submit Data</span>
+        Submit Data
       </button>
     </div>
   );
@@ -204,6 +205,19 @@ export const ButtonCancel = () => {
         className="login font-normal text-center justify-center h-[48px] w-[265px] rounded-lg border border-slate text-slate-400 transform active:scale-95 transition-transform flex items-center"
       >
         <span>Cancel</span>
+      </button>
+    </div>
+  );
+};
+
+export const ButtonCancelRanger = () => {
+  return (
+    <div>
+      <button
+        id="cancel"
+        className="login font-normal text-center justify-center h-12 w-full rounded-lg border border-slate text-slate-400 transform active:scale-95 transition-transform flex items-center"
+      >
+        Cancel
       </button>
     </div>
   );
