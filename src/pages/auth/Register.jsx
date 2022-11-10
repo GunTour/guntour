@@ -54,9 +54,9 @@ const Register = () => {
       email: email,
       password: password,
     };
-    apiRequest("users", "post", body)
+    apiRequest("user", "post", body)
       .then((res) => {
-        const { message, data } = res;
+        const { data } = res;
         if (data) {
           navigate("/login");
         }

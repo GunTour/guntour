@@ -97,7 +97,7 @@ const BecomeRanger = () => {
             </p>
             <input
               onChange={(e) =>
-                handleChange(e.target.files[0], "product_picture")
+                handleChange(e.target.files[0], "docs")
               }
               type="file"
               className="file-input"
