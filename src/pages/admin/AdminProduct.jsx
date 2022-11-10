@@ -37,7 +37,7 @@ const AdminProduct = () => {
   };
 
   const loadMore = () => {
-    setPage(page + 2);
+    setPage(page + 1);
     fetchData(page);
   };
 
