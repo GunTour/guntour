@@ -10,7 +10,7 @@ const UsersPage = () => {
   const [data, setData] = useState([]);
   const [climber, setClimber] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [table, setTable] = useState(3);
+  const [table, setTable] = useState(1);
 
   useEffect(() => {
     fetchData();
@@ -35,7 +35,9 @@ const UsersPage = () => {
     apiRequest("admin/pendaki", "get", {})
       .then((res) => {
         const results = res.climber;
-        setClimber(results);
+        if (results.length > 0) {
+          setClimber(results);
+        }
         console.log(results);
       })
       .catch((err) => {
@@ -47,10 +49,9 @@ const UsersPage = () => {
   };
 
   const LoadMore = () => {
-    setTable(table + 3);
+    setTable(table + 1);
     fetchData(table);
   };
-
 
   if (loading) {
     return (
@@ -82,40 +83,6 @@ const UsersPage = () => {
             <ModalAdminUSer />
           </div>
 
-          {Array.isArray(climber)
-            ? climber.map((data) => (
-                <article className="container mx-auto py-5">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
-                      <p className="font-semibold text-xl text-primary">
-                        IS CLIMBERS
-                      </p>
-                      <p className="font-semibold text-[32px] text-secondary">
-                        {data.is_climber}
-                      </p>
-                    </div>
-                    <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
-                      <p className="font-semibold text-xl text-primary">
-                        MALE CLIMBER
-                      </p>
-                      <p className="font-semibold text-[32px] text-secondary">
-                        {data.male_climber}
-                      </p>
-                    </div>
-                    <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
-                      <p className="font-semibold text-xl text-primary">
-                        FEMALE CLIMBER
-                      </p>
-                      <p className="font-semibold text-[32px] text-secondary">
-                        {data.female_climber}
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              ))
-            : null}
-
-          {/*
           {climber.map((data) => (
             <article className="container mx-auto py-5">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -145,9 +112,9 @@ const UsersPage = () => {
                 </div>
               </div>
             </article>
-          ))} */}
+          ))}
 
-          <article className="container mx-auto py-5">
+          {/* <article className="container mx-auto py-5">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
                 <p className="font-semibold text-xl text-primary">
@@ -168,7 +135,7 @@ const UsersPage = () => {
                 <p className="font-semibold text-[32px] text-secondary">120</p>
               </div>
             </div>
-          </article>
+          </article> */}
 
           <p className="text-secondary font-semibold text-xl mb-2 mt-3">
             Climbers
@@ -186,7 +153,7 @@ const UsersPage = () => {
                     NAME
                   </th>
                   <th className="font-semibold text-base text-secondary">
-                    ENTRANCE
+                    PHONE
                   </th>
                   <th className="font-semibold text-base text-secondary">
                     CHECK IN
@@ -219,7 +186,7 @@ const UsersPage = () => {
           </section>
 
           <div className="text-right flex items-center justify-end font-medium text-base mr-11">
-            <button onClick={(value) => LoadMore(value)} >Load More</button>
+            <button onClick={(value) => LoadMore(value)}>Load More</button>
             <MdExpandMore className="text-secondary text-xl ml-2" />
           </div>
         </section>

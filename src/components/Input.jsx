@@ -7,7 +7,7 @@ export const InputCustom = (props) => {
       onChange={props.onChange}
       id={props.id}
       placeholder={props.placeholder}
-      type={props.placeholder}
+      type={props.type}
     />
   );
 };
