@@ -17,7 +17,7 @@ export const InputDate = (props) => {
     <input
       className="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg"
       onChange={props.onChange}
-      id={props.id}
+      id="date-booking"
       placeholder="dd/mm/yy"
       type="date"
     />
@@ -28,7 +28,7 @@ export const InputSelectEntrance = (props) => {
   return (
     <select
       onChange={props.onChange}
-      id="category"
+      id="category-booking"
       class="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
     >
       <option value="" className="font-normal text-base text-secondary">
@@ -57,7 +57,7 @@ export const InputSelectPerson = (props) => {
   return (
     <select
       onChange={props.onChange}
-      id="category"
+      id="category-person-booking"
       class="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-normal text-base"
     >
       <option value="1" className="font-normal text-base text-secondary">

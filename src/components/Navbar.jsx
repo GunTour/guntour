@@ -100,7 +100,7 @@ const NavbarLogin = () => {
 
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
+              <div id="dropdown-menu" className="w-10 rounded-full">
                 <img src={logo} alt="" />
               </div>
             </label>
@@ -109,15 +109,15 @@ const NavbarLogin = () => {
               className="mt-3 p-2 shadow menu menu-compact  dropdown-content bg-base-100 rounded-lg w-52"
             >
               <li>
-                <Link to="/history">
-                  <p id="mybooking-dropdown" className="justify-between active:bg-slate-200">
+                <Link id="mybooking-dropdown" to="/history">
+                  <p className="justify-between active:bg-slate-200">
                     My Booking{" "}
                   </p>
                 </Link>
               </li>
               <li>
-                <Link to="/ranger">
-                  <p id="become-ranger-dropdown" className="active:bg-slate-200">Become Ranger</p>
+                <Link id="become-ranger-dropdown" to="/ranger">
+                  <p className="active:bg-slate-200">Become Ranger</p>
                 </Link>
               </li>
               <li>
