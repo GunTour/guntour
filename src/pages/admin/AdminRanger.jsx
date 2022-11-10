@@ -13,11 +13,28 @@ const AdminRanger = () => {
   const [ranger, setRanger] = useState([]);
   const [loading, setLoading] = useState(true);
   const [objSubmit, setObjSubmit] = useState("");
+  const [table, setTable] = useState(3);
+  const [tables, setTables] = useState(3);
 
   useEffect(() => {
+    fetchData();
     handleApplyRanger();
     handleRanger();
-  }, []);
+  }, [table, tables]);
+
+  const fetchData = async () => {
+    apiRequest("admin/ranger", "get", {})
+      .then((res) => {
+        const results = res.data;
+        setData(results);
+      })
+      .catch((err) => {
+        alert(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   const handleRanger = async () => {
     apiRequest("admin/ranger", "get", {})
@@ -88,6 +105,17 @@ const AdminRanger = () => {
     temp[key] = value;
     setObjSubmit(temp);
   };
+
+  const LoadMore = () => {
+    setTable(table + 3);
+    fetchData(table);
+  };
+
+  const LoadMoreRanger = () => {
+    setTables(setTables + 3);
+    fetchData(tables)
+  };
+
 
   if (loading) {
     return (
@@ -170,7 +198,7 @@ const AdminRanger = () => {
               </table>
             </section>
             <div className="text-right flex items-center justify-end mt-3 font-medium text-base mr-11">
-              <button>Load More</button>
+              <button onClick={(value) => LoadMore(value)} >Load More</button>
               <MdExpandMore className="text-secondary text-xl ml-2" />
             </div>
           </div>
@@ -234,7 +262,7 @@ const AdminRanger = () => {
               </table>
             </section>
             <div className="text-right flex items-center justify-end mt-3 font-medium text-base mr-11">
-              <button>Load More</button>
+              <button onClick={(value) => LoadMoreRanger(value)} >Load More</button>
               <MdExpandMore className="text-secondary text-xl ml-2" />
             </div>
           </div>
