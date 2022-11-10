@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { apiRequest } from "../utils/apiRequest";
 
-import { InputCustom, InputForModal } from "components/Input";
+import {
+  InputCustom,
+  InputForModal,
+} from "components/Input";
 import { ButtonCustom } from "components/Button";
 
 import { AiFillEdit } from "react-icons/ai";
@@ -347,8 +350,6 @@ const ModalEditAdminProduct = () => {
     </div>
   );
 };
-//   return (
-//     <div>
 //       <label htmlFor="my-modal-3" className="text-2xl text-gray-600">
 //         <AiFillEdit />
 //       </label>
@@ -417,10 +418,44 @@ const ModalEditAdminProduct = () => {
 //   );
 // };
 
-const ModalAdminUSer = () => {
+const ModalAdminUSer = (props) => {
+  const [loading, setLoading] = useState(true);
+  const [objSubmit, setObjSubmit] = useState("");
+
+  const handleEditData = async () => {
+    setLoading(true);
+    
+    const formData = new FormData();
+    for (const key in objSubmit) {
+      formData.append(key, objSubmit[key]);
+    }
+    apiRequest("admin/pendaki", "post", objSubmit)
+      .then((res) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Data berhasil dirubah!",
+          showConfirmButton: true,
+        });
+      })
+      .catch((err) => {
+        alert(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const handleChange = (value, key) => {
+    let temp = { ...objSubmit };
+    temp[key] = parseInt(value);
+    setObjSubmit(temp);
+  };
+
   return (
     <div>
       <label
+        id="button-AdminUser"
         htmlFor="my-modal-3"
         className="cursor-pointer font-normal text-base text-center justify-center h-12 w-44 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
       >
@@ -438,31 +473,55 @@ const ModalAdminUSer = () => {
             <p className="font-normal text-lg text-secondary text-left mb-3 mt-6">
               Is Climbers
             </p>
-            <InputForModal placeholder="140" />
+            <InputCustom
+              className="h-14 w-full pl-4 border border-[#B3B3B3] rounded-lg text-base font-normal"
+              value={objSubmit.is_climber}
+              onChange={(e) => handleChange(e.target.value, "is_climber")}
+              id="inputIsClimbers"
+              type="number"
+              placeholder="140"
+            />
           </div>
 
           <div className="mb-5">
             <p className="font-normal text-lg text-secondary text-left mb-3 mt-6">
               Male Climbers
             </p>
-            <InputForModal placeholder="90" />
+            <InputCustom
+              className="h-14 w-full pl-4 border border-[#B3B3B3] rounded-lg text-base font-normal"
+              value={objSubmit.male_climber}
+              onChange={(e) => handleChange(e.target.value, "male_climber")}
+              id="inputIsMale"
+              type="number"
+              placeholder="90"
+            />
           </div>
 
           <div className="mb-5">
             <p className="font-normal text-lg text-secondary text-left mb-3 mt-6">
               Female Climbers
             </p>
-            <InputForModal placeholder="60" />
+            <InputCustom
+              className="h-14 w-full pl-4 border border-[#B3B3B3] rounded-lg text-base font-normal"
+              value={objSubmit.female_climber}
+              onChange={(e) => handleChange(e.target.value, "female_climber")}
+              id="inputIsFemale"
+              type="number"
+              placeholder="60"
+            />
           </div>
 
           <div className="divider m-0" />
           <ButtonCustom
+            onClick={() => handleEditData()}
+            id="button-EditAdminUsers"
             className="cursor-pointer font-medium text-center justify-center h-11 w-full mt-5 mb-3 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
             label="Edit Info"
           />
 
           <label htmlFor="my-modal-3">
             <ButtonCustom
+              id="button-CloseAdminUsers"
               className="cursor-pointer font-medium text-center justify-center h-11 w-full rounded-lg text-slate-400 border bg-white transform active:scale-95 transition-transform flex items-center"
               label="Close"
             />

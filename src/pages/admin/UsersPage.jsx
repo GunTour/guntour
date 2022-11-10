@@ -10,7 +10,7 @@ const UsersPage = () => {
   const [data, setData] = useState([]);
   const [climber, setClimber] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [table, setTable] = useState(3);
+  const [table, setTable] = useState(1);
 
   useEffect(() => {
     fetchData();
@@ -47,10 +47,9 @@ const UsersPage = () => {
   };
 
   const LoadMore = () => {
-    setTable(table + 3);
+    setTable(table + 1);
     fetchData(table);
   };
-
 
   if (loading) {
     return (
@@ -79,7 +78,7 @@ const UsersPage = () => {
           <div className="divider text-[#F0F0F0]" />
 
           <div className="text-right flex items-center justify-end mt-3 font-medium text-base mr-11">
-            <ModalAdminUSer />
+            <ModalAdminUSer/>
           </div>
 
           {Array.isArray(climber)
@@ -186,7 +185,7 @@ const UsersPage = () => {
                     NAME
                   </th>
                   <th className="font-semibold text-base text-secondary">
-                    ENTRANCE
+                    PHONE
                   </th>
                   <th className="font-semibold text-base text-secondary">
                     CHECK IN
