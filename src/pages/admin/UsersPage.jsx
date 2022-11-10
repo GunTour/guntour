@@ -10,11 +10,12 @@ const UsersPage = () => {
   const [data, setData] = useState([]);
   const [climber, setClimber] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [table, setTable] = useState(3);
 
   useEffect(() => {
     fetchData();
     handleClimber();
-  }, []);
+  }, [table]);
 
   const fetchData = async () => {
     apiRequest("admin/pendaki", "get", {})
@@ -44,6 +45,12 @@ const UsersPage = () => {
         setLoading(false);
       });
   };
+
+  const LoadMore = () => {
+    setTable(table + 3);
+    fetchData(table);
+  };
+
 
   if (loading) {
     return (
@@ -212,7 +219,7 @@ const UsersPage = () => {
           </section>
 
           <div className="text-right flex items-center justify-end font-medium text-base mr-11">
-            <button>Load More</button>
+            <button onClick={(value) => LoadMore(value)} >Load More</button>
             <MdExpandMore className="text-secondary text-xl ml-2" />
           </div>
         </section>
