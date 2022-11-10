@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { WithRouter } from "utils/Navigation";
 import { apiRequest } from "utils/apiRequest";
+import Swal from "sweetalert2";
 
 import { Sidebar, NavbarAdmin } from "components/Navbar";
 
@@ -65,8 +66,15 @@ const AdminRanger = () => {
   };
 
   const handleDelete = (id_ranger) => {
-    apiRequest(`admin/product/${id_ranger}`, "delete", {})
+    setLoading(true);
+    apiRequest(`admin/ranger/${id_ranger}`, "delete", {})
       .then((res) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Data deleted successfully",
+          showConfirmButton: true,
+        });
         handleApplyRanger();
       })
       .catch((err) => {
@@ -79,12 +87,18 @@ const AdminRanger = () => {
 
   const handleAccept = (id_ranger) => {
     const body = {
-      status: "",
+      phone: "",
+      status: "available",
       status_apply: "accepted",
     };
-
     apiRequest(`admin/ranger/${id_ranger}`, "put", body)
       .then((res) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Ranger has been accepted",
+          showConfirmButton: true,
+        });
         handleApplyRanger();
       })
       .catch((err) => {
@@ -103,6 +117,12 @@ const AdminRanger = () => {
     }
     apiRequest(`admin/ranger/${id_ranger}`, "put", objSubmit)
       .then((res) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Ranger status changed successfully.",
+          showConfirmButton: true,
+        });
         handleRanger();
       })
       .catch((err) => {
@@ -200,6 +220,10 @@ const AdminRanger = () => {
                             onChange={(e) =>
                               handleChange(e.target.value, "status")
                             }
+                            valueNumber={objSubmit.phone}
+                            onNumber={(e) =>
+                              handleChange(e.target.value, "phone")
+                            }
                             onStatus={() => handleStatus(data.id_ranger)}
                           />
                         </button>
@@ -264,8 +288,14 @@ const AdminRanger = () => {
                         >
                           <MdOutlineDownloadDone />
                         </button>
-                        <button className="text-2xl text-red-600 ml-4">
-                          <AiFillDelete id={data.id_ranger} />
+                        <button
+                          
+                          className="text-2xl text-red-600 ml-4"
+                        >
+                          <AiFillDelete
+                            id={data.id_ranger}
+                            onClick={() => handleDelete(data.id_ranger)}
+                          />
                         </button>
                       </td>
                     </tr>
