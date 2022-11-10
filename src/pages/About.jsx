@@ -46,7 +46,7 @@ const About = () => {
                 rel="noreferrer"
               >
                 <button
-                  id="selengkapnya"
+                  id=" button-selengkapnya "
                   className="cursor-pointer font-medium text-base text-center justify-center py-3 px-8 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
                 >
                   <span>Selengkapnya</span>

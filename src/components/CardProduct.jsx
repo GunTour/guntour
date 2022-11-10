@@ -229,7 +229,7 @@ const CardParent = () => {
           target="_blank"
           download
         >
-          <ButtonDownloadFile />
+          <ButtonDownloadFile id="button-download-2"  />
         </Link>
       </div>
     </div>
@@ -248,7 +248,7 @@ const CardHealth = () => {
           target="_blank"
           download
         >
-          <ButtonDownloadFile />
+          <ButtonDownloadFile id="button-download-3"  />
         </Link>
       </div>
     </div>
@@ -263,7 +263,7 @@ const CardGarbage = () => {
       </p>
       <div className="card-actions justify-center pt-2">
         <Link to="/files/form-sampah.pdf" target="_blank" download>
-          <ButtonDownloadFile />
+          <ButtonDownloadFile id="button-download-4"/>
         </Link>
       </div>
     </div>
