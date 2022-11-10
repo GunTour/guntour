@@ -61,7 +61,7 @@ const Booking = () => {
         product,
         id_ranger: idRanger,
         ranger_name: ranger_name,
-        gross_amount: grossAmount * diffDays + parseInt(ticket) * 20000,
+        gross_amount: grossAmount * diffDays + parseInt(ticket) * 30000,
       },
     ];
     localStorage.removeItem("ConfirmBook");
