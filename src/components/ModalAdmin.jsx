@@ -37,15 +37,15 @@ const ModalEditRanger = (props) => {
             </select>
           </div>
 
-          {/* <div>
+          <div>
             <p className="text-left font-normal text-lg">Phone Number</p>
             <InputCustom
-              // value={objSubmit.phone}
-              // onChange={(e) => handleChange(e.target.value, "phone")}
+              value={props.valueNumber}
+              onChange={props.onNumber}
               className="w-full h-14 border pl-4 rounded-lg text-base mt-2 text-secondary"
               placeholder="085797556123"
             />
-          </div> */}
+          </div>
 
           {/* Button Add and Close */}
           <hr className="mt-9" />
@@ -244,7 +244,7 @@ const ModalEditAdminProduct = () => {
   return (
     <div>
       <label htmlFor="my-modal-3" className="text-2xl text-gray-600">
-        <AiFillEdit />
+        <AiFillEdit id="button-edit-1" />
       </label>
 
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
@@ -263,7 +263,7 @@ const ModalEditAdminProduct = () => {
             </h3>
             <div className="text-left">
               <input
-                // value={objSubmit.product_picture}
+                id="input-photo-product"
                 onChange={(e) =>
                   handleChange(e.target.files[0], "product_picture")
                 }
@@ -279,6 +279,7 @@ const ModalEditAdminProduct = () => {
               Product Name
             </p>
             <InputForModal
+              id="input-name-product"
               value={objSubmit.product_name}
               onChange={(e) => handleChange(e.target.value, "product_name")}
               placeholder="Enter your product name"
@@ -291,6 +292,7 @@ const ModalEditAdminProduct = () => {
               Rent Price
             </p>
             <InputForModal
+              id="input-rent-product"
               value={objSubmit.rent_price}
               onChange={(e) => handleChange(e.target.value, "rent_price")}
               placeholder="100K"
@@ -303,6 +305,7 @@ const ModalEditAdminProduct = () => {
               Description
             </p>
             <textarea
+              id="input-desc-product"
               value={objSubmit.detail}
               onChange={(e) => handleChange(e.target.value, "detail")}
               className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
@@ -316,6 +319,7 @@ const ModalEditAdminProduct = () => {
               Warning
             </p>
             <textarea
+              id="input-note-product"
               value={objSubmit.note}
               onChange={(e) => handleChange(e.target.value, "note")}
               className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
@@ -325,6 +329,7 @@ const ModalEditAdminProduct = () => {
 
           <div className="divider m-0" />
           <ButtonCustom
+            id="button-addProduct"
             onClick={() => handleAddProduct()}
             className="cursor-pointer font-medium text-center justify-center h-11 w-full mt-5 mb-3 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
             label="Save Data"
@@ -332,6 +337,7 @@ const ModalEditAdminProduct = () => {
 
           <label htmlFor="my-modal-3">
             <ButtonCustom
+              id="button-closeProduct"
               className="cursor-pointer font-medium text-center justify-center h-11 w-full rounded-lg text-slate-400 border bg-white transform active:scale-95 transition-transform flex items-center"
               label="Close"
             />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { WithRouter } from "utils/Navigation";
 import { Helmet } from "react-helmet";
 import { apiRequest } from "utils/apiRequest";
+import Swal from "sweetalert2";
 
 import { NavbarAdmin, Sidebar } from "components/Navbar";
 import { AiFillDelete } from "react-icons/ai";
@@ -37,6 +38,12 @@ const AdminProduct = () => {
   const handleDelete = (id_product) => {
     apiRequest(`admin/product/${id_product}`, "delete", {})
       .then((res) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Data deleted successfully",
+          showConfirmButton: true,
+        });
         fetchData();
       })
       .catch((err) => {
@@ -124,6 +131,7 @@ const AdminProduct = () => {
                                 <ModalEditAdminProduct />
                               </button>
                               <button
+                                id={data.id_product}
                                 onClick={() => handleDelete(data.id_product)}
                               >
                                 <AiFillDelete className="fill-red-600 text-3xl mr-14 ml-4" />
