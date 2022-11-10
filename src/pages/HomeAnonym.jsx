@@ -83,6 +83,7 @@ const HomeAnonym = () => {
           <Hero />
         </div>
 
+
         <div>
           <header>
             <h5 className="font-bold text-[32px] text-start text-secondary py-7 mx-20">
@@ -92,7 +93,7 @@ const HomeAnonym = () => {
         </div>
 
         <div className="mb-7 w-ful flex mx-3 md:mx-16 lg:mx-20 xl:mx-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-9">
+          <div idProduct={data.id_product}  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-9">
             <>
               {data.map((data) => (
                 <CardProduct
