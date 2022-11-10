@@ -252,7 +252,7 @@ const HomePage = (props) => {
                 to camp <br />
                 together feel the sensation
               </p>
-              <a href="https://t.me/+U8gsU0ll3cE5MTc1">
+              <a id="join-community" href="https://t.me/+U8gsU0ll3cE5MTc1">
                 <ButtonJoin />
               </a>
             </div>

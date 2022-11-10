@@ -16,6 +16,7 @@ const CardProduct = (props) => {
     <section className="card w-72 bg-white">
       <figure className="px-3 pt-3">
         <img
+          idProduct={props.id_product}
           onClick={props.onDetail}
           src={props.img}
           alt="items"
@@ -33,8 +34,8 @@ const CardProduct = (props) => {
           </span>
           <span className="text-secondary font-medium text-xl">/day</span>
         </p>
-        <div className="card-actions justify-center w-full">
-          <ButtonBookNow id={props.idProduct}  onClick={props.handleBook} />
+        <div id={props.idProduct} className="card-actions justify-center w-full">
+          <ButtonBookNow onClick={props.handleBook} />
         </div>
       </div>
     </section>

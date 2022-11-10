@@ -159,7 +159,7 @@ export const InputFullNameRangers = (props) => {
     <input
       className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
-      idFullname={props.id_Fullname}
+      id="full-name"
       value={props.value}
       placeholder="Full Name"
       type="text"
@@ -172,7 +172,7 @@ export const InputPhoneNumber = (props) => {
     <input
       className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
-      idPhonenumber={props.id_Phonenumber}
+      id="phone-number"
       value={props.value}
       placeholder="+62 85797556122"
       type="text"
@@ -185,7 +185,7 @@ export const InputPlaceDateBirth = (props) => {
     <input
       className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
-      idBirth={props.id_Birth}
+      id="birth"
       value={props.value}
       placeholder="Sukabumi, 12 Oktober 2000"
       type="text"
@@ -198,7 +198,7 @@ export const InputGender = (props) => {
     <input
       className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
-      idGender={props.id_Gender}
+      id="gender"
       value={props.value}
       placeholder="Laki-laki"
       type="text"
@@ -211,7 +211,7 @@ export const InputAddress = (props) => {
     <input
       className="h-14 w-full py-2 px-3 border-2 border-[#DDEEED] rounded-lg"
       onChange={props.onChange}
-      idAddress={props.id_Address}
+      id="address"
       value={props.value}
       placeholder="Jl. Legok Hangser"
       type="text"
