@@ -128,11 +128,10 @@ const HomePage = (props) => {
         </div>
 
         <section className="mb-7 w-full flex mx-3 md:mx-16 lg:mx-20 xl:mx-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-9">
+          <div idProduct={data.id_product} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-9">
             <>
               {data.map((data) => (
                 <CardProduct
-                  idProduct={data.id_product}
                   key={data.id_product}
                   img={data.product_picture}
                   name={data.product_name}
