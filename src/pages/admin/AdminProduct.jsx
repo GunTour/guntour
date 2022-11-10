@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 import { NavbarAdmin, Sidebar } from "components/Navbar";
 import { AiFillDelete } from "react-icons/ai";
+import { MdExpandMore } from "react-icons/md";
 
 import {
   ModalAdminProduct,
@@ -33,6 +34,11 @@ const AdminProduct = () => {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const loadMore = () => {
+    setPage(page + 2);
+    fetchData(page);
   };
 
   const handleDelete = (id_product) => {
@@ -143,6 +149,12 @@ const AdminProduct = () => {
                     ))}
                   </>
                 </table>
+                <div className="text-right flex items-center justify-end font-medium text-base mr-10 mt-3">
+                  <button onClick={(value) => loadMore(value)}>
+                    Load More
+                  </button>
+                  <MdExpandMore className="text-secondary text-xl ml-2" />
+                </div>
               </div>
             </div>
           </div>
