@@ -70,6 +70,7 @@ const GuidePage = () => {
                 Prioritizing treatment for women who are menstruating,
                 especially immediately bringing down the victim.
               </li>
+              <li>Ticket price Rp. 30.000 / person (maximum 2 days)</li>
             </ol>
           </article>
         </section>
