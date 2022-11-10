@@ -24,9 +24,8 @@ const Booking = () => {
   const [dateEnd, setDateEnd] = useState("");
   const [entrance, setEntrance] = useState("");
   const [idRanger, setidRanger] = useState("");
-  const [grossAmount, setGrossAmount] = useState("");
-
-  const [person, setPerson] = useState("");
+  const [person, setPerson] = useState(0);
+  const [qty, setQty] = useState(1);
 
   function handleRemove(bookingNow) {
     let filtered = booking.filter(({ id_product }) => {
@@ -41,8 +40,18 @@ const Booking = () => {
   }
 
   function validasiHandleBookedNow(product, isNavigate) {
-    const sel = document.getElementById("categoryRanger");
-    const ranger_name = sel.options[sel.selectedIndex].text;
+    const oneDay = 24 * 60 * 60 * 1000;
+    const grossAmount = document.getElementById("text-grossamount").value;
+    const selRanger = document.getElementById("categoryRanger");
+    const ranger_name = selRanger.options[selRanger.selectedIndex].text;
+    const selPerson = document.getElementById("categoryPerson");
+    const ticket = selPerson.options[selPerson.selectedIndex].text;
+    const diffDays = Math.round(
+      Math.abs((new Date(dateEnd) - new Date(dateStart)) / oneDay)
+    );
+    // console.log("ini harga total : " + grossAmount * diffDays * ticket);
+    // console.log("ini harga day : " + diffDays);
+    // console.log("ini harga person : " + person);
     var formBooking = [
       {
         date_start: dateStart,
@@ -52,7 +61,7 @@ const Booking = () => {
         product,
         id_ranger: idRanger,
         ranger_name: ranger_name,
-        gross_amount: grossAmount,
+        gross_amount: grossAmount * diffDays + parseInt(ticket) * 20000,
       },
     ];
     localStorage.removeItem("ConfirmBook");
@@ -129,6 +138,7 @@ const Booking = () => {
           <div>
             {booking.map((data) => (
               <CardBooking
+                idProduct={data.id_product}
                 key={data.id_product}
                 images={data.product_picture}
                 name={data.product_name}
@@ -145,6 +155,14 @@ const Booking = () => {
               onClick={() => {
                 validasiHandleBookedNow(booking, true);
               }}
+            />
+            <input
+              value={booking
+                .map((data) => data.rent_price)
+                .reduce((acc, curr) => acc + parseInt(curr, 10), 0)}
+              type="text"
+              id="text-grossamount"
+              className="bg-lime-500"
             />
           </div>
         </section>

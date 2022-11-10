@@ -14,7 +14,7 @@ import { AiFillPlusCircle } from "react-icons/ai";
 const CardProduct = (props) => {
   return (
     <section className="card w-72 bg-white">
-      <figure idDetail={props.id_product} className="px-3 pt-3">
+      <figure className="px-3 pt-3">
         <img
           onClick={props.onDetail}
           src={props.img}
@@ -33,8 +33,8 @@ const CardProduct = (props) => {
           </span>
           <span className="text-secondary font-medium text-xl">/day</span>
         </p>
-        <div id={props.idProduct} className="card-actions justify-center w-full">
-          <ButtonBookNow onClick={props.handleBook} />
+        <div className="card-actions justify-center w-full">
+          <ButtonBookNow id={props.idProduct} onClick={props.handleBook} />
         </div>
       </div>
     </section>
@@ -43,8 +43,20 @@ const CardProduct = (props) => {
 
 const CardBooking = (props) => {
   const [counter, setCounter] = React.useState(1);
-  let handleCounter = (value) => {
+  let handleCounterPlus = (value, price) => {
     setCounter(counter + value);
+    let sumProduct = document.getElementById("text-grossamount").value;
+    let total = parseInt(sumProduct) + price;
+    console.log(price);
+    document.getElementById("text-grossamount").value = total;
+  };
+
+  let handleCounterMinus = (value, price) => {
+    setCounter(counter + value);
+    let minProduct = document.getElementById("text-grossamount").value;
+    let totalMin = parseInt(minProduct) - price;
+    console.log(totalMin);
+    document.getElementById("text-grossamount").value = totalMin;
   };
 
   return (
@@ -68,17 +80,21 @@ const CardBooking = (props) => {
             <div className="flex mt-4">
               <button>
                 <AiFillMinusCircle
+                  id={props.idProduct}
                   className="mr-3.5 rounded-full bg-primary text-3xl text-white mt-1"
-                  onClick={() => handleCounter(props.sub)}
+                  onClick={() => {
+                    handleCounterMinus(props.sub, props.price);
+                  }}
                 />
               </button>
-              <p className="text-lg font-medium w-auto text-center mt-1.5">
+              <p className="text-lg font-medium w-auto text-center mt-1.5 qtyProduct">
                 {counter}
               </p>
               <button>
                 <AiFillPlusCircle
+                  id={props.idProduct}
                   className="text-primary text-3xl mt-1 ml-3.5"
-                  onClick={() => handleCounter(props.add)}
+                  onClick={() => handleCounterPlus(props.add, props.price)}
                 />
               </button>
             </div>
@@ -92,6 +108,11 @@ const CardBooking = (props) => {
             </button>
           </div>
         </div>
+        <input
+          id={props.idProduct}
+          value={props.price * counter}
+          className="bg-red-300"
+        />
       </div>
     </section>
   );
@@ -209,8 +230,8 @@ const CardClimber = () => {
         Climber Declaration Letter
       </p>
       <div className="card-actions justify-center pt-2">
-        <Link id="button-download-1" to="/files/surat-pernyataan-pendaki.pdf" target="_blank" download>
-          <ButtonDownloadFile/>
+        <Link to="/files/surat-pernyataan-pendaki.pdf" target="_blank" download>
+          <ButtonDownloadFile id="button-download-1" />
         </Link>
       </div>
     </div>
@@ -225,12 +246,11 @@ const CardParent = () => {
       </p>
       <div className="card-actions justify-center pt-2">
         <Link
-          id="button-download-2"
           to="/files/surat-pernyataan-orangtua.pdf"
           target="_blank"
           download
         >
-          <ButtonDownloadFile/>
+          <ButtonDownloadFile />
         </Link>
       </div>
     </div>
@@ -245,12 +265,11 @@ const CardHealth = () => {
       </p>
       <div className="card-actions justify-center pt-2">
         <Link
-          id="button-download-3"
           to="/files/sop-pemeriksaan-kesehatan.pdf"
           target="_blank"
           download
         >
-          <ButtonDownloadFile/>
+          <ButtonDownloadFile />
         </Link>
       </div>
     </div>
@@ -264,8 +283,8 @@ const CardGarbage = () => {
         Garbage Form
       </p>
       <div className="card-actions justify-center pt-2">
-        <Link id="button-download-4" to="/files/form-sampah.pdf" target="_blank" download>
-          <ButtonDownloadFile/>
+        <Link to="/files/form-sampah.pdf" target="_blank" download>
+          <ButtonDownloadFile />
         </Link>
       </div>
     </div>
