@@ -289,10 +289,11 @@ const AdminRanger = () => {
                           <MdOutlineDownloadDone />
                         </button>
                         <button
-                          id={data.id_ranger}
+                          
                           className="text-2xl text-red-600 ml-4"
                         >
                           <AiFillDelete
+                            id={data.id_ranger}
                             onClick={() => handleDelete(data.id_ranger)}
                           />
                         </button>
