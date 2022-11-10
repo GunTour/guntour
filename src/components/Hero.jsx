@@ -18,12 +18,14 @@ const Hero = () => {
         </p>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
           <a
+            id="hero-previous4"
             href="#slide4"
             className="btn btn-circle bg-[#B2B2B2] opacity-40 border-none text-white ml-20"
           >
             ❮
           </a>
           <a
+            id="hero-next2"
             href="#slide2"
             className="btn btn-circle bg-[#B2B2B2] opacity-40 border-none text-white mr-20"
           >
@@ -41,12 +43,14 @@ const Hero = () => {
         </p>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
           <a
+            id="hero-previous1"
             href="#slide1"
             className="btn btn-circle bg-[#B2B2B2] opacity-40 border-none text-white ml-20"
           >
             ❮
           </a>
           <a
+            id="hero-next3"
             href="#slide3"
             className="btn btn-circle bg-[#B2B2B2] opacity-40 border-none text-white mr-20"
           >
@@ -64,12 +68,14 @@ const Hero = () => {
         </p>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
           <a
+            id="hero-previous2"
             href="#slide2"
             className="btn btn-circle bg-[#B2B2B2] opacity-40 border-none text-white ml-20"
           >
             ❮
           </a>
           <a
+            id="hero-next4"
             href="#slide4"
             className="btn btn-circle bg-[#B2B2B2] opacity-40 border-none text-white mr-20"
           >
@@ -87,12 +93,14 @@ const Hero = () => {
         </p>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
           <a
+            id="hero-previous3"
             href="#slide3"
             className="btn btn-circle bg-[#B2B2B2] opacity-40 border-none text-white ml-20"
           >
             ❮
           </a>
           <a
+            id="hero-next1"
             href="#slide1"
             className="btn btn-circle bg-[#B2B2B2] opacity-40 border-none text-white mr-20"
           >

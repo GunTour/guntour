@@ -14,9 +14,8 @@ import { AiFillPlusCircle } from "react-icons/ai";
 const CardProduct = (props) => {
   return (
     <section className="card w-72 bg-white">
-      <figure className="px-3 pt-3">
+      <figure idDetail={props.id_product} className="px-3 pt-3">
         <img
-          idProduct={props.id_product}
           onClick={props.onDetail}
           src={props.img}
           alt="items"
