@@ -209,8 +209,8 @@ const CardClimber = () => {
         Climber Declaration Letter
       </p>
       <div className="card-actions justify-center pt-2">
-        <Link to="/files/surat-pernyataan-pendaki.pdf" target="_blank" download>
-          <ButtonDownloadFile id="button-download-1" />
+        <Link id="button-download-1" to="/files/surat-pernyataan-pendaki.pdf" target="_blank" download>
+          <ButtonDownloadFile/>
         </Link>
       </div>
     </div>
@@ -225,11 +225,12 @@ const CardParent = () => {
       </p>
       <div className="card-actions justify-center pt-2">
         <Link
+          id="button-download-2"
           to="/files/surat-pernyataan-orangtua.pdf"
           target="_blank"
           download
         >
-          <ButtonDownloadFile id="button-download-2"  />
+          <ButtonDownloadFile/>
         </Link>
       </div>
     </div>
@@ -244,11 +245,12 @@ const CardHealth = () => {
       </p>
       <div className="card-actions justify-center pt-2">
         <Link
+          id="button-download-3"
           to="/files/sop-pemeriksaan-kesehatan.pdf"
           target="_blank"
           download
         >
-          <ButtonDownloadFile id="button-download-3"  />
+          <ButtonDownloadFile/>
         </Link>
       </div>
     </div>
@@ -262,8 +264,8 @@ const CardGarbage = () => {
         Garbage Form
       </p>
       <div className="card-actions justify-center pt-2">
-        <Link to="/files/form-sampah.pdf" target="_blank" download>
-          <ButtonDownloadFile id="button-download-4"/>
+        <Link id="button-download-4" to="/files/form-sampah.pdf" target="_blank" download>
+          <ButtonDownloadFile/>
         </Link>
       </div>
     </div>
