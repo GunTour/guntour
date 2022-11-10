@@ -24,6 +24,7 @@ const Booking = () => {
   const [dateEnd, setDateEnd] = useState("");
   const [entrance, setEntrance] = useState("");
   const [idRanger, setidRanger] = useState("");
+  const [grossAmount, setGrossAmount] = useState("");
 
   const [person, setPerson] = useState("");
 
@@ -39,7 +40,7 @@ const Booking = () => {
     alert("Remove Success");
   }
 
-  function validasiHandleBookedNow(product) {
+  function validasiHandleBookedNow(product, isNavigate) {
     const sel = document.getElementById("categoryRanger");
     const ranger_name = sel.options[sel.selectedIndex].text;
     var formBooking = [
@@ -51,14 +52,16 @@ const Booking = () => {
         product,
         id_ranger: idRanger,
         ranger_name: ranger_name,
-        gross_amount: 200000,
+        gross_amount: grossAmount,
       },
     ];
     localStorage.removeItem("ConfirmBook");
     const temp = JSON.stringify(formBooking);
-    dispatch(setBooking(formBooking));
+    // dispatch(setBooking(formBooking));
     localStorage.setItem("ConfirmBook", temp);
-    navigate("/confirm");
+    if (isNavigate) {
+      navigate("/confirm");
+    }
   }
 
   return (
@@ -130,14 +133,17 @@ const Booking = () => {
                 images={data.product_picture}
                 name={data.product_name}
                 price={data.rent_price}
-                removeBooking={() => handleRemove(data)}
+                removeBooking={() => {
+                  handleRemove(data);
+                  validasiHandleBookedNow(booking, false);
+                }}
                 sub={-1}
                 add={1}
               />
             ))}
             <ButtonBooked
               onClick={() => {
-                validasiHandleBookedNow(booking);
+                validasiHandleBookedNow(booking, true);
               }}
             />
           </div>
