@@ -38,10 +38,14 @@ const ConfirmBooking = () => {
               Rangers: {data.ranger_name}
             </p>
             <p className="font-medium text-lg text-secondary">
-              Total Price: Rp {data.gross_amount}
+              Total Price: Rp
+              {/* {data.gross_amount} */}
+              {" " + data.gross_amount}
             </p>
             <div className="divider" />
-            <ButtonConfirmBooking />
+            <Link to="/history">
+              <ButtonConfirmBooking />
+            </Link>
             <div className="pt-2">
               <Link to="/booking">
                 <ButtonCancelBooking />
