@@ -65,6 +65,7 @@ const BecomeRanger = () => {
             <div className="divider" />
             <p className="font-normal text-lg text-secondary pb-3">Full Name</p>
             <InputFullNameRangers
+
               value={submit.fullname}
               onChange={(e) => handleChange(e.target.value, "fullname")}
             />
@@ -96,6 +97,7 @@ const BecomeRanger = () => {
               Supporting documents
             </p>
             <input
+              id="chooseFile"
               onChange={(e) =>
                 handleChange(e.target.files[0], "docs")
               }

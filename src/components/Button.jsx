@@ -188,7 +188,7 @@ export const ButtonSubmitData = (props) => {
     <div>
       <button
         onClick={props.onClick}
-        id="submit"
+        id="submit-Ranger"
         className="login font-medium text-lg text-center cursor-pointer justify-center h-14 w-full rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center hover:bg-primary hover:text-white "
       >
         Submit Data
@@ -214,7 +214,7 @@ export const ButtonCancelRanger = () => {
   return (
     <div>
       <button
-        id="cancel"
+        id="cancel-Ranger"
         className="login font-normal text-center justify-center h-12 w-full rounded-lg border border-slate text-slate-400 transform active:scale-95 transition-transform flex items-center"
       >
         Cancel
