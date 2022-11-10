@@ -132,6 +132,7 @@ const HomePage = (props) => {
             <>
               {data.map((data) => (
                 <CardProduct
+                  idProduct={data.id_product}
                   key={data.id_product}
                   img={data.product_picture}
                   name={data.product_name}
@@ -149,13 +150,13 @@ const HomePage = (props) => {
             onClick={(value) => previousPage(value)}
             className="w-14 h-14 rounded bg-none border-2 border-primary place-content-center grid content-center"
           >
-            <HiArrowLeft className="text-primary text-2xl" />
+            <HiArrowLeft id="arrow-left" className="text-primary text-2xl" />
           </button>
           <button
             onClick={(value) => nextPage(value)}
             className="w-14 h-14 rounded bg-none border-2 border-primary place-content-center grid content-center"
           >
-            <HiArrowRight className="text-primary text-2xl" />
+            <HiArrowRight id="arrow-right" className="text-primary text-2xl" />
           </button>
         </div>
 

@@ -64,6 +64,19 @@ const AdminRanger = () => {
       });
   };
 
+  const handleDelete = (id_ranger) => {
+    apiRequest(`admin/product/${id_ranger}`, "delete", {})
+      .then((res) => {
+        handleApplyRanger();
+      })
+      .catch((err) => {
+        alert(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   const handleAccept = (id_ranger) => {
     const body = {
       status: "",
@@ -113,9 +126,8 @@ const AdminRanger = () => {
 
   const LoadMoreRanger = () => {
     setTables(setTables + 3);
-    fetchData(tables)
+    fetchData(tables);
   };
-
 
   if (loading) {
     return (
@@ -174,7 +186,7 @@ const AdminRanger = () => {
                     </th>
                   </tr>
                 </thead>
-                {ranger.map((data) => (
+                {ranger?.map((data) => (
                   <tbody>
                     <tr>
                       <th>{data.id_ranger}</th>
@@ -198,7 +210,7 @@ const AdminRanger = () => {
               </table>
             </section>
             <div className="text-right flex items-center justify-end mt-3 font-medium text-base mr-11">
-              <button onClick={(value) => LoadMore(value)} >Load More</button>
+              <button onClick={(value) => LoadMore(value)}>Load More</button>
               <MdExpandMore className="text-secondary text-xl ml-2" />
             </div>
           </div>
@@ -234,7 +246,7 @@ const AdminRanger = () => {
                     </th>
                   </tr>
                 </thead>
-                {data.map((data) => (
+                {data?.map((data) => (
                   <tbody>
                     <tr>
                       <th>{data.id_ranger}</th>
@@ -253,7 +265,7 @@ const AdminRanger = () => {
                           <MdOutlineDownloadDone />
                         </button>
                         <button className="text-2xl text-red-600 ml-4">
-                          <AiFillDelete />
+                          <AiFillDelete id={data.id_ranger} />
                         </button>
                       </td>
                     </tr>
@@ -262,7 +274,9 @@ const AdminRanger = () => {
               </table>
             </section>
             <div className="text-right flex items-center justify-end mt-3 font-medium text-base mr-11">
-              <button onClick={(value) => LoadMoreRanger(value)} >Load More</button>
+              <button onClick={(value) => LoadMoreRanger(value)}>
+                Load More
+              </button>
               <MdExpandMore className="text-secondary text-xl ml-2" />
             </div>
           </div>

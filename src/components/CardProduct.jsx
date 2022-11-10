@@ -34,7 +34,7 @@ const CardProduct = (props) => {
           <span className="text-secondary font-medium text-xl">/day</span>
         </p>
         <div className="card-actions justify-center w-full">
-          <ButtonBookNow onClick={props.handleBook} />
+          <ButtonBookNow id={props.idProduct}  onClick={props.handleBook} />
         </div>
       </div>
     </section>
@@ -210,7 +210,7 @@ const CardClimber = () => {
       </p>
       <div className="card-actions justify-center pt-2">
         <Link to="/files/surat-pernyataan-pendaki.pdf" target="_blank" download>
-          <ButtonDownloadFile />
+          <ButtonDownloadFile id="button-download-1" />
         </Link>
       </div>
     </div>
