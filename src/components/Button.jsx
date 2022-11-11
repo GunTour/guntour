@@ -130,10 +130,11 @@ export const ButtonJoin = () => {
   );
 };
 
-export const ButtonBookNowDetails = () => {
+export const ButtonBookNowDetails = (props) => {
   return (
     <div>
       <button
+        onClick={props.onClick}
         id="booknow-details"
         className="login font-medium text-base text-center justify-center h-11 w-44 px-6 py-1 rounded-lg text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white "
       >
@@ -311,6 +312,7 @@ export const ButtonAcc = () => {
     </div>
   );
 };
+
 export const ButtonReject = () => {
   return (
     <div>

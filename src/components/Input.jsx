@@ -20,6 +20,9 @@ export const InputDate = (props) => {
       id={props.id}
       placeholder="dd/mm/yy"
       type="date"
+      min="2022-11-01"
+      max="2023-12-31"
+      required
     />
   );
 };
@@ -30,6 +33,7 @@ export const InputSelectEntrance = (props) => {
       onChange={props.onChange}
       id="category"
       class="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
+      required
     >
       <option value="" className="font-normal text-base text-secondary">
         Select the entrance
@@ -59,7 +63,11 @@ export const InputSelectPerson = (props) => {
       onChange={props.onChange}
       id="categoryPerson"
       class="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-normal text-base"
+      required
     >
+      <option value="0" className="font-normal text-base text-secondary hidden">
+        0
+      </option>
       <option value="1" className="font-normal text-base text-secondary">
         1
       </option>
@@ -88,6 +96,7 @@ export const InputSelectRanger = (props) => {
       onChange={props.onChange}
       id="categoryRanger"
       class="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
+      required
     >
       <option value="1" className="font-normal text-base text-secondary">
         Add Ranger
@@ -153,7 +162,6 @@ export const InputFullNameLogin = (props) => {
   );
 };
 
-// Ranger Input
 export const InputFullNameRangers = (props) => {
   return (
     <input
