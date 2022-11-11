@@ -14,31 +14,15 @@ const UsersPage = () => {
 
   useEffect(() => {
     fetchData();
-    handleClimber();
   }, [table]);
 
   const fetchData = async () => {
+    setLoading(true);
     apiRequest("admin/pendaki", "get", {})
       .then((res) => {
-        const results = res.data;
-        setData(results);
-      })
-      .catch((err) => {
-        alert(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  const handleClimber = async () => {
-    apiRequest("admin/pendaki", "get", {})
-      .then((res) => {
-        const results = res.climber;
-        if (results.length > 0) {
-          setClimber(results);
-        }
-        console.log(results);
+        const { data, climber } = res;
+        setData(data);
+        setClimber(climber);
       })
       .catch((err) => {
         alert(err);
@@ -83,59 +67,34 @@ const UsersPage = () => {
             <ModalAdminUSer />
           </div>
 
-          {climber.map((data) => (
-            <article className="container mx-auto py-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
-                  <p className="font-semibold text-xl text-primary">
-                    IS CLIMBERS
-                  </p>
-                  <p className="font-semibold text-[32px] text-secondary">
-                    {data.is_climber}
-                  </p>
-                </div>
-                <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
-                  <p className="font-semibold text-xl text-primary">
-                    MALE CLIMBER
-                  </p>
-                  <p className="font-semibold text-[32px] text-secondary">
-                    {data.male_climber}
-                  </p>
-                </div>
-                <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
-                  <p className="font-semibold text-xl text-primary">
-                    FEMALE CLIMBER
-                  </p>
-                  <p className="font-semibold text-[32px] text-secondary">
-                    {data.female_climber}
-                  </p>
-                </div>
-              </div>
-            </article>
-          ))}
-
-          {/* <article className="container mx-auto py-5">
+          <article className="container mx-auto py-5">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
                 <p className="font-semibold text-xl text-primary">
                   IS CLIMBERS
                 </p>
-                <p className="font-semibold text-[32px] text-secondary">180</p>
+                <p className="font-semibold text-[32px] text-secondary">
+                  {climber.is_climber}
+                </p>
               </div>
               <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
                 <p className="font-semibold text-xl text-primary">
                   MALE CLIMBER
                 </p>
-                <p className="font-semibold text-[32px] text-secondary">140</p>
+                <p className="font-semibold text-[32px] text-secondary">
+                  {climber.male_climber}
+                </p>
               </div>
               <div className="flex flex-col justify-start rounded-xl p-6 bg-gray-100">
                 <p className="font-semibold text-xl text-primary">
                   FEMALE CLIMBER
                 </p>
-                <p className="font-semibold text-[32px] text-secondary">120</p>
+                <p className="font-semibold text-[32px] text-secondary">
+                  {climber.female_climber}
+                </p>
               </div>
             </div>
-          </article> */}
+          </article>
 
           <p className="text-secondary font-semibold text-xl mb-2 mt-3">
             Climbers
