@@ -7,6 +7,9 @@ import {
   ButtonDownloadFile,
 } from "components/Button";
 import { Link } from "react-router-dom";
+import { apiRequest } from "utils/apiRequest";
+
+import Swal from "sweetalert2";
 
 import { AiFillMinusCircle } from "react-icons/ai";
 import { AiFillPlusCircle } from "react-icons/ai";
@@ -15,8 +18,8 @@ const CardProduct = (props) => {
   return (
     <section className="card w-72 bg-white">
       <figure className="px-3 pt-3">
-        <img 
-          idProduct={props.id_product} 
+        <img
+          idProduct={props.id_product}
           onClick={props.onDetail}
           src={props.img}
           alt="items"
@@ -119,32 +122,60 @@ const CardBooking = (props) => {
   );
 };
 
-const CardOrderProgress = () => {
-  return (
-    <section className="card w-72 bg-white ">
-      <figure className="px-3 pt-3">
-        <img src={booking} alt="booking" className="rounded-xl w-72 h-48" />
-      </figure>
-      <div className="card-body items-left text-left px-4 py-[14px]">
-        <h2 className="card-title font-semibold text-2xl text-secondary">
-          Your Booking #3
-        </h2>
-        <p className="font-medium text-xl text-secondary">Rp. 198K</p>
-        <p className="py-1 px-2 w-32 h-9 rounded-lg bg-[#FFF1CC] text-primary text-center font-medium text-base">
-          On Progress
-        </p>
-        <div className="card-actions justify-center">
-          <ButtonPay />
-          <ButtonCancel />
-        </div>
-      </div>
-    </section>
-  );
-};
+// const CardOrderProgress = () => {
+//   return (
+//     <section className="card w-72 bg-white ">
+//       <figure className="px-3 pt-3">
+//         <img src={booking} alt="booking" className="rounded-xl w-72 h-48" />
+//       </figure>
+//       <div className="card-body items-left text-left px-4 py-[14px]">
+//         <h2 className="card-title font-semibold text-2xl text-secondary">
+//           Your Booking #3
+//         </h2>
+//         <p className="font-medium text-xl text-secondary">Rp. 198K</p>
+//         <p className="py-1 px-2 w-32 h-9 rounded-lg bg-[#FFF1CC] text-primary text-center font-medium text-base">
+//           On Progress
+//         </p>
+//         <div className="card-actions justify-center">
+//           <ButtonPay />
+//           <ButtonCancel />
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 const CardOrderBooking = (props) => {
+  function handleDeleteBooking(id_booking) {
+    Swal.fire({
+      title: "Do you want to Delete ?",
+      text: "You won't be able to revert this!",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        apiRequest(`booking/${id_booking}`, "delete", {})
+          .then((res) => {
+            var card = document.getElementById("CardHistory-" + id_booking);
+            card.className += " hidden";
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          })
+          .catch((err) => {
+            alert(err.toString());
+          })
+          .finally((res) => {});
+      }
+    });
+  }
+
   return (
-    <section className="card w-72 bg-white ">
+    <section
+      id={"CardHistory-" + props.idBooking}
+      className="card w-72 bg-white "
+    >
       <figure className="px-3 pt-3">
         <img src={booking} alt="booking" className="rounded-xl w-72 h-48" />
       </figure>
@@ -152,24 +183,45 @@ const CardOrderBooking = (props) => {
         <h2 className="card-title font-semibold text-2xl text-secondary">
           Your Booking #{props.idBooking}
         </h2>
-        <p className="font-medium text-xl text-secondary">
+        <p className="font-medium text-xl text-secondary hidden">
           Rp. {props.priceBooking}
         </p>
-        <p className="py-1 px-2 w-32 h-9 rounded-lg bg-[#FFF1CC] text-primary text-center font-medium text-base">
+        <p
+          className={`py-1 px-2 w-32 h-9 rounded-lg  ${
+            props.statusBooking === "settlement"
+              ? "bg-[#DDF8E4]  text-primary"
+              : props.statusBooking === "unpaid"
+              ? "bg-[#fe1212] text-white"
+              : "bg-[#FFE0E0]  text-primary"
+          }  text-center font-medium text-base`}
+        >
           {props.statusBooking}
         </p>
         <div className="card-actions justify-center">
           <a href={props.payBooking}>
-            <button className="login font-medium text-center justify-center h-[48px] w-[265px] px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white ">
+            <button
+              className={`login font-medium text-center justify-center h-[48px] w-[265px] px-6 py-1 rounded-md text-white bg-primary transform active:scale-75 transition-transform flex items-center hover:bg-primary hover:text-white 
+              ${props.statusBooking === "settlement" ? "hidden" : null}`}
+            >
               Pay Now
             </button>
           </a>
           <div>
             <button
               id="cancel"
-              className="login font-normal text-center justify-center h-[48px] w-[265px] rounded-lg border border-slate text-slate-400 transform active:scale-95 transition-transform flex items-center"
+              key={props.idBooking}
+              className={`login font-normal text-center justify-center h-[48px] w-[265px] rounded-lg border border-slate text-slate-400 transform active:scale-95 transition-transform flex items-center
+              ${
+                props.statusBooking === "unpaid"
+                  ? "cursor-pointer"
+                  : props.statusBooking === "pending"
+                  ? "cursor-pointer"
+                  : "btn-disabled"
+              }
+              `}
+              onClick={() => handleDeleteBooking(props.idBooking)}
             >
-              Cancel
+              Delete
             </button>
           </div>
         </div>
@@ -178,51 +230,51 @@ const CardOrderBooking = (props) => {
   );
 };
 
-const CardOrderCancel = () => {
-  return (
-    <section className="card w-72 bg-white ">
-      <figure className="px-3 pt-3">
-        <img src={booking} alt="booking" className="rounded-xl w-72 h-48" />
-      </figure>
-      <div className="card-body items-left text-left px-4 py-[14px]">
-        <h2 className="card-title font-semibold text-2xl text-secondary">
-          Your Booking #2
-        </h2>
-        <p className="font-medium text-xl text-secondary">Rp. 320K</p>
-        <p className="py-1 px-2 w-32 rounded-lg bg-[#FFE0E0] text-[#FF3333] text-center font-medium text-base">
-          Canceled
-        </p>
-        <div className="card-actions justify-center">
-          <ButtonPay />
-          <ButtonCancel />
-        </div>
-      </div>
-    </section>
-  );
-};
+// const CardOrderCancel = () => {
+//   return (
+//     <section className="card w-72 bg-white ">
+//       <figure className="px-3 pt-3">
+//         <img src={booking} alt="booking" className="rounded-xl w-72 h-48" />
+//       </figure>
+//       <div className="card-body items-left text-left px-4 py-[14px]">
+//         <h2 className="card-title font-semibold text-2xl text-secondary">
+//           Your Booking #2
+//         </h2>
+//         <p className="font-medium text-xl text-secondary">Rp. 320K</p>
+//         <p className="py-1 px-2 w-32 rounded-lg bg-[#FFE0E0] text-[#FF3333] text-center font-medium text-base">
+//           Canceled
+//         </p>
+//         <div className="card-actions justify-center">
+//           <ButtonPay />
+//           <ButtonCancel />
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
-const CardOrderSuccess = () => {
-  return (
-    <section className="card w-72 bg-white ">
-      <figure className="px-3 pt-3">
-        <img src={booking} alt="booking" className="rounded-xl w-72 h-48" />
-      </figure>
-      <div className="card-body items-left text-left px-4 py-[14px]">
-        <h2 className="card-title font-semibold text-2xl text-secondary">
-          Your Booking #1
-        </h2>
-        <p className="font-medium text-xl text-secondary">Rp. 100K</p>
-        <p className="py-1 px-2 w-32 rounded-lg bg-[#DDF8E4] text-[#56DC77] text-center font-medium text-base">
-          Success
-        </p>
-        <div className="card-actions justify-center">
-          <ButtonPay />
-          <ButtonCancel />
-        </div>
-      </div>
-    </section>
-  );
-};
+// const CardOrderSuccess = () => {
+//   return (
+//     <section className="card w-72 bg-white ">
+//       <figure className="px-3 pt-3">
+//         <img src={booking} alt="booking" className="rounded-xl w-72 h-48" />
+//       </figure>
+//       <div className="card-body items-left text-left px-4 py-[14px]">
+//         <h2 className="card-title font-semibold text-2xl text-secondary">
+//           Your Booking #1
+//         </h2>
+//         <p className="font-medium text-xl text-secondary">Rp. 100K</p>
+//         <p className="py-1 px-2 w-32 rounded-lg bg-[#DDF8E4] text-[#56DC77] text-center font-medium text-base">
+//           Success
+//         </p>
+//         <div className="card-actions justify-center">
+//           <ButtonPay />
+//           <ButtonCancel />
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 const CardClimber = () => {
   return (
@@ -296,9 +348,9 @@ export {
   CardProduct,
   CardOrderBooking,
   CardBooking,
-  CardOrderProgress,
-  CardOrderCancel,
-  CardOrderSuccess,
+  // CardOrderProgress,
+  // CardOrderCancel,
+  // CardOrderSuccess,
   CardClimber,
   CardParent,
   CardHealth,
