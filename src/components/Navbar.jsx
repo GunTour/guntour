@@ -249,25 +249,25 @@ const Sidebar = () => {
 
           {/* List Page */}
           <li className="text-white active:bg-green-900 mb-2">
-            <Link to="/admin">
+            <Link id="product-sidebar" to="/admin">
               <MdDashboard className="fill-white text-2xl " />
               <p className="font-normal text-lg">Product</p>
             </Link>
           </li>
           <li className="text-white active:bg-green-900 mb-2">
-            <Link to="/adminranger">
+            <Link id="ranges-sidebar" to="/adminranger">
               <BsPeopleFill className="fill-white text-2xl" />
               <p className="font-normal text-lg">Rangers</p>
             </Link>
           </li>
           <li className="text-white active:bg-green-900">
-            <Link to="/users">
+            <Link id="users-sidebar" to="/users">
               <FaUser className="fill-white text-xl" />
               <p className="font-normal text-lg ml-1">Users</p>
             </Link>
           </li>
           <li className="text-white mt-72">
-            <button onClick={() => handleLogoutAdmin()} className="active:bg-slate-800">
+            <button id="button-logout-sidebar" onClick={() => handleLogoutAdmin()} className="active:bg-slate-800">
               <RiLogoutBoxLine className="fill-white text-2xl" />
               <p>Logout</p>
             </button>
