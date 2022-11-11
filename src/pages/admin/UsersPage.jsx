@@ -113,7 +113,7 @@ const UsersPage = () => {
                     NAME
                   </th>
                   <th className="font-semibold text-base text-secondary">
-                    PHONE
+                    ENTRANCE
                   </th>
                   <th className="font-semibold text-base text-secondary">
                     CHECK IN
@@ -131,7 +131,7 @@ const UsersPage = () => {
                       {pendaki.fullname}
                     </td>
                     <td className="text-secondary font-normal text-base">
-                      {pendaki.phone}
+                      {pendaki.entrance}
                     </td>
                     <td className="text-secondary font-normal text-base">
                       {pendaki.date_start}
