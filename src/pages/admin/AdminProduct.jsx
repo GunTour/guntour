@@ -20,25 +20,24 @@ const AdminProduct = () => {
 
   useEffect(() => {
     fetchData();
-  }, [page]);
+  }, []);
 
   const fetchData = async () => {
     apiRequest(`admin/product?page=${page}`, "get", {})
       .then((res) => {
-        const results = res.data;
-        setData(results);
+        const results  = res.data;
+        const loadMore = page + 1;
+        const temp = [...data];
+        temp.push(...results);
+        setData(temp)
+        setPage(loadMore);
       })
       .catch((err) => {
-        alert(err);
+        alert(err.toString());
       })
       .finally(() => {
         setLoading(false);
       });
-  };
-
-  const loadMore = () => {
-    setPage(page + 1);
-    fetchData(page);
   };
 
   const handleDelete = (id_product) => {
@@ -150,7 +149,7 @@ const AdminProduct = () => {
                   </>
                 </table>
                 <div className="text-right flex items-center justify-end font-medium text-base mr-10 mt-3">
-                  <button onClick={(value) => loadMore(value)}>
+                  <button onClick={() => fetchData()}>
                     Load More
                   </button>
                   <MdExpandMore className="text-secondary text-xl ml-2" />
