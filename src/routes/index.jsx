@@ -17,11 +17,13 @@ import ConfirmBooking from "pages/ConfirmBooking";
 import OrderHistory from "pages/OrderHistory";
 import BecomeRanger from "pages/BecomeRanger";
 import GuidePage from "pages/GuidePage";
+import GuideAnonym from "pages/GuideAnonym";
 import NotFound from "pages/NotFound";
 import AdminProduct from "pages/admin/AdminProduct";
 import AdminRanger from "pages/admin/AdminRanger";
 import UsersPage from "pages/admin/UsersPage";
 import About from "pages/About";
+import AboutAnonym from "pages/AboutAnonym";
 
 axios.defaults.baseURL = "https://mdanys.online/";
 
@@ -109,10 +111,14 @@ const Index = () => {
             path="/guide"
             element={checkToken ? <GuidePage /> : <GuidePage />}
           />
+          <Route path="/about" element={<About />} />
+          <Route path="/guideanonym" element={<GuideAnonym />} />
+          <Route path="/aboutanonym" element={<AboutAnonym />} />
+          
+          <Route path="/admin" element={<AdminProduct />} />
           <Route path="/admin" element={<AdminProduct />} />
           <Route path="/adminranger" element={<AdminRanger />} />
           <Route path="/users" element={<UsersPage />} />
-          <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -1,6 +1,7 @@
 import React from "react";
+import { WithRouter } from "utils/Navigation";
 
-import Layout from "components/Layout";
+import Layout from "components/LayoutAnonym";
 import {
   CardClimber,
   CardParent,
@@ -11,7 +12,7 @@ import {
 import imgguide from "assets/header-guide.jpg";
 import imgmap from "assets/img-map.jpg";
 
-const GuidePage = () => {
+const GuideAnonym = () => {
   return (
     <>
       <Layout>
@@ -125,4 +126,4 @@ const GuidePage = () => {
   );
 };
 
-export default GuidePage;
+export default WithRouter(GuideAnonym);

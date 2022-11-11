@@ -52,7 +52,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link to="/guide">
+              <Link to="/guideanonym">
                 <p id="guide-anonym" className="font-semibold text-xl block py-2 pr-4 pl-3 text-secondary border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0">
                   Guide
                 </p>
@@ -60,7 +60,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link to="/about">
+              <Link to={"/aboutanonym"}>
                 <p id="about-anonym" className="font-semibold text-xl block py-2 pr-4 pl-3 text-secondary border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0">
                   About
                 </p>

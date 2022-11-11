@@ -33,7 +33,7 @@ const AdminProduct = () => {
         setPage(loadMore);
       })
       .catch((err) => {
-        alert(err.toString());
+        alert(err);
       })
       .finally(() => {
         setLoading(false);
