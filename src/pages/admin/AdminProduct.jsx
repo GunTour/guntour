@@ -8,14 +8,12 @@ import { NavbarAdmin, Sidebar } from "components/Navbar";
 import { AiFillDelete } from "react-icons/ai";
 import { MdExpandMore } from "react-icons/md";
 
-import {
-  ModalAdminProduct,
-  ModalEditAdminProduct,
-} from "components/ModalAdmin";
+import { ModalAddProduct, ModalEditDataProduct } from "components/ModalAdmin";
 
-const AdminProduct = () => {
+const AdminProduct = (props) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [objSubmit, setObjSubmit] = useState("");
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -25,11 +23,11 @@ const AdminProduct = () => {
   const fetchData = async () => {
     apiRequest(`admin/product?page=${page}`, "get", {})
       .then((res) => {
-        const results  = res.data;
+        const results = res.data;
         const loadMore = page + 1;
         const temp = [...data];
         temp.push(...results);
-        setData(temp)
+        setData(temp);
         setPage(loadMore);
       })
       .catch((err) => {
@@ -38,6 +36,56 @@ const AdminProduct = () => {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const handleAddProduct = async () => {
+    setLoading(true);
+    const formData = new FormData();
+    for (const key in objSubmit) {
+      formData.append(key, objSubmit[key]);
+    }
+    apiRequest("admin/product", "post", objSubmit, "multipart/form-data")
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Data added successfully",
+        });
+        setObjSubmit({});
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "warning",
+          title: "There is an error please check again",
+        });
+      })
+      .finally(() => setLoading(false));
+  };
+
+  const handleEditProduct = async (id_product) => {
+    const formData = new FormData();
+    for (const key in objSubmit) {
+      formData.append(key, objSubmit[key]);
+    }
+    apiRequest(
+      `admin/product/${id_product}`,
+      "put",
+      objSubmit,
+      "multipart/form-data"
+    )
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Data changes successfully",
+        });
+        setObjSubmit({});
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "warning",
+          title: "There is an error please check again",
+        });
+      })
+      .finally(() => setLoading(false));
   };
 
   const handleDelete = (id_product) => {
@@ -57,6 +105,12 @@ const AdminProduct = () => {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const handleChange = (value, key) => {
+    let temp = { ...objSubmit };
+    temp[key] = value;
+    setObjSubmit(temp);
   };
 
   if (loading) {
@@ -89,7 +143,26 @@ const AdminProduct = () => {
           <div className="mt-10">
             <div className="col-span-2">
               <div className="text-right flex items-center justify-end mt-3 font-medium text-base mr-11">
-                <ModalAdminProduct />
+                <ModalAddProduct
+                  onChangeAddProduct={(e) =>
+                    handleChange(e.target.files[0], "product_picture")
+                  }
+                  valueAddProductName={objSubmit.product_name}
+                  onChangeAddProductName={(e) =>
+                    handleChange(e.target.value, "product_name")
+                  }
+                  valueAddRent={objSubmit.rent_price}
+                  onChangeAddRent={(e) =>
+                    handleChange(e.target.value, "rent_price")
+                  }
+                  valueAddDetail={objSubmit.detail}
+                  onChangeAddDetail={(e) =>
+                    handleChange(e.target.value, "detail")
+                  }
+                  valueAddNote={objSubmit.note}
+                  onChangeAddNote={(e) => handleChange(e.target.value, "note")}
+                  onAddProduct={() => handleAddProduct()}
+                />
               </div>
 
               <div className="overflow-x-auto py-6 mr-11">
@@ -133,7 +206,33 @@ const AdminProduct = () => {
                           <td>
                             <div className="flex items-center text-sm">
                               <button className="text-2xl text-gray-600">
-                                <ModalEditAdminProduct />
+                                <ModalEditDataProduct
+                                  onChangeProduct={(e) =>
+                                    handleChange(
+                                      e.target.files[0],
+                                      "product_picture"
+                                    )
+                                  }
+                                  valueProductName={objSubmit.product_name}
+                                  onChangeProductName={(e) =>
+                                    handleChange(e.target.value, "product_name")
+                                  }
+                                  valueRent={objSubmit.rent_price}
+                                  onRent={(e) =>
+                                    handleChange(e.target.value, "rent_price")
+                                  }
+                                  valueDescProduct={objSubmit.detail}
+                                  onDescProduct={(e) =>
+                                    handleChange(e.target.value, "detail")
+                                  }
+                                  valueNoteProduct={objSubmit.note}
+                                  onNoteProduct={(e) =>
+                                    handleChange(e.target.value, "note")
+                                  }
+                                  onEditProduct={() =>
+                                    handleEditProduct(data.id_product)
+                                  }
+                                />
                               </button>
                               <button
                                 id={data.id_product}
@@ -149,9 +248,7 @@ const AdminProduct = () => {
                   </>
                 </table>
                 <div className="text-right flex items-center justify-end font-medium text-base mr-10 mt-3">
-                  <button onClick={() => fetchData()}>
-                    Load More
-                  </button>
+                  <button onClick={() => fetchData()}>Load More</button>
                   <MdExpandMore className="text-secondary text-xl ml-2" />
                 </div>
               </div>
