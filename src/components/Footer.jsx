@@ -40,7 +40,7 @@ const Footer = () => {
               <RiContactsFill className="fill-primary text-2xl mr-4" />
               (021)-2549812
             </a>
-            <a
+            <a id="email"
               className="text-white flex items-center justify-center font-medium text-sm md:justify-start mb-6"
               href="mailto:guntour@mail.id"
             >
@@ -49,10 +49,9 @@ const Footer = () => {
             </a>
           </div>
 
-          <div>
+          <div id="gmap_canvas">
             <iframe
               className="w-72 h-40 rounded-lg"
-              id="gmap_canvas"
               src="https://maps.google.com/maps?q=Gunung%20Gede%20Pangrango&t=&z=13&ie=UTF8&iwloc=&output=embed"
               frameBorder="0"
               scrolling="no"
