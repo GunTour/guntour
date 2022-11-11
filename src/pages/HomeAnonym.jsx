@@ -7,6 +7,8 @@ import { handleAuth } from "utils/redux/reducers/reducer";
 import { useCookies } from "react-cookie";
 import { Helmet } from "react-helmet";
 
+import Swal from "sweetalert2";
+
 import Hero from "components/Hero";
 import Layout from "components/LayoutAnonym";
 import { CardProduct } from "components/CardProduct";
@@ -30,6 +32,14 @@ const HomeAnonym = () => {
     handleClimber();
   }, [page]);
 
+  function validasiLogin() {
+    Swal.fire({
+      position: "center",
+      icon: "info",
+      title: "You have to login first!",
+      showConfirmButton: true,
+    });
+  }
   const fetchData = async () => {
     apiRequest(`product?page=${page}`, "get", {})
       .then((res) => {
@@ -119,6 +129,7 @@ const HomeAnonym = () => {
                   img={data.product_picture}
                   name={data.product_name}
                   price={data.rent_price}
+                  handleBook={() => validasiLogin()}
                 />
               ))}
             </>

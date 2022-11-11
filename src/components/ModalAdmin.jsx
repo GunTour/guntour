@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { apiRequest } from "../utils/apiRequest";
 
-import {
-  InputCustom,
-  InputForModal,
-} from "components/Input";
+import { InputCustom, InputForModal } from "components/Input";
 import { ButtonCustom } from "components/Button";
 
 import { AiFillEdit } from "react-icons/ai";
@@ -14,12 +11,12 @@ const ModalEditRanger = (props) => {
   return (
     <div>
       {/* The button to open modal */}
-      <label htmlFor="my-modal-6" className="cursor-pointer">
+      <label htmlFor="my-modal-3" className="cursor-pointer">
         <AiFillEdit />
       </label>
 
       {/* Put this part before </body> tag */}
-      <input type="checkbox" id="my-modal-6" className="modal-toggle" />
+      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
       <div className="modal modal-bottom py-5 sm:modal-middle">
         <div className="bg-white modal-box w-[600px] overflow-auto border p-6">
           <h3 className="font-bold text-lg text-center">Edit Status Ranger</h3>
@@ -60,7 +57,7 @@ const ModalEditRanger = (props) => {
             />
 
             <div className="modal-action">
-              <label htmlFor="my-modal-6">
+              <label htmlFor="my-modal-3">
                 <ButtonCustom
                   className="border h-11 w-[464px] rounded-lg  flex items-center justify-center font-normal text-sm text-[#999999] cursor-pointer"
                   label="Close"
@@ -74,54 +71,22 @@ const ModalEditRanger = (props) => {
   );
 };
 
-const ModalAdminProduct = () => {
-  const [loading, setLoading] = useState(true);
-  const [objSubmit, setObjSubmit] = useState("");
-
-  const handleAddProduct = async () => {
-    setLoading(true);
-    const formData = new FormData();
-    for (const key in objSubmit) {
-      formData.append(key, objSubmit[key]);
-    }
-    apiRequest("admin/product", "post", objSubmit, "multipart/form-data")
-      .then((res) => {
-        Swal.fire({
-          icon: "success",
-          title: "Data added successfully",
-        });
-        setObjSubmit({});
-      })
-      .catch((err) => {
-        Swal.fire({
-          icon: "warning",
-          title: "There is an error please check again",
-        });
-      })
-      .finally(() => setLoading(false));
-  };
-
-  const handleChange = (value, key) => {
-    let temp = { ...objSubmit };
-    temp[key] = value;
-    setObjSubmit(temp);
-  };
-
+const ModalAddProduct = (props) => {
   return (
     <div>
       <label
-        htmlFor="my-modal-3"
+        htmlFor="my-modal-6"
         className="cursor-pointer font-normal text-base text-center justify-center h-12 w-[180px] rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
       >
         Add Product
       </label>
 
-      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+      <input type="checkbox" id="my-modal-6" className="modal-toggle" />
 
       <div className="modal">
         <div className="modal-box rounded-lg relative">
           <h3 className="font-semibold text-xl text-secondary text-center">
-            Data Product
+            Add New Product
           </h3>
           <div className="divider m-0" />
 
@@ -132,10 +97,7 @@ const ModalAdminProduct = () => {
             </h3>
             <div className="text-left">
               <input
-                // value={objSubmit.product_picture}
-                onChange={(e) =>
-                  handleChange(e.target.files[0], "product_picture")
-                }
+                onChange={props.onChangeAddProduct}
                 type="file"
                 className="file-input w-full max-w-xs"
               />
@@ -148,8 +110,8 @@ const ModalAdminProduct = () => {
               Product Name
             </p>
             <InputForModal
-              value={objSubmit.product_name}
-              onChange={(e) => handleChange(e.target.value, "product_name")}
+              value={props.valueAddProductName}
+              onChange={props.onChangeAddProductName}
               placeholder="Enter your product name"
             />
           </div>
@@ -160,8 +122,8 @@ const ModalAdminProduct = () => {
               Rent Price
             </p>
             <InputForModal
-              value={objSubmit.rent_price}
-              onChange={(e) => handleChange(e.target.value, "rent_price")}
+              value={props.valueAddRent}
+              onChange={props.onChangeAddRent}
               placeholder="100K"
             />
           </div>
@@ -172,8 +134,8 @@ const ModalAdminProduct = () => {
               Description
             </p>
             <textarea
-              value={objSubmit.detail}
-              onChange={(e) => handleChange(e.target.value, "detail")}
+              value={props.valueAddDetail}
+              onChange={props.onChangeAddDetail}
               className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
               placeholder="Enter your product description"
             ></textarea>
@@ -185,8 +147,8 @@ const ModalAdminProduct = () => {
               Warning
             </p>
             <textarea
-              value={objSubmit.note}
-              onChange={(e) => handleChange(e.target.value, "note")}
+              value={props.valueAddNote}
+              onChange={props.onChangeAddNote}
               className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
               placeholder="Enter your product description"
             ></textarea>
@@ -194,12 +156,12 @@ const ModalAdminProduct = () => {
 
           <div className="divider m-0" />
           <ButtonCustom
-            onClick={() => handleAddProduct()}
+            onClick={props.onAddProduct}
             className="cursor-pointer font-medium text-center justify-center h-11 w-full mt-5 mb-3 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
-            label="Save Data"
+            label="Add Product"
           />
 
-          <label htmlFor="my-modal-3">
+          <label htmlFor="my-modal-6">
             <ButtonCustom
               className="cursor-pointer font-medium text-center justify-center h-11 w-full rounded-lg text-slate-400 border bg-white transform active:scale-95 transition-transform flex items-center"
               label="Close"
@@ -211,51 +173,22 @@ const ModalAdminProduct = () => {
   );
 };
 
-const ModalEditAdminProduct = () => {
-  const [loading, setLoading] = useState(true);
-  const [objSubmit, setObjSubmit] = useState("");
-
-  const handleAddProduct = async () => {
-    setLoading(true);
-    const formData = new FormData();
-    for (const key in objSubmit) {
-      formData.append(key, objSubmit[key]);
-    }
-    apiRequest("admin/product", "put", objSubmit, "multipart/form-data")
-      .then((res) => {
-        Swal.fire({
-          icon: "success",
-          title: "Data added successfully",
-        });
-        setObjSubmit({});
-      })
-      .catch((err) => {
-        Swal.fire({
-          icon: "warning",
-          title: "There is an error please check again",
-        });
-      })
-      .finally(() => setLoading(false));
-  };
-
-  const handleChange = (value, key) => {
-    let temp = { ...objSubmit };
-    temp[key] = value;
-    setObjSubmit(temp);
-  };
-
+const ModalEditDataProduct = (props) => {
   return (
     <div>
-      <label htmlFor="my-modal-3" className="text-2xl text-gray-600">
+      <label
+        htmlFor="my-modal-5"
+        className="text-2xl text-gray-600 cursor-pointer"
+      >
         <AiFillEdit id="button-edit-1" />
       </label>
 
-      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+      <input type="checkbox" id="my-modal-5" className="modal-toggle" />
 
       <div className="modal">
         <div className="modal-box rounded-lg relative">
           <h3 className="font-semibold text-xl text-secondary text-center">
-            Data Product
+            Edit Data Product
           </h3>
           <div className="divider m-0" />
 
@@ -267,9 +200,7 @@ const ModalEditAdminProduct = () => {
             <div className="text-left">
               <input
                 id="input-photo-product"
-                onChange={(e) =>
-                  handleChange(e.target.files[0], "product_picture")
-                }
+                onChange={props.onChangeProduct}
                 type="file"
                 className="file-input w-full max-w-xs"
               />
@@ -282,9 +213,9 @@ const ModalEditAdminProduct = () => {
               Product Name
             </p>
             <InputForModal
+              value={props.valueProductName}
+              onChange={props.onChangeProductName}
               id="input-name-product"
-              value={objSubmit.product_name}
-              onChange={(e) => handleChange(e.target.value, "product_name")}
               placeholder="Enter your product name"
             />
           </div>
@@ -296,8 +227,8 @@ const ModalEditAdminProduct = () => {
             </p>
             <InputForModal
               id="input-rent-product"
-              value={objSubmit.rent_price}
-              onChange={(e) => handleChange(e.target.value, "rent_price")}
+              value={props.valueRent}
+              onChange={props.onRent}
               placeholder="100K"
             />
           </div>
@@ -309,8 +240,8 @@ const ModalEditAdminProduct = () => {
             </p>
             <textarea
               id="input-desc-product"
-              value={objSubmit.detail}
-              onChange={(e) => handleChange(e.target.value, "detail")}
+              value={props.valueDescProduct}
+              onChange={props.onDescProduct}
               className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
               placeholder="Enter your product description"
             ></textarea>
@@ -323,8 +254,8 @@ const ModalEditAdminProduct = () => {
             </p>
             <textarea
               id="input-note-product"
-              value={objSubmit.note}
-              onChange={(e) => handleChange(e.target.value, "note")}
+              value={props.valueNoteProduct}
+              onChange={props.onNoteProduct}
               className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
               placeholder="Enter your product description"
             ></textarea>
@@ -333,15 +264,15 @@ const ModalEditAdminProduct = () => {
           <div className="divider m-0" />
           <ButtonCustom
             id="button-addProduct"
-            onClick={() => handleAddProduct()}
-            className="cursor-pointer font-medium text-center justify-center h-11 w-full mt-5 mb-3 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
-            label="Save Data"
+            onClick={props.onEditProduct}
+            className="cursor-pointer text-base font-medium text-center justify-center h-11 w-full mt-5 mb-3 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
+            label="Edit Product"
           />
 
-          <label htmlFor="my-modal-3">
+          <label htmlFor="my-modal-5">
             <ButtonCustom
               id="button-closeProduct"
-              className="cursor-pointer font-medium text-center justify-center h-11 w-full rounded-lg text-slate-400 border bg-white transform active:scale-95 transition-transform flex items-center"
+              className="cursor-pointer text-base font-medium text-center justify-center h-11 w-full rounded-lg text-slate-400 border bg-white transform active:scale-95 transition-transform flex items-center"
               label="Close"
             />
           </label>
@@ -350,73 +281,6 @@ const ModalEditAdminProduct = () => {
     </div>
   );
 };
-//       <label htmlFor="my-modal-3" className="text-2xl text-gray-600">
-//         <AiFillEdit />
-//       </label>
-
-//       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-
-//       <div className="modal">
-//         <div className="modal-box rounded-lg relative">
-//           <h3 className="font-semibold text-xl text-secondary text-center">
-//             Edit Product
-//           </h3>
-//           <div className="divider m-0" />
-
-//           {/* Add Photo Product */}
-//           <div className="mt-6 mb-5">
-//             <h3 className="font-normal text-secondary text-lg text-left mb-3">
-//               Photo Product
-//             </h3>
-//             <div className="text-left">
-//               <input type="file" className="file-input w-full max-w-xs" />
-//             </div>
-//           </div>
-
-//           {/* Input Product Name*/}
-//           <div className="mb-5">
-//             <p className="font-normal text-lg text-secondary text-left mb-3">
-//               Product Name
-//             </p>
-//             <InputForModal placeholder="Enter your product name" />
-//           </div>
-
-//           {/* Input Rent Price*/}
-//           <div className="mb-5">
-//             <p className="font-normal text-lg text-secondary text-left mb-3">
-//               Rent Price
-//             </p>
-//             <InputForModal placeholder="100K" />
-//           </div>
-
-//           {/* Input Description*/}
-//           <div className="mb-5">
-//             <p className="font-normal text-lg text-secondary text-left mb-3">
-//               Description
-//             </p>
-//             <textarea
-//               className="w-full border border-[#B3B3B3] textarea mt-2 rounded-lg h-40 text-base font-normal"
-//               placeholder="Enter your product description"
-//             ></textarea>
-//           </div>
-
-//           <div className="divider m-0" />
-//           <ButtonCustom
-//             className="cursor-pointer font-medium text-center justify-center h-11 w-full mt-5 mb-3 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
-//             label="Edit Product"
-//           />
-
-//           <label htmlFor="my-modal-3">
-//             <ButtonCustom
-//               className="cursor-pointer font-medium text-center justify-center h-11 w-full rounded-lg text-slate-400 border bg-white transform active:scale-95 transition-transform flex items-center"
-//               label="Close"
-//             />
-//           </label>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
 
 const ModalAdminUSer = (props) => {
   const [loading, setLoading] = useState(true);
@@ -424,7 +288,7 @@ const ModalAdminUSer = (props) => {
 
   const handleEditData = async () => {
     setLoading(true);
-    
+
     const formData = new FormData();
     for (const key in objSubmit) {
       formData.append(key, objSubmit[key]);
@@ -456,13 +320,13 @@ const ModalAdminUSer = (props) => {
     <div>
       <label
         id="button-AdminUser"
-        htmlFor="my-modal-3"
+        htmlFor="my-modal-4"
         className="cursor-pointer font-normal text-base text-center justify-center h-12 w-44 rounded-lg text-white bg-primary transform active:scale-95 transition-transform flex items-center"
       >
         Edit Data
       </label>
 
-      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+      <input type="checkbox" id="my-modal-4" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box rounded-lg relative">
           <h3 className="font-semibold text-xl text-secondary text-center">
@@ -519,7 +383,7 @@ const ModalAdminUSer = (props) => {
             label="Edit Info"
           />
 
-          <label htmlFor="my-modal-3">
+          <label htmlFor="my-modal-4">
             <ButtonCustom
               id="button-CloseAdminUsers"
               className="cursor-pointer font-medium text-center justify-center h-11 w-full rounded-lg text-slate-400 border bg-white transform active:scale-95 transition-transform flex items-center"
@@ -534,7 +398,7 @@ const ModalAdminUSer = (props) => {
 
 export {
   ModalEditRanger,
-  ModalAdminProduct,
-  ModalEditAdminProduct,
+  ModalAddProduct,
+  ModalEditDataProduct,
   ModalAdminUSer,
 };
