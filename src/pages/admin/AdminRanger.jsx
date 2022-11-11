@@ -173,6 +173,7 @@ const AdminRanger = () => {
           <div className="divider text-[#F0F0F0]" />
         </div>
 
+
         {/* Table Rangers*/}
         <div className="mb-10 w-full">
           <div className="overflow-x-auto">
@@ -187,21 +188,21 @@ const AdminRanger = () => {
             </div>
 
             <section className="overflow-x-auto py-6 mr-11">
-              <table className="table w-full">
+              <table className="table w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden my-5">
                 {/* <!-- head --> */}
                 <thead>
-                  <tr>
+                  <tr className="flex flex-col flex-no wrap rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
                     <th></th>
-                    <th className="font-semibold text-base text-secondary">
+                    <th className="p-3 font-semibold text-base text-secondary">
                       NAME
                     </th>
-                    <th className="font-semibold text-base text-secondary">
+                    <th className="p-3 font-semibold text-base text-secondary">
                       PHONE NUMBER
                     </th>
-                    <th className="font-semibold text-base text-secondary">
+                    <th className="p-3 font-semibold text-base text-secondary">
                       STATUS
                     </th>
-                    <th className="font-semibold text-base text-secondary">
+                    <th className="p-3 font-semibold text-base text-secondary">
                       ACTION
                     </th>
                   </tr>

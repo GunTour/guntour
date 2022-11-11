@@ -173,7 +173,8 @@ const NavbarAdmin = () => {
     <div>
       <div className="navbar h-[80px] w-[1000px]">
         <div className="flex-1">
-          <a className="normal-case font-semibold text-2xl">Dashboard</a>
+          <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+          <label htmlFor="my-drawer-2" className="normal-case font-semibold text-2xl">Dashboard</label>
         </div>
         <div className="flex-none gap-2">
           <div className="w-3/6 h-10 md:flex flex-none mt-form-control mr-16 input hidden bg-[#F2F2F2] border items-center">
@@ -230,7 +231,6 @@ const Sidebar = () => {
 
       <div className="drawer-content flex flex-col items-center justify-center">
         <label
-          htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden"
         >
           See Content
@@ -240,7 +240,7 @@ const Sidebar = () => {
       <div className="drawer-side overflow-x-hidden">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-        <ul className="menu p-4 w-80 h-full bg-secondary text-base-content">
+        <ul className="menu p-4 w-80 h-full h- bg-secondary text-base-content">
           <div className="ml-2 mt-9 mb-16">
             <img src={logo2} alt="Logo" />
           </div>
