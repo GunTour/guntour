@@ -65,7 +65,6 @@ const BecomeRanger = () => {
             <div className="divider" />
             <p id="fullname-ranger" className="font-normal text-lg text-secondary pb-3">Full Name</p>
             <InputFullNameRangers
-
               value={submit.fullname}
               onChange={(e) => handleChange(e.target.value, "fullname")}
             />
