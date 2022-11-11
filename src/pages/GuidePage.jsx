@@ -1,4 +1,5 @@
 import React from "react";
+import { WithRouter } from "utils/Navigation";
 
 import Layout from "components/Layout";
 import {
@@ -125,4 +126,4 @@ const GuidePage = () => {
   );
 };
 
-export default GuidePage;
+export default WithRouter(GuidePage);
