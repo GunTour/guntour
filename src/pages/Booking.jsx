@@ -16,6 +16,8 @@ import {
 import { CardBooking } from "components/CardProduct";
 import { ButtonBooked } from "components/Button";
 
+import Swal from "sweetalert2";
+
 const Booking = () => {
   const booking = useSelector((state) => state.data.booking);
   const dispatch = useDispatch();
@@ -25,7 +27,6 @@ const Booking = () => {
   const [entrance, setEntrance] = useState("");
   const [idRanger, setidRanger] = useState("");
   const [person, setPerson] = useState(0);
-  const [qty, setQty] = useState(1);
 
   function handleRemove(bookingNow) {
     let filtered = booking.filter(({ id_product }) => {
@@ -49,9 +50,7 @@ const Booking = () => {
     const diffDays = Math.round(
       Math.abs((new Date(dateEnd) - new Date(dateStart)) / oneDay)
     );
-    // console.log("ini harga total : " + grossAmount * diffDays * ticket);
-    // console.log("ini harga day : " + diffDays);
-    // console.log("ini harga person : " + person);
+
     var formBooking = [
       {
         date_start: dateStart,
@@ -64,12 +63,39 @@ const Booking = () => {
         gross_amount: grossAmount * diffDays + parseInt(ticket) * 30000,
       },
     ];
+
+    if (
+      dateStart.length === 0 ||
+      dateEnd.length === 0 ||
+      entrance.length === 0
+    ) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Data cannot be empty !",
+        showConfirmButton: true,
+      });
+      return;
+    }
+
     localStorage.removeItem("ConfirmBook");
     const temp = JSON.stringify(formBooking);
-    // dispatch(setBooking(formBooking));
     localStorage.setItem("ConfirmBook", temp);
     if (isNavigate) {
-      navigate("/confirm");
+      Swal.fire({
+        title: "Are you sure the data is correct?",
+        text: "If you are not sure, please press cancel!",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Sure!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/confirm");
+        }
+      });
+      return;
     }
   }
 
@@ -99,7 +125,10 @@ const Booking = () => {
                   value={entrance}
                   onChange={(e) => setEntrance(e.target.value)}
                 />
-                <p className="font-medium text-xl text-secondary">Rangers</p>
+                <p className="font-medium text-xl text-secondary">
+                  Ranger
+                  <span className="text-primary text-xs"> ( Optional )</span>
+                </p>
                 <InputSelectRanger
                   value={idRanger}
                   onChange={(e) => {
@@ -116,7 +145,11 @@ const Booking = () => {
                   onChange={(e) => setDateEnd(e.target.value)}
                 />
                 <p className="font-medium text-xl text-secondary">
-                  Number of Person
+                  Number of Person{" "}
+                  <span className="text-primary text-xs">
+                    {" "}
+                    ( Tickets cannot be empty )
+                  </span>
                 </p>
                 <InputSelectPerson
                   value={person}

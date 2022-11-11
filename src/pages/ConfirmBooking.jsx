@@ -3,6 +3,8 @@ import { WithRouter } from "utils/Navigation";
 import { Link, useNavigate } from "react-router-dom";
 import { apiRequest } from "utils/apiRequest";
 
+import Swal from "sweetalert2";
+
 import Layout from "components/Layout";
 import { ButtonCancelBooking, ButtonConfirmBooking } from "components/Button";
 
@@ -19,7 +21,6 @@ const ConfirmBooking = () => {
   }, []);
 
   const handleConfirmBooking = () => {
-    // alert("klik aku dulu mase");
     let data = JSON.parse(localStorage.getItem("ConfirmBook"));
     const body = {
       date_start: data[0].date_start,
@@ -31,12 +32,19 @@ const ConfirmBooking = () => {
       ranger_name: data[0].ranger_name,
       gross_amount: data[0].gross_amount,
     };
-    // console.log(body);
-    apiRequest("booking", "post", body)
+
+    apiRequest("booking", "post", body);
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Confirmation Successful",
+      showConfirmButton: false,
+      timer: 2000,
+    })
       .then((res) => {
         const data = res.data;
         setData(data);
-        alert(JSON.stringify(data.id_booking));
+        window.localStorage.clear();
         navigate("/history");
       })
       .catch((err) => {
@@ -63,7 +71,7 @@ const ConfirmBooking = () => {
               className="font-medium text-lg text-secondary py-2"
               key={data.id_product}
             >
-              Items Booking:{/* cara mengambil data didalam data */}
+              Items Booking:
               {data.product.map((item) => " " + item.product_name).join(",")}
             </p>
             <p className="font-medium text-lg text-secondary pb-2">
@@ -71,17 +79,16 @@ const ConfirmBooking = () => {
             </p>
             <p className="font-medium text-lg text-secondary">
               Total Price: Rp
-              {/* {data.gross_amount} */}
               {" " + data.gross_amount}
             </p>
             <div className="divider" />
-            {/* <Link to="/history"> */}
+
             <ButtonConfirmBooking
               onClick={() => {
                 handleConfirmBooking();
               }}
             />
-            {/* </Link> */}
+
             <div className="pt-2">
               <Link to="/booking">
                 <ButtonCancelBooking />

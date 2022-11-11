@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { WithRouter } from "utils/Navigation";
 import { Helmet } from "react-helmet";
 import { apiRequest } from "utils/apiRequest";
+import { useDispatch } from "react-redux";
+import { setBooking } from "utils/redux/reducers/reducer";
+
+import Swal from "sweetalert2";
 
 import Layout from "components/Layout";
 import { ButtonBookNowDetails } from "components/Button";
@@ -9,6 +13,7 @@ import { ButtonBookNowDetails } from "components/Button";
 const DetailPage = (props) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchData();
@@ -27,6 +32,28 @@ const DetailPage = (props) => {
         setLoading(false);
       });
   };
+
+  function validasiHandleBookDetail(product) {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Added to Booking Now",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    const getProduct = localStorage.getItem("BookingNow");
+    if (getProduct) {
+      const parsedProducts = JSON.parse(getProduct);
+      parsedProducts.push(product);
+      const temp = JSON.stringify(parsedProducts);
+      dispatch(setBooking(parsedProducts));
+      localStorage.setItem("BookingNow", temp);
+    } else {
+      const temp = JSON.stringify([product]);
+      dispatch(setBooking([product]));
+      localStorage.setItem("BookingNow", temp);
+    }
+  }
 
   if (loading) {
     return (
@@ -65,7 +92,9 @@ const DetailPage = (props) => {
                 <span className="text-primary">Rp </span>100K
                 <span className="text-xl">/day</span>
               </h2>
-              <ButtonBookNowDetails />
+              <ButtonBookNowDetails
+                onClick={() => validasiHandleBookDetail(data)}
+              />
               <div className="py-5">
                 <h5 className="text-xl font-semibold text-secondary">
                   Description
@@ -85,42 +114,6 @@ const DetailPage = (props) => {
             </section>
           </article>
         </main>
-
-        {/* <section className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="flex justify-center">
-              <img
-                src={data.product_picture}
-                alt={data.product_name}
-                className="max-w-xl h-[515px] w-[560px] rounded-lg mt-20 mb-44 mr-20"
-              />
-            </div>
-            <div className="justify-center mt-32">
-              <h1 className="font-semibold text-3xl text-secondary mb-2">
-                {data.product_name}
-              </h1>
-              <h2 className="text-secondary text-2xl font-semibold mb-5">
-                <span className="text-primary">Rp </span>100K
-                <span className="text-xl">/day</span>
-              </h2>
-              <ButtonBookNowDetails />
-              <div className="mt-8">
-                <h5 className="text-xl font-semibold text-secondary">
-                  Description
-                </h5>
-                <p className="text-lg font-normal text-secondary mt-3">
-                  {data.detail}
-                </p>
-                <h5 className="text-xl font-semibold text-secondary mt-6">
-                  Warning
-                </h5>
-                <p className="text-lg font-normal text-secondary mt-3">
-                  {data.note}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section> */}
       </Layout>
     </>
   );

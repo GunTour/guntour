@@ -8,13 +8,15 @@ import { useCookies } from "react-cookie";
 import { setBooking } from "utils/redux/reducers/reducer";
 import { Helmet } from "react-helmet";
 
+import Swal from "sweetalert2";
+
 import Hero from "components/Hero";
 import Layout from "components/Layout";
 import { CardProduct } from "components/CardProduct";
 import { ButtonJoin } from "components/Button";
+
 import { BsPeopleFill } from "react-icons/bs";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
-
 import Community from "assets/img-community.png";
 
 const HomePage = (props) => {
@@ -54,7 +56,7 @@ const HomePage = (props) => {
   const handleClimber = async () => {
     apiRequest("climber", "get", {})
       .then((res) => {
-        const climber  = res.data;
+        const climber = res.data;
         setClimber(climber);
       })
       .catch((err) => {
@@ -78,6 +80,13 @@ const HomePage = (props) => {
   };
 
   function validasiHandleBook(product) {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Added to Booking Now",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     const getProduct = localStorage.getItem("BookingNow");
     if (getProduct) {
       const parsedProducts = JSON.parse(getProduct);
@@ -90,7 +99,6 @@ const HomePage = (props) => {
       dispatch(setBooking([product]));
       localStorage.setItem("BookingNow", temp);
     }
-    alert("Added to Booking Now");
   }
 
   if (loading) {
@@ -125,7 +133,10 @@ const HomePage = (props) => {
         </div>
 
         <section className="mb-7 w-full flex mx-3 md:mx-16 lg:mx-20 xl:mx-20">
-          <div idProduct={data.id_product} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-9">
+          <div
+            idProduct={data.id_product}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-9"
+          >
             <>
               {data.map((data) => (
                 <CardProduct
@@ -175,32 +186,32 @@ const HomePage = (props) => {
             </aside>
 
             <article className="md:grid-col-span-2 py-28 items-center">
-                  <div className="flex flex-wrap items-center">
-                    <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start">
-                      <div className="bg-[#FEF3EB] p-4 rounded-lg">
-                        <BsPeopleFill className="text-primary text-4xl" />
-                      </div>
-                      <p className="font-bold text-xl ml-3">
-                        {climber.is_climber} <br /> IS CLIMBERS
-                      </p>
-                    </div>
-                    <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start md:ml-0 lg:ml-10 xl:ml-10 sm:ml-0 ml-0">
-                      <div className="bg-[#FEF3EB] p-4 rounded-lg">
-                        <BsPeopleFill className="text-primary text-4xl" />
-                      </div>
-                      <p className="font-bold text-xl ml-3">
-                        {climber.male_climber} <br /> MALE CLIMBER
-                      </p>
-                    </div>
-                    <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start md:ml-0 lg:ml-10 xl:ml-10 sm:ml-0 ml-0">
-                      <div className="bg-[#FEF3EB] p-4 rounded-lg">
-                        <BsPeopleFill className="text-primary text-4xl" />
-                      </div>
-                      <p className="font-bold text-xl ml-3">
-                        {climber.female_climber} <br /> FEMALE CLIMBER
-                      </p>
-                    </div>
-                  </div>  
+              <div className="flex flex-wrap items-center">
+                <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start">
+                  <div className="bg-[#FEF3EB] p-4 rounded-lg">
+                    <BsPeopleFill className="text-primary text-4xl" />
+                  </div>
+                  <p className="font-bold text-xl ml-3">
+                    {climber.is_climber} <br /> IS CLIMBERS
+                  </p>
+                </div>
+                <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start md:ml-0 lg:ml-10 xl:ml-10 sm:ml-0 ml-0">
+                  <div className="bg-[#FEF3EB] p-4 rounded-lg">
+                    <BsPeopleFill className="text-primary text-4xl" />
+                  </div>
+                  <p className="font-bold text-xl ml-3">
+                    {climber.male_climber} <br /> MALE CLIMBER
+                  </p>
+                </div>
+                <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start md:ml-0 lg:ml-10 xl:ml-10 sm:ml-0 ml-0">
+                  <div className="bg-[#FEF3EB] p-4 rounded-lg">
+                    <BsPeopleFill className="text-primary text-4xl" />
+                  </div>
+                  <p className="font-bold text-xl ml-3">
+                    {climber.female_climber} <br /> FEMALE CLIMBER
+                  </p>
+                </div>
+              </div>
             </article>
           </main>
         </section>
