@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { WithRouter } from "utils/Navigation";
 import { apiRequest } from "utils/apiRequest";
 import { Helmet } from "react-helmet";
 
@@ -154,4 +155,4 @@ const UsersPage = () => {
   );
 };
 
-export default UsersPage;
+export default WithRouter(UsersPage);

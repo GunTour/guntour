@@ -167,16 +167,13 @@ const AdminRanger = () => {
       </aside>
 
       <main>
-        {/* Header */}
         <div className="md:grid-col-span-2">
           <NavbarAdmin />
           <div className="divider text-[#F0F0F0]" />
         </div>
 
-        {/* Table Rangers*/}
         <div className="mb-10 w-full">
           <div className="overflow-x-auto">
-            {/* Text Ranger */}
             <div className="mt-9 mb-6">
               <h5 className="font-semibold text-lg text-secondary mb-2">
                 Ranger Mount Gede
@@ -188,7 +185,6 @@ const AdminRanger = () => {
 
             <section className="overflow-x-auto py-6 mr-11">
               <table className="table w-full">
-                {/* <!-- head --> */}
                 <thead>
                   <tr>
                     <th></th>
@@ -240,10 +236,8 @@ const AdminRanger = () => {
           </div>
         </div>
 
-        {/* Table New Rangers*/}
         <div className="w-full">
           <div className="overflow-x-auto">
-            {/* Text Ranger */}
             <div className="mt-9 mb-6">
               <h5 className="font-semibold text-lg text-secondary mb-2">
                 New Rangers
@@ -252,7 +246,6 @@ const AdminRanger = () => {
 
             <section className="overflow-x-auto py-6 mr-11">
               <table className="table w-full">
-                {/* <!-- head --> */}
                 <thead>
                   <tr>
                     <th></th>
