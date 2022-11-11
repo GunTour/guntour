@@ -2,7 +2,7 @@ import React from "react";
 import { WithRouter } from "utils/Navigation";
 import { Helmet } from "react-helmet";
 
-import Layout from "components/Layout";
+import Layout from "components/LayoutAnonym";
 
 import Background from "assets/bgabout.svg";
 import Sejarah from "assets/sejarah.jpg";
