@@ -63,32 +63,31 @@ const BecomeRanger = () => {
               Please Fill In The Data Completely
             </h5>
             <div className="divider" />
-            <p className="font-normal text-lg text-secondary pb-3">Full Name</p>
+            <p id="fullname-ranger" className="font-normal text-lg text-secondary pb-3">Full Name</p>
             <InputFullNameRangers
-
               value={submit.fullname}
               onChange={(e) => handleChange(e.target.value, "fullname")}
             />
-            <p className="font-normal text-lg text-secondary py-3">
+            <p id="phonenumber-ranger" className="font-normal text-lg text-secondary py-3">
               Phone Number
             </p>
             <InputPhoneNumber
               value={submit.phone}
               onChange={(e) => handleChange(e.target.value, "phone")}
             />
-            <p className="font-normal text-lg text-secondary py-3">
+            <p id="birth-ranger" className="font-normal text-lg text-secondary py-3">
               Place & Date of Birth
             </p>
             <InputPlaceDateBirth
               value={submit.ttl}
               onChange={(e) => handleChange(e.target.value, "ttl")}
             />
-            <p className="font-normal text-lg text-secondary py-3">Gender</p>
+            <p id="gender-ranger" className="font-normal text-lg text-secondary py-3">Gender</p>
             <InputGender
               value={submit.gender}
               onChange={(e) => handleChange(e.target.value, "gender")}
             />
-            <p className="font-normal text-lg text-secondary py-3">Address</p>
+            <p id="address-ranger" className="font-normal text-lg text-secondary py-3">Address</p>
             <InputAddress
               value={submit.address}
               onChange={(e) => handleChange(e.target.value, "address")}
