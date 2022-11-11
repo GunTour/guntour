@@ -23,22 +23,12 @@ const HomeAnonym = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [climber, setClimber] = useState([]);
 
   useEffect(() => {
     fetchData();
+    handleClimber();
   }, [page]);
-
-  const previousPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-    fetchData(page);
-  };
-
-  const nextPage = () => {
-    setPage(page + 1);
-    fetchData(page);
-  };
 
   const fetchData = async () => {
     apiRequest(`product?page=${page}`, "get", {})
@@ -58,6 +48,32 @@ const HomeAnonym = () => {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const handleClimber = async () => {
+    apiRequest("climber", "get", {})
+      .then((res) => {
+        const climber = res.data;
+        setClimber(climber);
+      })
+      .catch((err) => {
+        alert(err.toString());
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const previousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+    fetchData(page);
+  };
+
+  const nextPage = () => {
+    setPage(page + 1);
+    fetchData(page);
   };
 
   if (loading) {
@@ -99,7 +115,6 @@ const HomeAnonym = () => {
             <>
               {data.map((data) => (
                 <CardProduct
-                  idProduct={data.id_product}
                   key={data.id_product}
                   img={data.product_picture}
                   name={data.product_name}
@@ -150,7 +165,7 @@ const HomeAnonym = () => {
                     <BsPeopleFill className="text-primary text-4xl" />
                   </div>
                   <p className="font-bold text-xl ml-3">
-                    230 <br /> IS CLIMBERS
+                    {climber.is_climber} <br /> IS CLIMBERS
                   </p>
                 </div>
                 <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start md:ml-0 lg:ml-10 xl:ml-10 sm:ml-0 ml-0">
@@ -158,7 +173,7 @@ const HomeAnonym = () => {
                     <BsPeopleFill className="text-primary text-4xl" />
                   </div>
                   <p className="font-bold text-xl ml-3">
-                    140 <br /> MALE CLIMBER
+                    {climber.male_climber} <br /> MALE CLIMBER
                   </p>
                 </div>
                 <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start md:ml-0 lg:ml-10 xl:ml-10 sm:ml-0 ml-0">
@@ -166,7 +181,7 @@ const HomeAnonym = () => {
                     <BsPeopleFill className="text-primary text-4xl" />
                   </div>
                   <p className="font-bold text-xl ml-3">
-                    90 <br /> FEMALE CLIMBER
+                    {climber.female_climber} <br /> FEMALE CLIMBER
                   </p>
                 </div>
               </div>

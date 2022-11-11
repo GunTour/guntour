@@ -54,14 +54,11 @@ const HomePage = (props) => {
   const handleClimber = async () => {
     apiRequest("climber", "get", {})
       .then((res) => {
-        const results = res.data;
-        if (results.length > 0) {
-          setClimber(results);
-        }
-        console.log(results);
+        const climber  = res.data;
+        setClimber(climber);
       })
       .catch((err) => {
-        alert(err);
+        alert(err.toString());
       })
       .finally(() => {
         setLoading(false);
@@ -128,14 +125,10 @@ const HomePage = (props) => {
         </div>
 
         <section className="mb-7 w-full flex mx-3 md:mx-16 lg:mx-20 xl:mx-20">
-          <div
-            idProduct={data.id_product}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-9"
-          >
+          <div idProduct={data.id_product} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-9">
             <>
               {data.map((data) => (
                 <CardProduct
-                  idProduct={data.id_product}
                   key={data.id_product}
                   img={data.product_picture}
                   name={data.product_name}
@@ -182,15 +175,13 @@ const HomePage = (props) => {
             </aside>
 
             <article className="md:grid-col-span-2 py-28 items-center">
-              <>
-                {climber.map((data) => (
                   <div className="flex flex-wrap items-center">
                     <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start">
                       <div className="bg-[#FEF3EB] p-4 rounded-lg">
                         <BsPeopleFill className="text-primary text-4xl" />
                       </div>
                       <p className="font-bold text-xl ml-3">
-                        {data.is_climber} <br /> IS CLIMBERS
+                        {climber.is_climber} <br /> IS CLIMBERS
                       </p>
                     </div>
                     <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start md:ml-0 lg:ml-10 xl:ml-10 sm:ml-0 ml-0">
@@ -198,7 +189,7 @@ const HomePage = (props) => {
                         <BsPeopleFill className="text-primary text-4xl" />
                       </div>
                       <p className="font-bold text-xl ml-3">
-                        {data.male_climber} <br /> MALE CLIMBER
+                        {climber.male_climber} <br /> MALE CLIMBER
                       </p>
                     </div>
                     <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start md:ml-0 lg:ml-10 xl:ml-10 sm:ml-0 ml-0">
@@ -206,38 +197,10 @@ const HomePage = (props) => {
                         <BsPeopleFill className="text-primary text-4xl" />
                       </div>
                       <p className="font-bold text-xl ml-3">
-                        {data.female_climber} <br /> FEMALE CLIMBER
+                        {climber.female_climber} <br /> FEMALE CLIMBER
                       </p>
                     </div>
-                  </div>
-                ))}
-              </>
-              <div className="flex flex-wrap items-center">
-                <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start">
-                  <div className="bg-[#FEF3EB] p-4 rounded-lg">
-                    <BsPeopleFill className="text-primary text-4xl" />
-                  </div>
-                  <p className="font-bold text-xl ml-3">
-                    230 <br /> IS CLIMBERS
-                  </p>
-                </div>
-                <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start md:ml-0 lg:ml-10 xl:ml-10 sm:ml-0 ml-0">
-                  <div className="bg-[#FEF3EB] p-4 rounded-lg">
-                    <BsPeopleFill className="text-primary text-4xl" />
-                  </div>
-                  <p className="font-bold text-xl ml-3">
-                    140 <br /> MALE CLIMBER
-                  </p>
-                </div>
-                <div className="text-white flex items-center justify-center font-medium text-sm md:justify-start md:ml-0 lg:ml-10 xl:ml-10 sm:ml-0 ml-0">
-                  <div className="bg-[#FEF3EB] p-4 rounded-lg">
-                    <BsPeopleFill className="text-primary text-4xl" />
-                  </div>
-                  <p className="font-bold text-xl ml-3">
-                    90 <br /> FEMALE CLIMBER
-                  </p>
-                </div>
-              </div>
+                  </div>  
             </article>
           </main>
         </section>
