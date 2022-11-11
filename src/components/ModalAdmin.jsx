@@ -10,19 +10,16 @@ import Swal from "sweetalert2";
 const ModalEditRanger = (props) => {
   return (
     <div>
-      {/* The button to open modal */}
       <label htmlFor="my-modal-3" className="cursor-pointer">
         <AiFillEdit />
       </label>
 
-      {/* Put this part before </body> tag */}
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
       <div className="modal modal-bottom py-5 sm:modal-middle">
         <div className="bg-white modal-box w-[600px] overflow-auto border p-6">
           <h3 className="font-bold text-lg text-center">Edit Status Ranger</h3>
           <hr className="text-line mt-6" />
 
-          {/* Form Product */}
           <div className="mt-6 mb-5">
             <p className="text-left font-normal text-lg">Status</p>
             <select
@@ -47,7 +44,6 @@ const ModalEditRanger = (props) => {
             />
           </div>
 
-          {/* Button Add and Close */}
           <hr className="mt-9" />
           <div>
             <ButtonCustom
@@ -90,7 +86,6 @@ const ModalAddProduct = (props) => {
           </h3>
           <div className="divider m-0" />
 
-          {/* Add Photo Product */}
           <div className="mt-6 mb-5">
             <h3 className="font-normal text-secondary text-lg text-left mb-3">
               Photo Product
@@ -104,7 +99,6 @@ const ModalAddProduct = (props) => {
             </div>
           </div>
 
-          {/* Input Product Name*/}
           <div className="mb-5">
             <p className="font-normal text-lg text-secondary text-left mb-3">
               Product Name
@@ -116,7 +110,6 @@ const ModalAddProduct = (props) => {
             />
           </div>
 
-          {/* Input Rent Price*/}
           <div className="mb-5">
             <p className="font-normal text-lg text-secondary text-left mb-3">
               Rent Price
@@ -128,7 +121,6 @@ const ModalAddProduct = (props) => {
             />
           </div>
 
-          {/* Input Description*/}
           <div className="mb-5">
             <p className="font-normal text-lg text-secondary text-left mb-3">
               Description
@@ -141,7 +133,6 @@ const ModalAddProduct = (props) => {
             ></textarea>
           </div>
 
-          {/* Input Note Warning*/}
           <div className="mb-5">
             <p className="font-normal text-lg text-secondary text-left mb-3">
               Warning
@@ -192,7 +183,6 @@ const ModalEditDataProduct = (props) => {
           </h3>
           <div className="divider m-0" />
 
-          {/* Add Photo Product */}
           <div className="mt-6 mb-5">
             <h3 className="font-normal text-secondary text-lg text-left mb-3">
               Photo Product
@@ -207,7 +197,6 @@ const ModalEditDataProduct = (props) => {
             </div>
           </div>
 
-          {/* Input Product Name*/}
           <div className="mb-5">
             <p className="font-normal text-lg text-secondary text-left mb-3">
               Product Name
@@ -220,7 +209,6 @@ const ModalEditDataProduct = (props) => {
             />
           </div>
 
-          {/* Input Rent Price*/}
           <div className="mb-5">
             <p className="font-normal text-lg text-secondary text-left mb-3">
               Rent Price
@@ -233,7 +221,6 @@ const ModalEditDataProduct = (props) => {
             />
           </div>
 
-          {/* Input Description*/}
           <div className="mb-5">
             <p className="font-normal text-lg text-secondary text-left mb-3">
               Description
@@ -247,7 +234,6 @@ const ModalEditDataProduct = (props) => {
             ></textarea>
           </div>
 
-          {/* Input Note Warning*/}
           <div className="mb-5">
             <p className="font-normal text-lg text-secondary text-left mb-3">
               Warning
