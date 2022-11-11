@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { WithRouter } from "utils/Navigation";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { apiRequest } from "utils/apiRequest";
 
 import Layout from "components/Layout";
 import { ButtonCancelBooking, ButtonConfirmBooking } from "components/Button";
 
 const ConfirmBooking = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("ConfirmBook"));
@@ -14,6 +17,35 @@ const ConfirmBooking = () => {
       setData(data);
     }
   }, []);
+
+  const handleConfirmBooking = () => {
+    // alert("klik aku dulu mase");
+    let data = JSON.parse(localStorage.getItem("ConfirmBook"));
+    const body = {
+      date_start: data[0].date_start,
+      date_end: data[0].date_end,
+      entrance: data[0].entrance,
+      ticket: parseInt(data[0].ticket),
+      product: data[0].product,
+      id_ranger: parseInt(data[0].id_ranger),
+      ranger_name: data[0].ranger_name,
+      gross_amount: data[0].gross_amount,
+    };
+    // console.log(body);
+    apiRequest("booking", "post", body)
+      .then((res) => {
+        const data = res.data;
+        setData(data);
+        alert(JSON.stringify(data.id_booking));
+        navigate("/history");
+      })
+      .catch((err) => {
+        alert(err.toString());
+      })
+      .finally((res) => {
+        setLoading(false);
+      });
+  };
 
   return (
     <Layout>
@@ -43,9 +75,13 @@ const ConfirmBooking = () => {
               {" " + data.gross_amount}
             </p>
             <div className="divider" />
-            <Link to="/history">
-              <ButtonConfirmBooking />
-            </Link>
+            {/* <Link to="/history"> */}
+            <ButtonConfirmBooking
+              onClick={() => {
+                handleConfirmBooking();
+              }}
+            />
+            {/* </Link> */}
             <div className="pt-2">
               <Link to="/booking">
                 <ButtonCancelBooking />
