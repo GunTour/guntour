@@ -216,14 +216,12 @@ const Sidebar = () => {
       <div className="drawer-side overflow-x-hidden">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-        <ul className="menu p-4 w-80 h-full h- bg-secondary text-base-content">
+        <ul className="menu p-4 w-80 h-screen bg-secondary text-base-content">
           <div className="ml-2 mt-9 mb-16">
             <img src={logo2} alt="Logo" />
           </div>
-          {/* Menu */}
           <p className="ml-4 text-white font-light text-base mb-3">Menu</p>
-
-          {/* List Page */}
+          
           <li className="text-white active:bg-green-900 mb-2">
             <Link id="product-sidebar" to="/admin">
               <MdDashboard className="fill-white text-2xl " />
