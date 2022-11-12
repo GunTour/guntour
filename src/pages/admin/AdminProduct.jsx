@@ -100,7 +100,12 @@ const AdminProduct = (props) => {
         fetchData();
       })
       .catch((err) => {
-        alert(err);
+        Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: "There was an error, please check again.",
+          showConfirmButton: true,
+        });
       })
       .finally(() => {
         setLoading(false);
