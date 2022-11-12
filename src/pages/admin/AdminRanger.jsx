@@ -186,7 +186,7 @@ const AdminRanger = () => {
             <section className="overflow-x-auto py-6 mr-11">
               <table className="table w-full">
                 <thead>
-                  <tr className="flex">
+                  <tr>
                     <th></th>
                     <th className="font-semibold text-base text-secondary">
                       NAME
