@@ -37,7 +37,7 @@ const Booking = () => {
     localStorage.setItem("BookingNow", newList);
     dispatch(setBooking(filtered));
     localStorage.removeItem(filtered);
-    alert("Remove Success");
+    Swal.fire("Remove Success!");
   }
 
   function validasiHandleBookedNow(product, isNavigate) {
