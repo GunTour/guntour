@@ -186,18 +186,18 @@ const AdminRanger = () => {
             <section className="overflow-x-auto py-6 mr-11">
               <table className="table w-full">
                 <thead>
-                  <tr className="flex flex-col flex-no wrap rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                  <tr className="flex">
                     <th></th>
-                    <th className="p-3 font-semibold text-base text-secondary">
+                    <th className="font-semibold text-base text-secondary">
                       NAME
                     </th>
-                    <th className="p-3 font-semibold text-base text-secondary">
+                    <th className="font-semibold text-base text-secondary">
                       PHONE NUMBER
                     </th>
-                    <th className="p-3 font-semibold text-base text-secondary">
+                    <th className="font-semibold text-base text-secondary">
                       STATUS
                     </th>
-                    <th className="p-3 font-semibold text-base text-secondary">
+                    <th className="font-semibold text-base text-secondary">
                       ACTION
                     </th>
                   </tr>
