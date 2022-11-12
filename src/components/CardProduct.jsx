@@ -46,7 +46,6 @@ const CardBooking = (props) => {
     setCounter(counter + value);
     let sumProduct = document.getElementById("text-grossamount").value;
     let total = parseInt(sumProduct) + price;
-    console.log(price);
     document.getElementById("text-grossamount").value = total;
   };
 
@@ -54,7 +53,6 @@ const CardBooking = (props) => {
     setCounter(counter + value);
     let minProduct = document.getElementById("text-grossamount").value;
     let totalMin = parseInt(minProduct) - price;
-    console.log(totalMin);
     document.getElementById("text-grossamount").value = totalMin;
   };
 

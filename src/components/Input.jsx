@@ -98,7 +98,7 @@ export const InputSelectRanger = (props) => {
       class="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
       required
     >
-      <option value="1" className="font-normal text-base text-secondary">
+      <option value="1" className="font-normal text-base text-secondary hidden">
         Add Ranger
       </option>
       <option value="2" className="font-normal text-base text-secondary">

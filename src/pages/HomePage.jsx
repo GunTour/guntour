@@ -80,24 +80,40 @@ const HomePage = (props) => {
   };
 
   function validasiHandleBook(product) {
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Added to Booking Now",
-      showConfirmButton: false,
-      timer: 1500,
-    });
     const getProduct = localStorage.getItem("BookingNow");
     if (getProduct) {
       const parsedProducts = JSON.parse(getProduct);
-      parsedProducts.push(product);
-      const temp = JSON.stringify(parsedProducts);
-      dispatch(setBooking(parsedProducts));
-      localStorage.setItem("BookingNow", temp);
+      const productExist = parsedProducts.find(
+        (item) => item.id_product === product.id_product
+      );
+
+      if (productExist) {
+        Swal.fire("Product are already in Booking Now!");
+      } else {
+        parsedProducts.push(product);
+
+        const temp = JSON.stringify(parsedProducts);
+        dispatch(setBooking(parsedProducts));
+        localStorage.setItem("BookingNow", temp);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Product Added to Booking Now",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     } else {
       const temp = JSON.stringify([product]);
       dispatch(setBooking([product]));
       localStorage.setItem("BookingNow", temp);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Added to Booking Now",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   }
 
