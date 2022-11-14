@@ -10,12 +10,13 @@ import Swal from "sweetalert2";
 const ModalEditRanger = (props) => {
   return (
     <div>
-      <label htmlFor="my-modal-3" className="cursor-pointer">
+      <label htmlFor={props.id} className="cursor-pointer">
         <AiFillEdit />
       </label>
 
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-      <div className="modal modal-bottom py-5 sm:modal-middle">
+
+      <div id="my-modal-3" className="modal modal-bottom py-5 sm:modal-middle">
         <div className="bg-white modal-box w-[600px] overflow-auto border p-6">
           <h3 className="font-bold text-lg text-center">Edit Status Ranger</h3>
           <hr className="text-line mt-6" />
