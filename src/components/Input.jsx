@@ -20,7 +20,7 @@ export const InputDate = (props) => {
       id={props.id}
       placeholder="dd/mm/yy"
       type="date"
-      min="2022-11-01"
+      min={new Date().toISOString().slice(0, 10)}
       max="2023-12-31"
       required
     />
@@ -92,25 +92,26 @@ export const InputSelectPerson = (props) => {
 
 export const InputSelectRanger = (props) => {
   return (
-    <select
-      onChange={props.onChange}
-      id="categoryRanger"
-      class="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
-      required
-    >
-      <option value="1" className="font-normal text-base text-secondary hidden">
-        Add Ranger
-      </option>
-      <option value="2" className="font-normal text-base text-secondary">
-        Fajar Nugraha
-      </option>
-      <option
-        value={props.value}
-        className="font-normal text-base text-secondary"
+    <>
+      <select
+        onChange={props.onChange}
+        id="categoryRanger"
+        class="w-full h-14 py-2 px-3 border text-secondary border-[#577D7B] rounded-lg font-medium text-base"
+        required
       >
-        {props.RangerName}
-      </option>
-    </select>
+        <option className="font-normal text-base">Selected Ranger</option>
+        {props.optionRanger.map((item, i) => (
+          <option
+            price={item.price}
+            id={"ranger-" + item.id_ranger}
+            value={item.id_ranger}
+            className="font-normal text-base"
+          >
+            {item.fullname}
+          </option>
+        ))}
+      </select>
+    </>
   );
 };
 
