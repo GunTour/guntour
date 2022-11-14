@@ -70,9 +70,7 @@ const About = () => {
           </aside>
 
           <article className="md:grid-col-span-2 text-right">
-            <h1 className="font-bold text-3xl text-secondary">
-              VISI DAN MISI
-            </h1>
+            <h1 className="font-bold text-3xl text-secondary">VISI DAN MISI</h1>
 
             <section className="grid md:grid-rows-1 gap-4 mt-4">
               <p className="font-normal text-justify text-lg text-secondary">

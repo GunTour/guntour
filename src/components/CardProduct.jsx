@@ -57,61 +57,69 @@ const CardBooking = (props) => {
   };
 
   return (
-    <section className="w-full bg-white rounded-lg my-2">
-      <div className="flex">
-        <div>
-          <img className="h-40 w-44 ml-6" src={props.images} alt="items" />
-        </div>
-        <div className="flex justify-between w-full pl-4">
-          <div className="ml-6 mt-6">
-            <h2 className="card-title font-semibold text-2xl text-secondary">
-              {props.name}
-            </h2>
-            <p className="font-medium text-xl">
-              <span className="text-primary font-semibold text-xl">Rp </span>
-              <span className="text-secondary font-semibold text-xl">
-                {props.price}
-              </span>
-              <span className="text-secondary font-medium text-lg">/day</span>
-            </p>
-            <div className="flex mt-4">
-              <button>
-                <AiFillMinusCircle
-                  id={props.idProduct}
-                  className="mr-3.5 rounded-full bg-primary text-3xl text-white mt-1"
-                  onClick={() => {
-                    handleCounterMinus(props.sub, props.price);
-                  }}
-                />
-              </button>
-              <p className="text-lg font-medium w-auto text-center mt-1.5 qtyProduct">
-                {counter}
-              </p>
-              <button>
-                <AiFillPlusCircle
-                  id={props.idProduct}
-                  className="text-primary text-3xl mt-1 ml-3.5"
-                  onClick={() => handleCounterPlus(props.add, props.price)}
-                />
-              </button>
-            </div>
-          </div>
-          <div className="mr-6 text-right">
-            <button
-              className="text-primary mt-28"
-              onClick={props.removeBooking}
-            >
-              Remove Product
+    <>
+      <main className="auto-cols-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 bg-white rounded gap-1 my-5">
+        <figure className="object-center mx-10 my-5">
+          <img
+            className="h-40 w-44 rounded-md"
+            src={props.images}
+            alt="items"
+          />
+        </figure>
+
+        <article className="w-full my-10">
+          <h2 className="card-title font-semibold text-2xl text-secondary">
+            {props.name}
+          </h2>
+          <p className="font-medium text-xl my-2">
+            <span className="text-primary font-semibold text-xl">Rp </span>
+            <span className="text-secondary font-semibold text-xl">
+              {props.price}
+            </span>
+            <span className="text-secondary font-medium text-lg">/day</span>
+          </p>
+
+          <section className="flex justify-start my-2">
+            <button>
+              <AiFillMinusCircle
+                id={props.idProduct}
+                className="rounded-full bg-primary text-3xl text-white mr-5"
+                onClick={() => {
+                  handleCounterMinus(props.sub, props.price);
+                }}
+              />
             </button>
-          </div>
-        </div>
-        <input
-          id={props.idProduct}
-          value={props.price * counter}
-          className="bg-red-300"
-        />
-      </div>
-    </section>
+            <p className="text-lg font-medium w-auto text-center qtyProduct">
+              {counter}
+            </p>
+            <button>
+              <AiFillPlusCircle
+                id={props.idProduct}
+                className="text-primary text-3xl mx-5"
+                onClick={() => handleCounterPlus(props.add, props.price)}
+              />
+            </button>
+          </section>
+        </article>
+
+        <section className=" w-full my-20 text-right">
+          <p>
+            Rp.{" "}
+            <input
+              id={props.idProduct}
+              value={props.price * counter}
+              className="bg-white visible w-32"
+            />
+          </p>
+          <button
+            className="text-primary mr-5 my-2"
+            onClick={props.removeBooking}
+          >
+            Remove Product
+          </button>
+        </section>
+      </main>
+    </>
   );
 };
 
@@ -131,7 +139,13 @@ const CardOrderBooking = (props) => {
           .then((res) => {
             var card = document.getElementById("CardHistory-" + id_booking);
             card.className += " hidden";
-            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Delete Success!",
+              showConfirmButton: false,
+              timer: 1000,
+            });
           })
           .catch((err) => {
             alert(err.toString());
