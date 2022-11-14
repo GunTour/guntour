@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 import { NavbarAdmin, Sidebar } from "components/Navbar";
 import { AiFillDelete } from "react-icons/ai";
-import { MdExpandMore } from "react-icons/md";
+import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 
 import { ModalAddProduct, ModalEditDataProduct } from "components/ModalAdmin";
 import { ButtonLabelEdit } from "components/Button";
@@ -26,11 +26,7 @@ const AdminProduct = () => {
     apiRequest(`admin/product?page=${page}`, "get")
       .then((res) => {
         const results = res.data;
-        const loadMore = page + 1;
-        const temp = [...data];
-        temp.push(...results);
-        setData(temp);
-        setPage(loadMore);
+        setData(results);
       })
       .catch((err) => {
         alert(err);
@@ -70,12 +66,7 @@ const AdminProduct = () => {
     for (const key in objSubmit) {
       formData.append(key, objSubmit[key]);
     }
-    apiRequest(
-      `admin/product/${id}`,
-      "put",
-      formData,
-      "multipart/form-data"
-    )
+    apiRequest(`admin/product/${id}`, "put", formData, "multipart/form-data")
       .then((res) => {
         const { message } = res;
         Swal.fire({
@@ -123,6 +114,18 @@ const AdminProduct = () => {
     let temp = { ...objSubmit };
     temp[key] = value;
     setObjSubmit(temp);
+  };
+
+  const previousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+    fetchData(page);
+  };
+
+  const nextPage = () => {
+    setPage(page + 1);
+    fetchData(page);
   };
 
   if (loading) {
@@ -246,9 +249,25 @@ const AdminProduct = () => {
                     )}
                   </>
                 </table>
-                <div className="text-right flex items-center justify-end font-medium text-base mr-10 mt-3">
-                  <button onClick={() => fetchData()}>Load More</button>
-                  <MdExpandMore className="text-secondary text-xl ml-2" />
+                <div className="flex justify-end mx-10 md:mx-10 lg:mx-16 2xl:mx-16 gap-8 py-5">
+                  <button
+                    onClick={(value) => previousPage(value)}
+                    className="w-11 h-11 rounded bg-none border-2 border-slate-400 place-content-center grid content-center"
+                  >
+                    <HiArrowLeft
+                      id="arrow-left"
+                      className="text-secondary text-2xl"
+                    />
+                  </button>
+                  <button
+                    onClick={(value) => nextPage(value)}
+                    className="w-11 h-11 rounded bg-none border-2 border-slate-400 place-content-center grid content-center"
+                  >
+                    <HiArrowRight
+                      id="arrow-right"
+                      className="text-secondary text-2xl"
+                    />
+                  </button>
                 </div>
               </div>
             </div>
