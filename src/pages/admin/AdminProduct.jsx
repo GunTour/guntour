@@ -10,10 +10,10 @@ import { MdExpandMore } from "react-icons/md";
 
 import { ModalAddProduct, ModalEditDataProduct } from "components/ModalAdmin";
 
-const AdminProduct = (props) => {
+const AdminProduct = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [objSubmit, setObjSubmit] = useState("");
+  const [objSubmit, setObjSubmit] = useState({});
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const AdminProduct = (props) => {
   }, []);
 
   const fetchData = async () => {
-    apiRequest(`admin/product?page=${page}`, "get", {})
+    apiRequest(`admin/product?page=${page}`, "get")
       .then((res) => {
         const results = res.data;
         const loadMore = page + 1;
@@ -46,16 +46,18 @@ const AdminProduct = (props) => {
     }
     apiRequest("admin/product", "post", objSubmit, "multipart/form-data")
       .then((res) => {
+        const { message } = res;
         Swal.fire({
           icon: "success",
-          title: "Data added successfully",
+          title: message,
         });
         setObjSubmit({});
       })
       .catch((err) => {
+        const { data } = err.response;
         Swal.fire({
           icon: "warning",
-          title: "There is an error please check again",
+          title: data.message,
         });
       })
       .finally(() => setLoading(false));
@@ -73,42 +75,45 @@ const AdminProduct = (props) => {
       "multipart/form-data"
     )
       .then((res) => {
+        const { message } = res;
         Swal.fire({
           icon: "success",
-          title: "Data changes successfully",
+          title: message,
         });
         setObjSubmit({});
       })
       .catch((err) => {
+        const { data } = err.response;
         Swal.fire({
           icon: "warning",
-          title: "There is an error please check again",
+          title: data.message,
         });
       })
-      .finally(() => setLoading(false));
+      .finally(() => fetchData());
   };
 
   const handleDelete = (id_product) => {
-    apiRequest(`admin/product/${id_product}`, "delete", {})
+    apiRequest(`admin/product/${id_product}`, "delete")
       .then((res) => {
+        const { message } = res;
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Data deleted successfully",
+          title: message,
           showConfirmButton: true,
         });
-        fetchData();
       })
       .catch((err) => {
+        const { data } = err.response;
         Swal.fire({
           position: "center",
           icon: "warning",
-          title: "There was an error, please check again.",
+          title: data.message,
           showConfirmButton: true,
         });
       })
       .finally(() => {
-        setLoading(false);
+        fetchData();
       });
   };
 
@@ -190,66 +195,82 @@ const AdminProduct = (props) => {
                     </tr>
                   </thead>
                   <>
-                    {data.map((data) => (
-                      <tbody>
-                        <tr>
-                          <th>{data.id_product}</th>
-                          <td>
-                            <div className="grid grid-cols-1 lg:grid-cols-2">
-                              <div className="flex">
-                                <img
-                                  src={data.product_picture}
-                                  alt={data.product_name}
-                                  className="max-w-xl h-14 w-14 rounded-lg"
-                                />
-                                <p className="ml-5 mt-4">{data.product_name}</p>
-                              </div>
-                            </div>
-                          </td>
-                          <td>{data.rent_price}/day</td>
-                          <td>{data.detail}</td>
-                          <td>
-                            <div className="flex items-center text-sm">
-                              <button className="text-2xl text-gray-600">
-                                <ModalEditDataProduct
-                                  onChangeProduct={(e) =>
-                                    handleChange(
-                                      e.target.files[0],
-                                      "product_picture"
-                                    )
-                                  }
-                                  valueProductName={objSubmit.product_name}
-                                  onChangeProductName={(e) =>
-                                    handleChange(e.target.value, "product_name")
-                                  }
-                                  valueRent={objSubmit.rent_price}
-                                  onRent={(e) =>
-                                    handleChange(e.target.value, "rent_price")
-                                  }
-                                  valueDescProduct={objSubmit.detail}
-                                  onDescProduct={(e) =>
-                                    handleChange(e.target.value, "detail")
-                                  }
-                                  valueNoteProduct={objSubmit.note}
-                                  onNoteProduct={(e) =>
-                                    handleChange(e.target.value, "note")
-                                  }
-                                  onEditProduct={() =>
-                                    handleEditProduct(data.id_product)
-                                  }
-                                />
-                              </button>
-                              <button
-                                id={data.id_product}
-                                onClick={() => handleDelete(data.id_product)}
-                              >
-                                <AiFillDelete className="fill-red-600 text-3xl mr-14 ml-4" />
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    ))}
+                    {loading ? (
+                      <p>Loading...</p>
+                    ) : (
+                      data
+                        ?.sort((a, b) => a.id_product - b.id_product)
+                        .map((data) => (
+                          <tbody>
+                            <tr>
+                              <th>{data.id_product}</th>
+                              <td>
+                                <div className="grid grid-cols-1 lg:grid-cols-2">
+                                  <div className="flex">
+                                    <img
+                                      src={data.product_picture}
+                                      alt={data.product_name}
+                                      className="max-w-xl h-14 w-14 rounded-lg"
+                                    />
+                                    <p className="ml-5 mt-4">
+                                      {data.product_name}
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>{data.rent_price}/day</td>
+                              <td>{data.detail}</td>
+                              <td>
+                                <div className="flex items-center text-sm">
+                                  <button className="text-2xl text-gray-600">
+                                    <ModalEditDataProduct
+                                      onChangeProduct={(e) =>
+                                        handleChange(
+                                          e.target.files[0],
+                                          "product_picture"
+                                        )
+                                      }
+                                      valueProductName={objSubmit.product_name}
+                                      onChangeProductName={(e) =>
+                                        handleChange(
+                                          e.target.value,
+                                          "product_name"
+                                        )
+                                      }
+                                      valueRent={objSubmit.rent_price}
+                                      onRent={(e) =>
+                                        handleChange(
+                                          e.target.value,
+                                          "rent_price"
+                                        )
+                                      }
+                                      valueDescProduct={objSubmit.detail}
+                                      onDescProduct={(e) =>
+                                        handleChange(e.target.value, "detail")
+                                      }
+                                      valueNoteProduct={objSubmit.note}
+                                      onNoteProduct={(e) =>
+                                        handleChange(e.target.value, "note")
+                                      }
+                                      onEditProduct={() =>
+                                        handleEditProduct(data.id_product)
+                                      }
+                                    />
+                                  </button>
+                                  <button
+                                    id={data.id_product}
+                                    onClick={() =>
+                                      handleDelete(data?.id_product)
+                                    }
+                                  >
+                                    <AiFillDelete className="fill-red-600 text-3xl mr-14 ml-4" />
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        ))
+                    )}
                   </>
                 </table>
                 <div className="text-right flex items-center justify-end font-medium text-base mr-10 mt-3">

@@ -8,6 +8,14 @@ export const ButtonCustom = (props) => {
   );
 };
 
+export const CustomButton = ({id, label, onClick, disabled, className}) => {
+  return (
+    <div id={id} className={className} onClick={onClick} disabled={disabled}>
+      {label}
+    </div>
+  );
+};
+
 export const ButtonAddProductAdmin = () => {
   return (
     <div>
