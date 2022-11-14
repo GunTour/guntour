@@ -9,12 +9,14 @@ import { AiFillDelete } from "react-icons/ai";
 import { MdExpandMore } from "react-icons/md";
 
 import { ModalAddProduct, ModalEditDataProduct } from "components/ModalAdmin";
+import { ButtonLabelEdit } from "components/Button";
 
 const AdminProduct = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [objSubmit, setObjSubmit] = useState({});
   const [page, setPage] = useState(1);
+  const [id, setId] = useState({});
 
   useEffect(() => {
     fetchData();
@@ -63,15 +65,15 @@ const AdminProduct = () => {
       .finally(() => setLoading(false));
   };
 
-  const handleEditProduct = async (id_product) => {
+  const handleEditProduct = async (id) => {
     const formData = new FormData();
     for (const key in objSubmit) {
       formData.append(key, objSubmit[key]);
     }
     apiRequest(
-      `admin/product/${id_product}`,
+      `admin/product/${id}`,
       "put",
-      objSubmit,
+      formData,
       "multipart/form-data"
     )
       .then((res) => {
@@ -222,41 +224,12 @@ const AdminProduct = () => {
                               <td>{data.detail}</td>
                               <td>
                                 <div className="flex items-center text-sm">
-                                  <button className="text-2xl text-gray-600">
-                                    <ModalEditDataProduct
-                                      onChangeProduct={(e) =>
-                                        handleChange(
-                                          e.target.files[0],
-                                          "product_picture"
-                                        )
-                                      }
-                                      valueProductName={objSubmit.product_name}
-                                      onChangeProductName={(e) =>
-                                        handleChange(
-                                          e.target.value,
-                                          "product_name"
-                                        )
-                                      }
-                                      valueRent={objSubmit.rent_price}
-                                      onRent={(e) =>
-                                        handleChange(
-                                          e.target.value,
-                                          "rent_price"
-                                        )
-                                      }
-                                      valueDescProduct={objSubmit.detail}
-                                      onDescProduct={(e) =>
-                                        handleChange(e.target.value, "detail")
-                                      }
-                                      valueNoteProduct={objSubmit.note}
-                                      onNoteProduct={(e) =>
-                                        handleChange(e.target.value, "note")
-                                      }
-                                      onEditProduct={() =>
-                                        handleEditProduct(data.id_product)
-                                      }
-                                    />
-                                  </button>
+                                  <ButtonLabelEdit
+                                    onClick={() => setId(data.id_product)}
+                                    htmlFor="my-modal-5"
+                                    id="button-edit"
+                                    label="Edit"
+                                  />
                                   <button
                                     id={data.id_product}
                                     onClick={() =>
@@ -282,6 +255,23 @@ const AdminProduct = () => {
           </div>
         </div>
       </div>
+      <ModalEditDataProduct
+        id="my-modal-5"
+        onChangeProduct={(e) =>
+          handleChange(e.target.files[0], "product_picture")
+        }
+        valueProductName={objSubmit.product_name}
+        onChangeProductName={(e) =>
+          handleChange(e.target.value, "product_name")
+        }
+        valueRent={objSubmit.rent_price}
+        onRent={(e) => handleChange(e.target.value, "rent_price")}
+        valueDescProduct={objSubmit.detail}
+        onDescProduct={(e) => handleChange(e.target.value, "detail")}
+        valueNoteProduct={objSubmit.note}
+        onNoteProduct={(e) => handleChange(e.target.value, "note")}
+        onEditProduct={() => handleEditProduct(id)}
+      />
     </>
   );
 };
