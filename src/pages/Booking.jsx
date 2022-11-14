@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import { useSelector, useDispatch } from "react-redux";
 import { setBooking } from "utils/redux/reducers/reducer";
 import { useNavigate } from "react-router-dom";
+import { apiRequest } from "utils/apiRequest";
 
 import Layout from "components/Layout";
 import Background from "assets/header-booking.jpg";
@@ -26,7 +27,7 @@ const Booking = () => {
   const [dateEnd, setDateEnd] = useState("");
   const [entrance, setEntrance] = useState("");
   const [idRanger, setidRanger] = useState("");
-  const [person, setPerson] = useState(0);
+  const [rangerPrice, setRangerPrice] = useState(0);
 
   function handleRemove(bookingNow) {
     let filtered = booking.filter(({ id_product }) => {
@@ -56,7 +57,7 @@ const Booking = () => {
         date_start: dateStart,
         date_end: dateEnd,
         entrance: entrance,
-        ticket: person,
+        ticket: ticket,
         product,
         id_ranger: idRanger,
         ranger_name: ranger_name,
@@ -102,6 +103,46 @@ const Booking = () => {
     }
   }
 
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  function getDataRanger() {
+    const dateFrom = document.getElementById("dateFrom").value;
+    const dateTo = document.getElementById("dateTo").value;
+
+    if (dateFrom === "" || dateTo === "") {
+      alert("tanggal From & To harus di isi");
+      return;
+    }
+    apiRequest(
+      `ranger?${"date_start=" + dateFrom}&${"date_end=" + dateTo}`,
+      "get",
+      {}
+    )
+      .then((res) => {
+        const data = res.data;
+        setData(data);
+      })
+      .catch((err) => {
+        alert(err.toString());
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
+  function rangerPrices(id_ranger) {
+    const oneDay = 24 * 60 * 60 * 1000;
+    const diffDays = Math.round(
+      Math.abs((new Date(dateEnd) - new Date(dateStart)) / oneDay)
+    );
+    var element = document.getElementById("ranger-" + id_ranger);
+    var price = element.getAttribute("price");
+    let rangerPrice = diffDays * price;
+    document.getElementById("ranger-prices").value = rangerPrice;
+    setRangerPrice(rangerPrice);
+  }
+
   return (
     <>
       <Helmet>
@@ -120,6 +161,7 @@ const Booking = () => {
               <section className="grid md:grid-rows-1 gap-2">
                 <p className="font-medium text-xl text-secondary">From Date</p>
                 <InputDate
+                  id="dateFrom"
                   value={dateStart}
                   onChange={(e) => setDateStart(e.target.value)}
                 />
@@ -136,7 +178,9 @@ const Booking = () => {
                   value={idRanger}
                   onChange={(e) => {
                     setidRanger(e.target.value);
+                    rangerPrices(e.target.value);
                   }}
+                  optionRanger={data}
                 />
               </section>
             </article>
@@ -144,8 +188,12 @@ const Booking = () => {
               <section className="grid md:grid-rows-1 gap-2">
                 <p className="font-medium text-xl text-secondary">To Date</p>
                 <InputDate
+                  id="dateTo"
                   value={dateEnd}
-                  onChange={(e) => setDateEnd(e.target.value)}
+                  onChange={(e) => {
+                    setDateEnd(e.target.value);
+                    getDataRanger();
+                  }}
                 />
                 <p className="font-medium text-xl text-secondary">
                   Number of Person{" "}
@@ -154,10 +202,7 @@ const Booking = () => {
                     ( Tickets cannot be empty )
                   </span>
                 </p>
-                <InputSelectPerson
-                  value={person}
-                  onChange={(e) => setPerson(e.target.value)}
-                />
+                <InputSelectPerson />
               </section>
             </article>
           </>
@@ -192,14 +237,31 @@ const Booking = () => {
                 Reviews Booking
               </p>
               <p className="font-medium text-xl text-secondary py-5">
+                Rangers Price : Rp.{" "}
+                <input
+                  type="text"
+                  id="ranger-prices"
+                  className="bg-white"
+                  aria-label="disabled input"
+                  disabled
+                  readonly
+                />
+              </p>
+              <p className="font-medium text-xl text-secondary pb-5">
                 Total Prices: Rp.{" "}
                 <input
-                  value={booking
-                    .map((data) => data.rent_price)
-                    .reduce((acc, curr) => acc + parseInt(curr, 10), 0)}
+                  value={
+                    booking
+                      .map((data) => data.rent_price)
+                      .reduce((acc, curr) => acc + parseInt(curr, 10), 0) +
+                    rangerPrice
+                  }
                   type="text"
                   id="text-grossamount"
-                  className="bg-white visible"
+                  className="bg-white"
+                  aria-label="disabled input"
+                  disabled
+                  readonly
                 />
               </p>
             </section>

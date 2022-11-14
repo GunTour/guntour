@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { WithRouter } from "utils/Navigation";
 import { Link, useNavigate } from "react-router-dom";
 import { apiRequest } from "utils/apiRequest";
+import { useDispatch } from "react-redux";
+import { setBooking } from "utils/redux/reducers/reducer";
 
 import Swal from "sweetalert2";
 
@@ -12,6 +14,7 @@ const ConfirmBooking = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("ConfirmBook"));
@@ -45,6 +48,7 @@ const ConfirmBooking = () => {
         const data = res.data;
         setData(data);
         window.localStorage.clear();
+        dispatch(setBooking([]));
         navigate("/history");
       })
       .catch((err) => {

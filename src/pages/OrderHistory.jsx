@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { WithRouter } from "utils/Navigation";
 import { Helmet } from "react-helmet";
 import { apiRequest } from "utils/apiRequest";
+
 import Layout from "components/Layout";
 import { CardOrderBooking } from "components/CardProduct";
+
 import Background from "assets/header-history.jpg";
 
 const OrderHistory = (props) => {
@@ -19,7 +21,6 @@ const OrderHistory = (props) => {
       .then((res) => {
         const data = res.data;
         setData(data);
-        console.log(data);
       })
       .catch((err) => {
         alert("ini alert histori" + err.toString());

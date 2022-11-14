@@ -89,7 +89,10 @@ const CardBooking = (props) => {
                 }}
               />
             </button>
-            <p className="text-lg font-medium w-auto text-center qtyProduct">
+            <p
+              id="productQty"
+              className="text-lg font-medium w-auto text-center qtyProduct"
+            >
               {counter}
             </p>
             <button>
@@ -109,6 +112,9 @@ const CardBooking = (props) => {
               id={props.idProduct}
               value={props.price * counter}
               className="bg-white visible w-32"
+              aria-label="disabled input"
+              disabled
+              readonly
             />
           </p>
           <button
