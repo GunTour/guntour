@@ -168,7 +168,7 @@ const ModalEditDataProduct = (props) => {
   return (
     <div>
       <label
-        htmlFor="my-modal-5"
+        htmlFor={props.id}
         className="text-2xl text-gray-600 cursor-pointer"
       >
         <AiFillEdit id="button-edit-1" />
@@ -176,7 +176,7 @@ const ModalEditDataProduct = (props) => {
 
       <input type="checkbox" id="my-modal-5" className="modal-toggle" />
 
-      <div className="modal">
+      <div id="my-modal-5" className="modal">
         <div className="modal-box rounded-lg relative">
           <h3 className="font-semibold text-xl text-secondary text-center">
             Edit Data Product

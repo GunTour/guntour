@@ -1,4 +1,13 @@
 import React from "react";
+import { AiFillEdit } from "react-icons/ai";
+
+export const ButtonLabelEdit = ({onClick, label, htmlFor, id}, className) => {
+  return (
+    <label htmlFor={htmlFor} id={id} onClick={onClick} className={className}>
+      <AiFillEdit className="text-2xl"/>
+    </label>
+  );
+};
 
 export const ButtonCustom = (props) => {
   return (
