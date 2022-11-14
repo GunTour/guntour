@@ -64,18 +64,21 @@ const Booking = () => {
       },
     ];
 
-    if (
-      dateStart.length === 0 ||
-      dateEnd.length === 0 ||
-      entrance.length === 0
-    ) {
-      Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "Data cannot be empty !",
-        showConfirmButton: true,
-      });
-      return;
+    if (isNavigate) {
+      if (
+        dateStart.length === 0 ||
+        dateEnd.length === 0 ||
+        entrance.length === 0 ||
+        ticket === "0"
+      ) {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Data cannot be empty !",
+          showConfirmButton: true,
+        });
+        return;
+      }
     }
 
     localStorage.removeItem("ConfirmBook");
@@ -184,18 +187,26 @@ const Booking = () => {
                 add={1}
               />
             ))}
+            <section className="w-full bg-white my-5 rounded">
+              <p className="font-semibold text-xl text-secondary pt-5">
+                Reviews Booking
+              </p>
+              <p className="font-medium text-xl text-secondary py-5">
+                Total Prices: Rp.{" "}
+                <input
+                  value={booking
+                    .map((data) => data.rent_price)
+                    .reduce((acc, curr) => acc + parseInt(curr, 10), 0)}
+                  type="text"
+                  id="text-grossamount"
+                  className="bg-white visible"
+                />
+              </p>
+            </section>
             <ButtonBooked
               onClick={() => {
                 validasiHandleBookedNow(booking, true);
               }}
-            />
-            <input
-              value={booking
-                .map((data) => data.rent_price)
-                .reduce((acc, curr) => acc + parseInt(curr, 10), 0)}
-              type="text"
-              id="text-grossamount"
-              className="bg-lime-500"
             />
           </div>
         </section>

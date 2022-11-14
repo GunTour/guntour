@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { WithRouter } from "utils/Navigation";
 import { Helmet } from "react-helmet";
-import { Input, InputEmail, InputPassword } from "components/Input";
-import { ButtonRegister } from "components/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { apiRequest } from "utils/apiRequest";
+
+import { Input, InputEmail, InputPassword } from "components/Input";
+import { ButtonRegister } from "components/Button";
 
 import Swal from "sweetalert2";
 import imgRegister from "assets/img-register.jpg";

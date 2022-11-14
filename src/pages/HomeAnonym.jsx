@@ -117,7 +117,7 @@ const HomeAnonym = () => {
           </header>
         </div>
 
-        <div className="mb-7 w-ful flex mx-3 md:mx-16 lg:mx-20 xl:mx-20">
+        <div className="mb-7 flex mx-3 md:mx-16 lg:mx-20 xl:mx-20">
           <div
             idProduct={data.id_product}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-9"
@@ -141,13 +141,19 @@ const HomeAnonym = () => {
             onClick={(value) => previousPage(value)}
             className="w-14 h-14 rounded bg-none border-2 border-primary place-content-center grid content-center"
           >
-            <HiArrowLeft className="text-primary text-2xl" />
+            <HiArrowLeft
+              id="arrow-left-anonym"
+              className="text-primary text-2xl"
+            />
           </button>
           <button
             onClick={(value) => nextPage(value)}
             className="w-14 h-14 rounded bg-none border-2 border-primary place-content-center grid content-center"
           >
-            <HiArrowRight className="text-primary text-2xl" />
+            <HiArrowRight
+              id="arrow-right-anonym"
+              className="text-primary text-2xl"
+            />
           </button>
         </div>
 
@@ -213,7 +219,10 @@ const HomeAnonym = () => {
                 to camp <br />
                 together feel the sensation
               </p>
-              <a href="https://t.me/+U8gsU0ll3cE5MTc1">
+              <a
+                id="join-community-anonym"
+                href="https://t.me/+U8gsU0ll3cE5MTc1"
+              >
                 <ButtonJoin />
               </a>
             </div>

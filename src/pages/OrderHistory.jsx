@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { WithRouter } from "utils/Navigation";
 import { Helmet } from "react-helmet";
 import { apiRequest } from "utils/apiRequest";
-import { useParams } from "react-router-dom";
 import Layout from "components/Layout";
 import { CardOrderBooking } from "components/CardProduct";
 import Background from "assets/header-history.jpg";
@@ -10,18 +9,10 @@ import Background from "assets/header-history.jpg";
 const OrderHistory = (props) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  let { id } = useParams();
 
   useEffect(() => {
     handleBooking();
   }, []);
-
-  // const body = {
-  //   id_booking: data.id_booking,
-  //   gross_amount: data.gross_amount,
-  //   status: data.status,
-  //   link: data.link,
-  // }
 
   const handleBooking = () => {
     apiRequest("booking", "get", {})
@@ -61,22 +52,18 @@ const OrderHistory = (props) => {
           <img className="w-full" src={Background} alt="Background" />
         </header>
 
-        {/* <div className="mx-20 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="flex justify-center"> */}
-        <>
-          {data.map((data) => (
-            <CardOrderBooking
-              idBooking={data.id_booking}
-              priceBooking={data.gross_amount}
-              statusBooking={data.status}
-              payBooking={data.link}
-            />
-          ))}
-        </>
-        {/* </div>
-          </div>
-        </div> */}
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-4 mx-5 my-5">
+          <>
+            {data.map((data) => (
+              <CardOrderBooking
+                idBooking={data.id_booking}
+                priceBooking={data.gross_amount}
+                statusBooking={data.status}
+                payBooking={data.link}
+              />
+            ))}
+          </>
+        </section>
       </Layout>
     </>
   );
