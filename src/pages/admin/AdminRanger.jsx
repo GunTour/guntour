@@ -81,7 +81,11 @@ const AdminRanger = () => {
         handleApplyRanger();
       })
       .catch((err) => {
-        alert(err);
+        const { data } = err.response;
+        Swal.fire({
+          icon: "warning",
+          title: data.message,
+        });
       })
       .finally(() => {
         setLoading(false);
@@ -105,7 +109,11 @@ const AdminRanger = () => {
         handleApplyRanger();
       })
       .catch((err) => {
-        alert(err);
+        const { data } = err.response;
+        Swal.fire({
+          icon: "warning",
+          title: data.message,
+        });
       })
       .finally(() => {
         setLoading(false);
@@ -129,7 +137,11 @@ const AdminRanger = () => {
         handleRanger();
       })
       .catch((err) => {
-        alert(err);
+        const { data } = err.response;
+        Swal.fire({
+          icon: "warning",
+          title: data.message,
+        });
       })
       .finally(() => {
         setLoading(false);

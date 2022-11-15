@@ -111,7 +111,10 @@ const Booking = () => {
     const dateTo = document.getElementById("dateTo").value;
 
     if (dateFrom === "" || dateTo === "") {
-      alert("tanggal From & To harus di isi");
+      Swal.fire({
+        icon: "warning",
+        title: "tanggal From & To harus di isi",
+      });
       return;
     }
     apiRequest(
@@ -124,7 +127,11 @@ const Booking = () => {
         setData(data);
       })
       .catch((err) => {
-        alert(err.toString());
+        const { data } = err.response;
+        Swal.fire({
+          icon: "warning",
+          title: data.message,
+        });
       })
       .finally(() => {
         setLoading(false);
