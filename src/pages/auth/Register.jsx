@@ -69,8 +69,11 @@ const Register = () => {
         });
       })
       .catch((err) => {
-        const { message } = err.response.data;
-        alert(message);
+        const { data } = err.response;
+        Swal.fire({
+          icon: "warning",
+          title: data.message,
+        });
       })
       .finally(() => {
         setLoading(false);
