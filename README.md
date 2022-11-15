@@ -87,7 +87,7 @@ This project is currently in development.
 <br>
 
 ## Deployment
-This project deployed in Vercel: -
+This project deployed in Vercel: [GunTour](https://guntour.vercel.app)
 
 <br>
     
