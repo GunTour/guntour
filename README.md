@@ -37,7 +37,23 @@
 - Guide Page <br>
   This is an important section for climbers because it contains important information and important files
   <br>
+    
+<br>
 
+### 👩‍💻 Admin Features
+
+- Input new rent product
+- Add new ranger
+- Changed rangers status
+- Edit or delete product
+- Delete the range that is applying.
+
+### 🧑‍🏫 Climber Features
+
+- Order tickets
+- Manage the task group of the mentee
+- Can rent rangers and rental products
+- can apply to be rangers
 
 <br>
 
@@ -74,13 +90,31 @@ This project is currently in development.
 This project deployed in Vercel: -
 
 <br>
+    
+## Installation
+1. Clone the repo
+```sh
+git clone https://github.com/GunTour/guntour.git
+```
+2. Install NPM packages
+```sh
+npm install
+```
+
+### Usage
+
+```sh
+npm start
+```
+
+<br/>
 
 ## See the UI Design of this project:
 
 <details><summary>UI Design Details</summary>
 
 - Home Page
-  <img src="https://drive.google.com/uc?export=view&id=1YjaWOEH5WO6PBPa6T3ERZ2GRAQggEOJw" alt="Home"/>
+  <img src="https://drive.google.com/uc?export=view&id=1HovynnzOPfa9jlZLJydVeHICt6jZvYdy" alt="Home"/>
 
 - Register Page
   <img src="https://drive.google.com/uc?export=view&id=1M2fAUZF5nGsDpBJggpfoMJqw8zmwpPTw" alt="Register"/>
@@ -108,5 +142,8 @@ This project deployed in Vercel: -
 
 - Guide Page
   <img src="https://drive.google.com/uc?export=view&id=14tpUowmUbECOk3ukODC-8NyIoeloKa-h" alt="Guide"/>
+
+- About Page
+  <img src="https://drive.google.com/uc?export=view&id=16CrY76Ipld0K5_u4ynHBIFfx4OlqjDLL" alt="Guide"/>
 
 </details>
